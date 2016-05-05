@@ -1,6 +1,6 @@
 ﻿namespace Projet_fin
 {
-    partial class Form1
+    partial class FrmLancement
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -46,7 +46,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 40);
+            this.label1.Location = new System.Drawing.Point(98, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 7;
@@ -54,25 +54,26 @@
             // 
             // grbSection
             // 
-            this.grbSection.Controls.Add(this.button4);
-            this.grbSection.Controls.Add(this.button5);
             this.grbSection.Controls.Add(this.label5);
+            this.grbSection.Controls.Add(this.button4);
+            this.grbSection.Controls.Add(this.label1);
+            this.grbSection.Controls.Add(this.label2);
+            this.grbSection.Controls.Add(this.label3);
+            this.grbSection.Controls.Add(this.button5);
             this.grbSection.Controls.Add(this.label4);
             this.grbSection.Controls.Add(this.button3);
-            this.grbSection.Controls.Add(this.label3);
-            this.grbSection.Controls.Add(this.label2);
             this.grbSection.Controls.Add(this.button2);
-            this.grbSection.Controls.Add(this.label1);
             this.grbSection.Controls.Add(this.button1);
-            this.grbSection.Location = new System.Drawing.Point(12, 12);
+            this.grbSection.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grbSection.Location = new System.Drawing.Point(0, 0);
             this.grbSection.Name = "grbSection";
-            this.grbSection.Size = new System.Drawing.Size(761, 94);
+            this.grbSection.Size = new System.Drawing.Size(785, 94);
             this.grbSection.TabIndex = 11;
             this.grbSection.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 21);
+            this.button1.Location = new System.Drawing.Point(39, 21);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(53, 55);
             this.button1.TabIndex = 11;
@@ -82,7 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(208, 40);
+            this.label2.Location = new System.Drawing.Point(246, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 10;
@@ -90,7 +91,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(154, 21);
+            this.button2.Location = new System.Drawing.Point(187, 21);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(53, 55);
             this.button2.TabIndex = 12;
@@ -99,7 +100,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(300, 21);
+            this.button3.Location = new System.Drawing.Point(335, 21);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(53, 55);
             this.button3.TabIndex = 12;
@@ -109,7 +110,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(359, 40);
+            this.label3.Location = new System.Drawing.Point(394, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 17);
             this.label3.TabIndex = 13;
@@ -117,7 +118,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(447, 21);
+            this.button4.Location = new System.Drawing.Point(483, 21);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(53, 55);
             this.button4.TabIndex = 14;
@@ -127,7 +128,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(506, 40);
+            this.label4.Location = new System.Drawing.Point(542, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 15;
@@ -135,7 +136,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(595, 21);
+            this.button5.Location = new System.Drawing.Point(631, 21);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(53, 55);
             this.button5.TabIndex = 16;
@@ -145,7 +146,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(654, 40);
+            this.label5.Location = new System.Drawing.Point(690, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 17);
             this.label5.TabIndex = 17;
@@ -154,13 +155,13 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(681, 534);
+            this.label6.Location = new System.Drawing.Point(114, 161);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 17);
             this.label6.TabIndex = 12;
             this.label6.Text = "Tailleminlab";
             // 
-            // Form1
+            // FrmLancement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,7 +169,8 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.grbSection);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "FrmLancement";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.grbSection.ResumeLayout(false);
             this.grbSection.PerformLayout();
             this.ResumeLayout(false);
