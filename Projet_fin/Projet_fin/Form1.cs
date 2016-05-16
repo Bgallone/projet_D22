@@ -17,6 +17,24 @@ namespace Projet_fin
             InitializeComponent();
         }
 
-       
+        private void btn_part_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_event_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Accueil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
