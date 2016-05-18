@@ -22,10 +22,6 @@ namespace Projet_fin
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_event_Click(object sender, EventArgs e)
         {
@@ -38,6 +34,11 @@ namespace Projet_fin
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_RAZ_Click(object sender, EventArgs e)
         {
 
         }
