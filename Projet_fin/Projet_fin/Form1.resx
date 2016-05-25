@@ -206,10 +206,10 @@
         /6d550q2w66rbNVud80zzzzzzDPwLCz8D95muJ3duWt2AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btn_Accueil.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_Accueil.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAYAAACo29JGAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTFH80I3AAAC20lEQVRoQ+3a
+        EQAACxEBf2RfkQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTFH80I3AAAC20lEQVRoQ+3a
         SchNYRzH8WseQobIuDJEsUEsUDZKlEjGjYUhsrGjpGRKyYKVDWVYkISyUFIsKNkoRKZIKMkYmfn+6j71
         9PS/557ndc49va/nV5/Nuc/7nPu/Z3j+5963lpLy/2YqLuAmtqIrOkQ24Cv+eK5iONpt+uAE/KJ8rzAb
         7S7jcQdWUb4f2IxOqCyDMCkwDlaW4iOsYho5jwGoJBsRvqH78NMdB/Ab4Vj5jE/BNt8jTEbL06y4UbiO
