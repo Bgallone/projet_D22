@@ -47,7 +47,8 @@ namespace Projet_fin
 
         private void btn_part_Click(object sender, EventArgs e)
         {
-
+            Form Form1 = new Participant();
+            Form1.Show(); 
         }
 
         private void Remplir(String requete, String nomTable)
