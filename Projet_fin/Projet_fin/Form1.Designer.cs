@@ -92,7 +92,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 386);
+            this.label4.Location = new System.Drawing.Point(16, 386);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
@@ -112,7 +112,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 299);
+            this.label3.Location = new System.Drawing.Point(16, 297);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
@@ -122,7 +122,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 217);
+            this.label2.Location = new System.Drawing.Point(16, 217);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
@@ -132,7 +132,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 132);
+            this.label1.Location = new System.Drawing.Point(15, 130);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
@@ -152,12 +152,13 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 475);
+            this.label5.Location = new System.Drawing.Point(22, 475);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 17;
             this.label5.Text = "Bilan";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // grbSection
             // 
@@ -186,7 +187,7 @@
             this.btn_Accueil.BackColor = System.Drawing.Color.Transparent;
             this.btn_Accueil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_Accueil.Image = ((System.Drawing.Image)(resources.GetObject("btn_Accueil.Image")));
-            this.btn_Accueil.Location = new System.Drawing.Point(18, 70);
+            this.btn_Accueil.Location = new System.Drawing.Point(16, 73);
             this.btn_Accueil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Accueil.Name = "btn_Accueil";
             this.btn_Accueil.Size = new System.Drawing.Size(55, 55);
