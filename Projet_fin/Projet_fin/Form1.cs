@@ -19,8 +19,7 @@ namespace Projet_fin
         DataSet ds;
         OleDbDataAdapter da;
         DataTable dt;
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data 
-                        Source=C:\Users\Arthur\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
 
         public FrmLancement()
         {
@@ -79,7 +78,8 @@ namespace Projet_fin
 
         private void Chargement(string requete, ComboBox cbo)
         {
-            OleDbConnection co = new OleDbConnection(chco);
+            OleDbConnection co = new OleDbConnection();
+            co.ConnectionString = chco;
             co.Open();
             OleDbCommand cmd = new OleDbCommand(requete, co);
 
@@ -87,7 +87,7 @@ namespace Projet_fin
 
             while (dr.Read())
             {
-                cbo.Items.Add(dr.GetString(0));
+               cbo.Items.Add(dr.GetString(0));
             }
             co.Close();
         }
