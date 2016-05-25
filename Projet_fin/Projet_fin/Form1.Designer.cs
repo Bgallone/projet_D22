@@ -69,23 +69,23 @@
             // 
             // btn_event
             // 
-            this.btn_event.Location = new System.Drawing.Point(33, 209);
+            this.btn_event.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_event.BackgroundImage")));
+            this.btn_event.Location = new System.Drawing.Point(35, 210);
             this.btn_event.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_event.Name = "btn_event";
-            this.btn_event.Size = new System.Drawing.Size(53, 55);
+            this.btn_event.Size = new System.Drawing.Size(55, 55);
             this.btn_event.TabIndex = 12;
-            this.btn_event.Text = "button2";
             this.btn_event.UseVisualStyleBackColor = true;
             this.btn_event.Click += new System.EventHandler(this.btn_event_Click);
             // 
             // btn_part
             // 
-            this.btn_part.Location = new System.Drawing.Point(33, 310);
+            this.btn_part.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_part.BackgroundImage")));
+            this.btn_part.Location = new System.Drawing.Point(35, 311);
             this.btn_part.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_part.Name = "btn_part";
-            this.btn_part.Size = new System.Drawing.Size(53, 55);
+            this.btn_part.Size = new System.Drawing.Size(55, 55);
             this.btn_part.TabIndex = 12;
-            this.btn_part.Text = "button3";
             this.btn_part.UseVisualStyleBackColor = true;
             this.btn_part.Click += new System.EventHandler(this.btn_part_Click);
             // 
@@ -100,12 +100,12 @@
             // 
             // btn_bilan
             // 
-            this.btn_bilan.Location = new System.Drawing.Point(33, 527);
+            this.btn_bilan.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_bilan.BackgroundImage")));
+            this.btn_bilan.Location = new System.Drawing.Point(35, 528);
             this.btn_bilan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_bilan.Name = "btn_bilan";
-            this.btn_bilan.Size = new System.Drawing.Size(53, 55);
+            this.btn_bilan.Size = new System.Drawing.Size(55, 55);
             this.btn_bilan.TabIndex = 16;
-            this.btn_bilan.Text = "button5";
             this.btn_bilan.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -137,12 +137,12 @@
             // 
             // btn_dep
             // 
-            this.btn_dep.Location = new System.Drawing.Point(33, 417);
+            this.btn_dep.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_dep.BackgroundImage")));
+            this.btn_dep.Location = new System.Drawing.Point(35, 418);
             this.btn_dep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_dep.Name = "btn_dep";
-            this.btn_dep.Size = new System.Drawing.Size(53, 55);
+            this.btn_dep.Size = new System.Drawing.Size(55, 55);
             this.btn_dep.TabIndex = 14;
-            this.btn_dep.Text = "button4";
             this.btn_dep.UseVisualStyleBackColor = true;
             // 
             // label5
@@ -183,9 +183,8 @@
             this.btn_Accueil.Location = new System.Drawing.Point(35, 105);
             this.btn_Accueil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Accueil.Name = "btn_Accueil";
-            this.btn_Accueil.Size = new System.Drawing.Size(53, 55);
+            this.btn_Accueil.Size = new System.Drawing.Size(55, 55);
             this.btn_Accueil.TabIndex = 11;
-            this.btn_Accueil.Text = "button1";
             this.btn_Accueil.UseVisualStyleBackColor = false;
             this.btn_Accueil.Click += new System.EventHandler(this.btn_Accueil_Click);
             // 
