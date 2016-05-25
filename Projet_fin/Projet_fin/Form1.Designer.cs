@@ -390,7 +390,6 @@
             // btn_Accueil
             // 
             this.btn_Accueil.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Accueil.BackgroundImage = global::Projet_fin.Properties.Resources.House;
             this.btn_Accueil.Location = new System.Drawing.Point(26, 85);
             this.btn_Accueil.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Accueil.Name = "btn_Accueil";
