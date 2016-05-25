@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TabControl tbcEvé;
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            System.Windows.Forms.TabControl tbcEve;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(événement));
+            this.tab1a1 = new System.Windows.Forms.TabPage();
             this.lblFin = new System.Windows.Forms.Label();
             this.lblDeb = new System.Windows.Forms.Label();
             this.LblEveDescri = new System.Windows.Forms.Label();
@@ -51,59 +52,72 @@
             this.lblNumChange = new System.Windows.Forms.Label();
             this.lblNévé = new System.Windows.Forms.Label();
             this.ptb_événement = new System.Windows.Forms.PictureBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabCréeEve = new System.Windows.Forms.TabPage();
+            this.btnInvitation = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnEnregister = new System.Windows.Forms.Button();
+            this.cboCreateur = new System.Windows.Forms.ComboBox();
+            this.lblCreateur = new System.Windows.Forms.Label();
+            this.rtbDescript = new System.Windows.Forms.RichTextBox();
+            this.lblEveDescript = new System.Windows.Forms.Label();
+            this.dtpEveFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpEveDeb = new System.Windows.Forms.DateTimePicker();
+            this.lblFinEve = new System.Windows.Forms.Label();
+            this.lblDebut = new System.Windows.Forms.Label();
             this.grb2 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblTitre = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblTitre = new System.Windows.Forms.Label();
-            tbcEvé = new System.Windows.Forms.TabControl();
-            tbcEvé.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            tbcEve = new System.Windows.Forms.TabControl();
+            tbcEve.SuspendLayout();
+            this.tab1a1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).BeginInit();
-            this.tabPage4.SuspendLayout();
+            this.tabCréeEve.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grb2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tbcEvé
+            // tbcEve
             // 
-            tbcEvé.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            tbcEvé.Controls.Add(this.tabPage3);
-            tbcEvé.Controls.Add(this.tabPage4);
-            tbcEvé.Location = new System.Drawing.Point(-6, -2);
-            tbcEvé.Name = "tbcEvé";
-            tbcEvé.SelectedIndex = 0;
-            tbcEvé.Size = new System.Drawing.Size(1239, 671);
-            tbcEvé.TabIndex = 1;
+            tbcEve.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            tbcEve.Controls.Add(this.tab1a1);
+            tbcEve.Controls.Add(this.tabCréeEve);
+            tbcEve.Location = new System.Drawing.Point(-6, -2);
+            tbcEve.Name = "tbcEve";
+            tbcEve.SelectedIndex = 0;
+            tbcEve.Size = new System.Drawing.Size(1239, 671);
+            tbcEve.TabIndex = 1;
             // 
-            // tabPage3
+            // tab1a1
             // 
-            this.tabPage3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage3.Controls.Add(this.lblFin);
-            this.tabPage3.Controls.Add(this.lblDeb);
-            this.tabPage3.Controls.Add(this.LblEveDescri);
-            this.tabPage3.Controls.Add(this.LblEveInt);
-            this.tabPage3.Controls.Add(this.LblCréateur);
-            this.tabPage3.Controls.Add(this.rdbRéglé);
-            this.tabPage3.Controls.Add(this.lblFini);
-            this.tabPage3.Controls.Add(this.lblau);
-            this.tabPage3.Controls.Add(this.lbldu);
-            this.tabPage3.Controls.Add(this.lblDescri);
-            this.tabPage3.Controls.Add(this.lblInti);
-            this.tabPage3.Controls.Add(this.lblCrée);
-            this.tabPage3.Controls.Add(this.btnFin);
-            this.tabPage3.Controls.Add(this.btnSuiv);
-            this.tabPage3.Controls.Add(this.btnPre);
-            this.tabPage3.Controls.Add(this.BtnDebut);
-            this.tabPage3.Controls.Add(this.pgb_Prog);
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 28);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1231, 639);
-            this.tabPage3.TabIndex = 0;
-            this.tabPage3.Text = "tabPage3";
+            this.tab1a1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tab1a1.Controls.Add(this.lblFin);
+            this.tab1a1.Controls.Add(this.lblDeb);
+            this.tab1a1.Controls.Add(this.LblEveDescri);
+            this.tab1a1.Controls.Add(this.LblEveInt);
+            this.tab1a1.Controls.Add(this.LblCréateur);
+            this.tab1a1.Controls.Add(this.rdbRéglé);
+            this.tab1a1.Controls.Add(this.lblFini);
+            this.tab1a1.Controls.Add(this.lblau);
+            this.tab1a1.Controls.Add(this.lbldu);
+            this.tab1a1.Controls.Add(this.lblDescri);
+            this.tab1a1.Controls.Add(this.lblInti);
+            this.tab1a1.Controls.Add(this.lblCrée);
+            this.tab1a1.Controls.Add(this.btnFin);
+            this.tab1a1.Controls.Add(this.btnSuiv);
+            this.tab1a1.Controls.Add(this.btnPre);
+            this.tab1a1.Controls.Add(this.BtnDebut);
+            this.tab1a1.Controls.Add(this.pgb_Prog);
+            this.tab1a1.Controls.Add(this.groupBox1);
+            this.tab1a1.Location = new System.Drawing.Point(4, 28);
+            this.tab1a1.Name = "tab1a1";
+            this.tab1a1.Padding = new System.Windows.Forms.Padding(3);
+            this.tab1a1.Size = new System.Drawing.Size(1231, 639);
+            this.tab1a1.TabIndex = 0;
+            this.tab1a1.Text = "Parcours des événements 1à1";
             // 
             // lblFin
             // 
@@ -304,27 +318,157 @@
             this.ptb_événement.TabIndex = 0;
             this.ptb_événement.TabStop = false;
             // 
-            // tabPage4
+            // tabCréeEve
             // 
-            this.tabPage4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage4.Controls.Add(this.grb2);
-            this.tabPage4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tabPage4.Location = new System.Drawing.Point(4, 28);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1231, 639);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "tabPage4";
+            this.tabCréeEve.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabCréeEve.Controls.Add(this.btnInvitation);
+            this.tabCréeEve.Controls.Add(this.pictureBox1);
+            this.tabCréeEve.Controls.Add(this.btnEnregister);
+            this.tabCréeEve.Controls.Add(this.cboCreateur);
+            this.tabCréeEve.Controls.Add(this.lblCreateur);
+            this.tabCréeEve.Controls.Add(this.rtbDescript);
+            this.tabCréeEve.Controls.Add(this.lblEveDescript);
+            this.tabCréeEve.Controls.Add(this.dtpEveFin);
+            this.tabCréeEve.Controls.Add(this.dtpEveDeb);
+            this.tabCréeEve.Controls.Add(this.lblFinEve);
+            this.tabCréeEve.Controls.Add(this.lblDebut);
+            this.tabCréeEve.Controls.Add(this.grb2);
+            this.tabCréeEve.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tabCréeEve.Location = new System.Drawing.Point(4, 28);
+            this.tabCréeEve.Name = "tabCréeEve";
+            this.tabCréeEve.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCréeEve.Size = new System.Drawing.Size(1231, 639);
+            this.tabCréeEve.TabIndex = 1;
+            this.tabCréeEve.Text = "Nouvel événement";
+            // 
+            // btnInvitation
+            // 
+            this.btnInvitation.Location = new System.Drawing.Point(897, 580);
+            this.btnInvitation.Name = "btnInvitation";
+            this.btnInvitation.Size = new System.Drawing.Size(166, 37);
+            this.btnInvitation.TabIndex = 13;
+            this.btnInvitation.Text = "Lancer les invitations";
+            this.btnInvitation.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(935, 485);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(88, 89);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnEnregister
+            // 
+            this.btnEnregister.Location = new System.Drawing.Point(629, 520);
+            this.btnEnregister.Name = "btnEnregister";
+            this.btnEnregister.Size = new System.Drawing.Size(121, 37);
+            this.btnEnregister.TabIndex = 11;
+            this.btnEnregister.Text = "Enregistrer";
+            this.btnEnregister.UseVisualStyleBackColor = true;
+            // 
+            // cboCreateur
+            // 
+            this.cboCreateur.FormattingEnabled = true;
+            this.cboCreateur.Location = new System.Drawing.Point(204, 527);
+            this.cboCreateur.Name = "cboCreateur";
+            this.cboCreateur.Size = new System.Drawing.Size(315, 24);
+            this.cboCreateur.TabIndex = 10;
+            // 
+            // lblCreateur
+            // 
+            this.lblCreateur.AutoSize = true;
+            this.lblCreateur.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreateur.Location = new System.Drawing.Point(79, 528);
+            this.lblCreateur.Name = "lblCreateur";
+            this.lblCreateur.Size = new System.Drawing.Size(100, 25);
+            this.lblCreateur.TabIndex = 9;
+            this.lblCreateur.Text = "Créer par :";
+            // 
+            // rtbDescript
+            // 
+            this.rtbDescript.Location = new System.Drawing.Point(84, 343);
+            this.rtbDescript.Name = "rtbDescript";
+            this.rtbDescript.Size = new System.Drawing.Size(760, 121);
+            this.rtbDescript.TabIndex = 8;
+            this.rtbDescript.Text = "";
+            // 
+            // lblEveDescript
+            // 
+            this.lblEveDescript.AutoSize = true;
+            this.lblEveDescript.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEveDescript.Location = new System.Drawing.Point(79, 315);
+            this.lblEveDescript.Name = "lblEveDescript";
+            this.lblEveDescript.Size = new System.Drawing.Size(117, 25);
+            this.lblEveDescript.TabIndex = 7;
+            this.lblEveDescript.Text = "Description :";
+            // 
+            // dtpEveFin
+            // 
+            this.dtpEveFin.Location = new System.Drawing.Point(579, 253);
+            this.dtpEveFin.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEveFin.Name = "dtpEveFin";
+            this.dtpEveFin.Size = new System.Drawing.Size(265, 22);
+            this.dtpEveFin.TabIndex = 6;
+            // 
+            // dtpEveDeb
+            // 
+            this.dtpEveDeb.Location = new System.Drawing.Point(84, 253);
+            this.dtpEveDeb.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEveDeb.Name = "dtpEveDeb";
+            this.dtpEveDeb.Size = new System.Drawing.Size(265, 22);
+            this.dtpEveDeb.TabIndex = 5;
+            // 
+            // lblFinEve
+            // 
+            this.lblFinEve.AutoSize = true;
+            this.lblFinEve.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinEve.Location = new System.Drawing.Point(574, 205);
+            this.lblFinEve.Name = "lblFinEve";
+            this.lblFinEve.Size = new System.Drawing.Size(88, 25);
+            this.lblFinEve.TabIndex = 4;
+            this.lblFinEve.Text = "Date fin :";
+            // 
+            // lblDebut
+            // 
+            this.lblDebut.AutoSize = true;
+            this.lblDebut.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDebut.Location = new System.Drawing.Point(79, 205);
+            this.lblDebut.Name = "lblDebut";
+            this.lblDebut.Size = new System.Drawing.Size(114, 25);
+            this.lblDebut.TabIndex = 3;
+            this.lblDebut.Text = "Date début :";
             // 
             // grb2
             // 
             this.grb2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.grb2.Controls.Add(this.textBox1);
             this.grb2.Controls.Add(this.lblTitre);
             this.grb2.Location = new System.Drawing.Point(-4, -14);
             this.grb2.Name = "grb2";
             this.grb2.Size = new System.Drawing.Size(1235, 178);
             this.grb2.TabIndex = 0;
             this.grb2.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Yu Gothic UI Semilight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(459, 71);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(524, 43);
+            this.textBox1.TabIndex = 3;
+            // 
+            // lblTitre
+            // 
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.Font = new System.Drawing.Font("Yu Gothic UI Semilight", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.Location = new System.Drawing.Point(18, 61);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.Size = new System.Drawing.Size(399, 54);
+            this.lblTitre.TabIndex = 2;
+            this.lblTitre.Text = "Titre de l\'événement :";
             // 
             // tabPage1
             // 
@@ -340,32 +484,24 @@
             this.tabPage2.Size = new System.Drawing.Size(200, 100);
             this.tabPage2.TabIndex = 0;
             // 
-            // lblTitre
-            // 
-            this.lblTitre.AutoSize = true;
-            this.lblTitre.Font = new System.Drawing.Font("Yu Gothic UI Semilight", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitre.Location = new System.Drawing.Point(18, 61);
-            this.lblTitre.Name = "lblTitre";
-            this.lblTitre.Size = new System.Drawing.Size(399, 54);
-            this.lblTitre.TabIndex = 2;
-            this.lblTitre.Text = "Titre de l\'événement :";
-            // 
             // événement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1222, 661);
-            this.Controls.Add(tbcEvé);
+            this.ClientSize = new System.Drawing.Size(1073, 655);
+            this.Controls.Add(tbcEve);
             this.Name = "événement";
             this.Text = "événement";
-            tbcEvé.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            tbcEve.ResumeLayout(false);
+            this.tab1a1.ResumeLayout(false);
+            this.tab1a1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).EndInit();
-            this.tabPage4.ResumeLayout(false);
+            this.tabCréeEve.ResumeLayout(false);
+            this.tabCréeEve.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grb2.ResumeLayout(false);
             this.grb2.PerformLayout();
             this.ResumeLayout(false);
@@ -377,8 +513,8 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tab1a1;
+        private System.Windows.Forms.TabPage tabCréeEve;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnFin;
         private System.Windows.Forms.Button btnSuiv;
@@ -402,5 +538,17 @@
         private System.Windows.Forms.Label lblDeb;
         private System.Windows.Forms.GroupBox grb2;
         private System.Windows.Forms.Label lblTitre;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblFinEve;
+        private System.Windows.Forms.Label lblDebut;
+        private System.Windows.Forms.DateTimePicker dtpEveFin;
+        private System.Windows.Forms.DateTimePicker dtpEveDeb;
+        private System.Windows.Forms.Button btnInvitation;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnEnregister;
+        private System.Windows.Forms.ComboBox cboCreateur;
+        private System.Windows.Forms.Label lblCreateur;
+        private System.Windows.Forms.RichTextBox rtbDescript;
+        private System.Windows.Forms.Label lblEveDescript;
     }
 }
