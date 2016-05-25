@@ -47,7 +47,8 @@ namespace Projet_fin
 
         private void btn_event_Click(object sender, EventArgs e)
         {
-
+            Form Form1 = new événement();
+            Form1.Show(); 
         }
 
         private void btn_Accueil_Click(object sender, EventArgs e)
