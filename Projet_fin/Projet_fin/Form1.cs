@@ -40,7 +40,7 @@ namespace Projet_fin
             Remplir(req, "events");
             cbxEvenement.DataSource = ds.Tables["events"];
             cbxEvenement.DisplayMember = "titreEvent";
-            cbxEvenement.ValueMember = "codeEvent";
+          
 
             
         }
