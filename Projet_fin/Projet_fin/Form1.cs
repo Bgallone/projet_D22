@@ -15,11 +15,11 @@ namespace Projet_fin
 
     public partial class FrmLancement : Form
     {
-      
-        DataSet ds;
-        OleDbDataAdapter da;
-        DataTable dt;
+     
         String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
+        OleDbConnection co = new OleDbConnection();
+        DataSet ds = new DataSet();
+
 
         public FrmLancement()
         {
@@ -29,19 +29,39 @@ namespace Projet_fin
 
         private void FrmLancement_Load(object sender, EventArgs e)
         {
-            String cmd1 = @"SELECT count(*) 
-                            FROM Evenements;";
-            Chargement(cmd1, cbxEvenement);
-            OleDbConnection co = new OleDbConnection(chco);
+            co.ConnectionString = chco;
             co.Open();
-            OleDbCommand cd = new OleDbCommand(cmd1, co);
-            cd.CommandType = CommandType.Text;
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+            cmd.CommandType = CommandType.Text;
+            string req = @"SELECT [titreEvent] 
+                            FROM Evenements;";
+            cmd.CommandText = req;
+            Remplir(req, "events");
+            cbxEvenement.DataSource = ds.Tables["events"];
+            cbxEvenement.DisplayMember = "titreEvent";
+            cbxEvenement.ValueMember = "codeEvent";
+
+            
         }
 
         private void btn_part_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void Remplir(String requete, String nomTable)
+        {
+
+            OleDbCommand cmd = new OleDbCommand(requete, co);
+            OleDbDataAdapter da = new OleDbDataAdapter();
+            da.SelectCommand = cmd;
+
+            da.Fill(ds, nomTable);
+            // MessageBox.Show(ds.Tables[nomTable].Rows.Count.ToString());             
+        }
+
+
 
 
         private void btn_event_Click(object sender, EventArgs e)
@@ -76,21 +96,7 @@ namespace Projet_fin
             
         }
 
-        private void Chargement(string requete, ComboBox cbo)
-        {
-            OleDbConnection co = new OleDbConnection();
-            co.ConnectionString = chco;
-            co.Open();
-            OleDbCommand cmd = new OleDbCommand(requete, co);
-
-            OleDbDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-               cbo.Items.Add(dr.GetString(0));
-            }
-            co.Close();
-        }
+       
 
 
     }
