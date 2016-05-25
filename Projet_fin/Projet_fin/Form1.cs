@@ -115,11 +115,11 @@ namespace Projet_fin
             string evt = cbxEvenement.Text;
             string req = @"SELECT codeEvent
                            FROM Evenements 
-                           WHERE titreEvent = " + "'evt'"+ ";";
+                           WHERE titreEvent = evt;";
             OleDbCommand cmd = new OleDbCommand(req);
             int noevent = (int)cmd.ExecuteScalar();
             MessageBox.Show(noevent.ToString());
-            int WESHALORS;
+            
         }
     }
 }
