@@ -30,13 +30,13 @@ namespace Projet_fin
 
         private void FrmLancement_Load(object sender, EventArgs e)
         {
-            String cmd1 = @"SELECT count(*) 
+            /*String cmd1 = @"SELECT count(*) 
                             FROM Evenements;";
             Chargement(cmd1, cbxEvenement);
             OleDbConnection co = new OleDbConnection(chco);
             co.Open();
             OleDbCommand cd = new OleDbCommand(cmd1, co);
-            cd.CommandType = CommandType.Text;
+            cd.CommandType = CommandType.Text;*/
         }
 
         private void btn_part_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace Projet_fin
 
         private void Chargement(string requete, ComboBox cbo)
         {
-            OleDbConnection co = new OleDbConnection(chco);
+            /*OleDbConnection co = new OleDbConnection(chco);
             co.Open();
             OleDbCommand cmd = new OleDbCommand(requete, co);
 
@@ -89,7 +89,7 @@ namespace Projet_fin
             {
                 cbo.Items.Add(dr.GetString(0));
             }
-            co.Close();
+            co.Close();*/
         }
 
 
