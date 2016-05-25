@@ -94,9 +94,6 @@
     <None Include="Resources\small-house-vector-icon-252940.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\home.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\bdEvents.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

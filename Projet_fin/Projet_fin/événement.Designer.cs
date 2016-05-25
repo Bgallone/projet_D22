@@ -52,10 +52,10 @@
             this.lblNévé = new System.Windows.Forms.Label();
             this.ptb_événement = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.grb2 = new System.Windows.Forms.GroupBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.grb2 = new System.Windows.Forms.GroupBox();
             tbcEvé = new System.Windows.Forms.TabControl();
             tbcEvé.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -295,6 +295,7 @@
             // 
             // ptb_événement
             // 
+            this.ptb_événement.ErrorImage = null;
             this.ptb_événement.Location = new System.Drawing.Point(170, 77);
             this.ptb_événement.Name = "ptb_événement";
             this.ptb_événement.Size = new System.Drawing.Size(74, 67);
@@ -313,6 +314,15 @@
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "tabPage4";
             // 
+            // grb2
+            // 
+            this.grb2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.grb2.Location = new System.Drawing.Point(-4, -14);
+            this.grb2.Name = "grb2";
+            this.grb2.Size = new System.Drawing.Size(1235, 178);
+            this.grb2.TabIndex = 0;
+            this.grb2.TabStop = false;
+            // 
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(0, 0);
@@ -326,15 +336,6 @@
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(200, 100);
             this.tabPage2.TabIndex = 0;
-            // 
-            // grb2
-            // 
-            this.grb2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.grb2.Location = new System.Drawing.Point(-4, -14);
-            this.grb2.Name = "grb2";
-            this.grb2.Size = new System.Drawing.Size(1235, 178);
-            this.grb2.TabIndex = 0;
-            this.grb2.TabStop = false;
             // 
             // événement
             // 
