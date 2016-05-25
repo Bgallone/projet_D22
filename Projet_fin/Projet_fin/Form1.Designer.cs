@@ -42,16 +42,16 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lbl_nvldepense = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_RAZ = new System.Windows.Forms.Button();
-            this.btn_Quit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.btnRAZ = new System.Windows.Forms.Button();
+            this.btnQuit = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
+            this.clbBeneficiaires = new System.Windows.Forms.CheckedListBox();
+            this.txtCommentaire = new System.Windows.Forms.RichTextBox();
+            this.udCout = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtDepense = new System.Windows.Forms.TextBox();
+            this.cbxPayePar = new System.Windows.Forms.ComboBox();
+            this.cbxEvenement = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             this.lvl_nomEvent = new System.Windows.Forms.Label();
             this.grbSection.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udCout)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Accueil
@@ -200,16 +200,16 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btn_RAZ);
-            this.groupBox1.Controls.Add(this.btn_Quit);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.checkedListBox1);
-            this.groupBox1.Controls.Add(this.richTextBox1);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.btnRAZ);
+            this.groupBox1.Controls.Add(this.btnQuit);
+            this.groupBox1.Controls.Add(this.btnValider);
+            this.groupBox1.Controls.Add(this.clbBeneficiaires);
+            this.groupBox1.Controls.Add(this.txtCommentaire);
+            this.groupBox1.Controls.Add(this.udCout);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.txtDepense);
+            this.groupBox1.Controls.Add(this.cbxPayePar);
+            this.groupBox1.Controls.Add(this.cbxEvenement);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
@@ -227,65 +227,65 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 
-            // btn_RAZ
+            // btnRAZ
             // 
-            this.btn_RAZ.Location = new System.Drawing.Point(704, 462);
-            this.btn_RAZ.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_RAZ.Name = "btn_RAZ";
-            this.btn_RAZ.Size = new System.Drawing.Size(100, 28);
-            this.btn_RAZ.TabIndex = 19;
-            this.btn_RAZ.Text = "R-A-Z";
-            this.btn_RAZ.UseVisualStyleBackColor = true;
-            this.btn_RAZ.Click += new System.EventHandler(this.btn_RAZ_Click);
+            this.btnRAZ.Location = new System.Drawing.Point(704, 462);
+            this.btnRAZ.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRAZ.Name = "btnRAZ";
+            this.btnRAZ.Size = new System.Drawing.Size(100, 28);
+            this.btnRAZ.TabIndex = 19;
+            this.btnRAZ.Text = "R-A-Z";
+            this.btnRAZ.UseVisualStyleBackColor = true;
+            this.btnRAZ.Click += new System.EventHandler(this.btn_RAZ_Click);
             // 
-            // btn_Quit
+            // btnQuit
             // 
-            this.btn_Quit.Location = new System.Drawing.Point(704, 498);
-            this.btn_Quit.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Quit.Name = "btn_Quit";
-            this.btn_Quit.Size = new System.Drawing.Size(100, 28);
-            this.btn_Quit.TabIndex = 18;
-            this.btn_Quit.Text = "Quitter";
-            this.btn_Quit.UseVisualStyleBackColor = true;
-            this.btn_Quit.Click += new System.EventHandler(this.btn_Quit_Click);
+            this.btnQuit.Location = new System.Drawing.Point(704, 498);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(100, 28);
+            this.btnQuit.TabIndex = 18;
+            this.btnQuit.Text = "Quitter";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btn_Quit_Click);
             // 
-            // button1
+            // btnValider
             // 
-            this.button1.Location = new System.Drawing.Point(704, 426);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Valider";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnValider.Location = new System.Drawing.Point(704, 426);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(4);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(100, 28);
+            this.btnValider.TabIndex = 17;
+            this.btnValider.Text = "Valider";
+            this.btnValider.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox1
+            // clbBeneficiaires
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(64, 421);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(447, 106);
-            this.checkedListBox1.TabIndex = 16;
+            this.clbBeneficiaires.FormattingEnabled = true;
+            this.clbBeneficiaires.Location = new System.Drawing.Point(64, 421);
+            this.clbBeneficiaires.Margin = new System.Windows.Forms.Padding(4);
+            this.clbBeneficiaires.Name = "clbBeneficiaires";
+            this.clbBeneficiaires.Size = new System.Drawing.Size(447, 106);
+            this.clbBeneficiaires.TabIndex = 16;
             // 
-            // richTextBox1
+            // txtCommentaire
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.richTextBox1.Location = new System.Drawing.Point(63, 194);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(775, 117);
-            this.richTextBox1.TabIndex = 15;
-            this.richTextBox1.Text = "";
+            this.txtCommentaire.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCommentaire.Location = new System.Drawing.Point(63, 194);
+            this.txtCommentaire.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCommentaire.Name = "txtCommentaire";
+            this.txtCommentaire.Size = new System.Drawing.Size(775, 117);
+            this.txtCommentaire.TabIndex = 15;
+            this.txtCommentaire.Text = "";
             // 
-            // numericUpDown1
+            // udCout
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(175, 126);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(96, 22);
-            this.numericUpDown1.TabIndex = 14;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.udCout.Location = new System.Drawing.Point(175, 126);
+            this.udCout.Margin = new System.Windows.Forms.Padding(4);
+            this.udCout.Name = "udCout";
+            this.udCout.Size = new System.Drawing.Size(96, 22);
+            this.udCout.TabIndex = 14;
+            this.udCout.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
@@ -297,33 +297,34 @@
             this.label12.TabIndex = 13;
             this.label12.Text = "€";
             // 
-            // textBox1
+            // txtDepense
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(175, 82);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(336, 22);
-            this.textBox1.TabIndex = 11;
+            this.txtDepense.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDepense.Location = new System.Drawing.Point(175, 82);
+            this.txtDepense.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDepense.Name = "txtDepense";
+            this.txtDepense.Size = new System.Drawing.Size(336, 22);
+            this.txtDepense.TabIndex = 11;
             // 
-            // comboBox2
+            // cbxPayePar
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(175, 358);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(336, 24);
-            this.comboBox2.TabIndex = 10;
+            this.cbxPayePar.FormattingEnabled = true;
+            this.cbxPayePar.Location = new System.Drawing.Point(175, 358);
+            this.cbxPayePar.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxPayePar.Name = "cbxPayePar";
+            this.cbxPayePar.Size = new System.Drawing.Size(336, 24);
+            this.cbxPayePar.TabIndex = 10;
             // 
-            // comboBox1
+            // cbxEvenement
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(175, 48);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(336, 24);
-            this.comboBox1.TabIndex = 9;
+            this.cbxEvenement.BackColor = System.Drawing.SystemColors.Window;
+            this.cbxEvenement.FormattingEnabled = true;
+            this.cbxEvenement.Location = new System.Drawing.Point(175, 48);
+            this.cbxEvenement.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxEvenement.Name = "cbxEvenement";
+            this.cbxEvenement.Size = new System.Drawing.Size(336, 24);
+            this.cbxEvenement.TabIndex = 9;
+            this.cbxEvenement.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // checkBox1
             // 
@@ -426,11 +427,12 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmLancement";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Load += new System.EventHandler(this.FrmLancement_Load);
             this.grbSection.ResumeLayout(false);
             this.grbSection.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udCout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,19 +458,19 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lvl_nomEvent;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtDepense;
+        private System.Windows.Forms.ComboBox cbxPayePar;
+        private System.Windows.Forms.ComboBox cbxEvenement;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btn_RAZ;
-        private System.Windows.Forms.Button btn_Quit;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button btnRAZ;
+        private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.CheckedListBox clbBeneficiaires;
+        private System.Windows.Forms.RichTextBox txtCommentaire;
+        private System.Windows.Forms.NumericUpDown udCout;
         private System.Windows.Forms.Label label12;
     }
 }
