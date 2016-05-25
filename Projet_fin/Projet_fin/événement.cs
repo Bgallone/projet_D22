@@ -24,7 +24,7 @@ namespace Projet_fin
             {
                 NumReq++;
                 lblNumChange.Text = "" + NumReq + " ";
-                pgb_Prog.Value += 25;
+                pgb_Prog.Value += 100/(NbPage-1);
             }
 
         }
@@ -35,7 +35,7 @@ namespace Projet_fin
             {
                 NumReq--;
                 lblNumChange.Text = "" + NumReq + " ";
-                pgb_Prog.Value -= 25;
+                pgb_Prog.Value -= 100/(NbPage-1);
             }
         }
 

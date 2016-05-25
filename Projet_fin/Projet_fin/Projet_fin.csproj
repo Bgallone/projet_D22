@@ -94,12 +94,14 @@
     <None Include="Resources\small-house-vector-icon-252940.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\home.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\bdEvents.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Bilan.png" />
+    <Content Include="Resources\Event.png" />
+    <Content Include="Resources\House.png" />
+    <Content Include="Resources\Money.png" />
+    <Content Include="Resources\User.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
