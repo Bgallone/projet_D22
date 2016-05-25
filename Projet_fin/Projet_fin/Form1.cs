@@ -40,15 +40,28 @@ namespace Projet_fin
             Remplir(req, "events");
             cbxEvenement.DataSource = ds.Tables["events"];
             cbxEvenement.DisplayMember = "titreEvent";
-            //
+
+          
 
             
         }
 
+        private void RemplirCheckListBox(string req, CheckedListBox clb) {
+    
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+            cmd.CommandText = req;
+
+            OleDbDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                clb.Items.Add(dr.GetString(0));
+            }
+        }
+
         private void btn_part_Click(object sender, EventArgs e)
         {
-            Form Form_part = new Participant();
-            Form_part.Show(); 
+
         }
 
         private void Remplir(String requete, String nomTable)
@@ -97,13 +110,16 @@ namespace Projet_fin
             
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
+            string evt = cbxEvenement.Text;
+            string req = @"SELECT codeEvent
+                           FROM Evenements 
+                           WHERE titreEvent = " + "'evt'"+ ";";
+            OleDbCommand cmd = new OleDbCommand(req);
+            int noevent = (int)cmd.ExecuteScalar();
+            MessageBox.Show(noevent.ToString());
+            int WESHALORS;
         }
-
-       
-
-
     }
 }
