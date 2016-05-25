@@ -119,6 +119,7 @@ namespace Projet_fin
             OleDbCommand cmd = new OleDbCommand(req);
             int noevent = (int)cmd.ExecuteScalar();
             MessageBox.Show(noevent.ToString());
+            int WESHALORS;
         }
     }
 }
