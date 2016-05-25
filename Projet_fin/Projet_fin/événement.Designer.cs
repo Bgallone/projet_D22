@@ -30,10 +30,11 @@
         {
             System.Windows.Forms.TabControl tbcEvé;
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblFin = new System.Windows.Forms.Label();
+            this.lblDeb = new System.Windows.Forms.Label();
             this.LblEveDescri = new System.Windows.Forms.Label();
             this.LblEveInt = new System.Windows.Forms.Label();
             this.LblCréateur = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.rdbRéglé = new System.Windows.Forms.RadioButton();
             this.lblFini = new System.Windows.Forms.Label();
             this.lblau = new System.Windows.Forms.Label();
@@ -54,13 +55,13 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblDeb = new System.Windows.Forms.Label();
-            this.lblFin = new System.Windows.Forms.Label();
+            this.grb2 = new System.Windows.Forms.GroupBox();
             tbcEvé = new System.Windows.Forms.TabControl();
             tbcEvé.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcEvé
@@ -82,7 +83,6 @@
             this.tabPage3.Controls.Add(this.LblEveDescri);
             this.tabPage3.Controls.Add(this.LblEveInt);
             this.tabPage3.Controls.Add(this.LblCréateur);
-            this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.rdbRéglé);
             this.tabPage3.Controls.Add(this.lblFini);
             this.tabPage3.Controls.Add(this.lblau);
@@ -102,6 +102,24 @@
             this.tabPage3.Size = new System.Drawing.Size(1231, 639);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "tabPage3";
+            // 
+            // lblFin
+            // 
+            this.lblFin.AutoSize = true;
+            this.lblFin.Location = new System.Drawing.Point(521, 355);
+            this.lblFin.Name = "lblFin";
+            this.lblFin.Size = new System.Drawing.Size(56, 17);
+            this.lblFin.TabIndex = 18;
+            this.lblFin.Text = "**/**/****";
+            // 
+            // lblDeb
+            // 
+            this.lblDeb.AutoSize = true;
+            this.lblDeb.Location = new System.Drawing.Point(292, 355);
+            this.lblDeb.Name = "lblDeb";
+            this.lblDeb.Size = new System.Drawing.Size(56, 17);
+            this.lblDeb.TabIndex = 17;
+            this.lblDeb.Text = "**/**/****";
             // 
             // LblEveDescri
             // 
@@ -129,15 +147,6 @@
             this.LblCréateur.Size = new System.Drawing.Size(238, 17);
             this.LblCréateur.TabIndex = 14;
             this.LblCréateur.Text = "Changer par le nom de l\'oganisateur";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "label1";
             // 
             // rdbRéglé
             // 
@@ -294,13 +303,15 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage4.Controls.Add(this.grb2);
+            this.tabPage4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPage4.Location = new System.Drawing.Point(4, 28);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(1231, 639);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "tabPage4";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -316,28 +327,20 @@
             this.tabPage2.Size = new System.Drawing.Size(200, 100);
             this.tabPage2.TabIndex = 0;
             // 
-            // lblDeb
+            // grb2
             // 
-            this.lblDeb.AutoSize = true;
-            this.lblDeb.Location = new System.Drawing.Point(292, 355);
-            this.lblDeb.Name = "lblDeb";
-            this.lblDeb.Size = new System.Drawing.Size(56, 17);
-            this.lblDeb.TabIndex = 17;
-            this.lblDeb.Text = "**/**/****";
-            // 
-            // lblFin
-            // 
-            this.lblFin.AutoSize = true;
-            this.lblFin.Location = new System.Drawing.Point(521, 355);
-            this.lblFin.Name = "lblFin";
-            this.lblFin.Size = new System.Drawing.Size(56, 17);
-            this.lblFin.TabIndex = 18;
-            this.lblFin.Text = "**/**/****";
+            this.grb2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.grb2.Location = new System.Drawing.Point(-4, -14);
+            this.grb2.Name = "grb2";
+            this.grb2.Size = new System.Drawing.Size(1235, 178);
+            this.grb2.TabIndex = 0;
+            this.grb2.TabStop = false;
             // 
             // événement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1222, 661);
             this.Controls.Add(tbcEvé);
             this.Name = "événement";
@@ -348,6 +351,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).EndInit();
+            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -378,8 +382,8 @@
         private System.Windows.Forms.Label LblEveDescri;
         private System.Windows.Forms.Label LblEveInt;
         private System.Windows.Forms.Label LblCréateur;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblFin;
         private System.Windows.Forms.Label lblDeb;
+        private System.Windows.Forms.GroupBox grb2;
     }
 }
