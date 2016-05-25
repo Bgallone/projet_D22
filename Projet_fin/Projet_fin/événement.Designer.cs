@@ -56,12 +56,14 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblTitre = new System.Windows.Forms.Label();
             tbcEvé = new System.Windows.Forms.TabControl();
             tbcEvé.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.grb2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcEvé
@@ -317,6 +319,7 @@
             // grb2
             // 
             this.grb2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.grb2.Controls.Add(this.lblTitre);
             this.grb2.Location = new System.Drawing.Point(-4, -14);
             this.grb2.Name = "grb2";
             this.grb2.Size = new System.Drawing.Size(1235, 178);
@@ -337,6 +340,16 @@
             this.tabPage2.Size = new System.Drawing.Size(200, 100);
             this.tabPage2.TabIndex = 0;
             // 
+            // lblTitre
+            // 
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.Font = new System.Drawing.Font("Yu Gothic UI Semilight", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.Location = new System.Drawing.Point(18, 61);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.Size = new System.Drawing.Size(399, 54);
+            this.lblTitre.TabIndex = 2;
+            this.lblTitre.Text = "Titre de l\'événement :";
+            // 
             // événement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -353,6 +366,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.grb2.ResumeLayout(false);
+            this.grb2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -386,5 +401,6 @@
         private System.Windows.Forms.Label lblFin;
         private System.Windows.Forms.Label lblDeb;
         private System.Windows.Forms.GroupBox grb2;
+        private System.Windows.Forms.Label lblTitre;
     }
 }
