@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.TabControl tbcEve;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(événement));
             this.tab1a1 = new System.Windows.Forms.TabPage();
             this.lblFin = new System.Windows.Forms.Label();
             this.lblDeb = new System.Windows.Forms.Label();
@@ -52,22 +53,30 @@
             this.lblNévé = new System.Windows.Forms.Label();
             this.ptb_événement = new System.Windows.Forms.PictureBox();
             this.tabCréeEve = new System.Windows.Forms.TabPage();
+            this.btnInvitation = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnEnregister = new System.Windows.Forms.Button();
+            this.cboCreateur = new System.Windows.Forms.ComboBox();
+            this.lblCreateur = new System.Windows.Forms.Label();
+            this.rtbDescript = new System.Windows.Forms.RichTextBox();
+            this.lblEveDescript = new System.Windows.Forms.Label();
+            this.dtpEveFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpEveDeb = new System.Windows.Forms.DateTimePicker();
+            this.lblFinEve = new System.Windows.Forms.Label();
+            this.lblDebut = new System.Windows.Forms.Label();
             this.grb2 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblTitre = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblDebut = new System.Windows.Forms.Label();
-            this.lblFinEve = new System.Windows.Forms.Label();
-            this.dtpEveDeb = new System.Windows.Forms.DateTimePicker();
-            this.dtpEveFin = new System.Windows.Forms.DateTimePicker();
             tbcEve = new System.Windows.Forms.TabControl();
             tbcEve.SuspendLayout();
             this.tab1a1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).BeginInit();
             this.tabCréeEve.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grb2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -312,6 +321,13 @@
             // tabCréeEve
             // 
             this.tabCréeEve.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabCréeEve.Controls.Add(this.btnInvitation);
+            this.tabCréeEve.Controls.Add(this.pictureBox1);
+            this.tabCréeEve.Controls.Add(this.btnEnregister);
+            this.tabCréeEve.Controls.Add(this.cboCreateur);
+            this.tabCréeEve.Controls.Add(this.lblCreateur);
+            this.tabCréeEve.Controls.Add(this.rtbDescript);
+            this.tabCréeEve.Controls.Add(this.lblEveDescript);
             this.tabCréeEve.Controls.Add(this.dtpEveFin);
             this.tabCréeEve.Controls.Add(this.dtpEveDeb);
             this.tabCréeEve.Controls.Add(this.lblFinEve);
@@ -325,6 +341,106 @@
             this.tabCréeEve.TabIndex = 1;
             this.tabCréeEve.Text = "Nouvel événement";
             // 
+            // btnInvitation
+            // 
+            this.btnInvitation.Location = new System.Drawing.Point(897, 580);
+            this.btnInvitation.Name = "btnInvitation";
+            this.btnInvitation.Size = new System.Drawing.Size(166, 37);
+            this.btnInvitation.TabIndex = 13;
+            this.btnInvitation.Text = "Lancer les invitations";
+            this.btnInvitation.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(935, 485);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(88, 89);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnEnregister
+            // 
+            this.btnEnregister.Location = new System.Drawing.Point(629, 520);
+            this.btnEnregister.Name = "btnEnregister";
+            this.btnEnregister.Size = new System.Drawing.Size(121, 37);
+            this.btnEnregister.TabIndex = 11;
+            this.btnEnregister.Text = "Enregistrer";
+            this.btnEnregister.UseVisualStyleBackColor = true;
+            // 
+            // cboCreateur
+            // 
+            this.cboCreateur.FormattingEnabled = true;
+            this.cboCreateur.Location = new System.Drawing.Point(204, 527);
+            this.cboCreateur.Name = "cboCreateur";
+            this.cboCreateur.Size = new System.Drawing.Size(315, 24);
+            this.cboCreateur.TabIndex = 10;
+            // 
+            // lblCreateur
+            // 
+            this.lblCreateur.AutoSize = true;
+            this.lblCreateur.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreateur.Location = new System.Drawing.Point(79, 528);
+            this.lblCreateur.Name = "lblCreateur";
+            this.lblCreateur.Size = new System.Drawing.Size(100, 25);
+            this.lblCreateur.TabIndex = 9;
+            this.lblCreateur.Text = "Créer par :";
+            // 
+            // rtbDescript
+            // 
+            this.rtbDescript.Location = new System.Drawing.Point(84, 343);
+            this.rtbDescript.Name = "rtbDescript";
+            this.rtbDescript.Size = new System.Drawing.Size(760, 121);
+            this.rtbDescript.TabIndex = 8;
+            this.rtbDescript.Text = "";
+            // 
+            // lblEveDescript
+            // 
+            this.lblEveDescript.AutoSize = true;
+            this.lblEveDescript.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEveDescript.Location = new System.Drawing.Point(79, 315);
+            this.lblEveDescript.Name = "lblEveDescript";
+            this.lblEveDescript.Size = new System.Drawing.Size(117, 25);
+            this.lblEveDescript.TabIndex = 7;
+            this.lblEveDescript.Text = "Description :";
+            // 
+            // dtpEveFin
+            // 
+            this.dtpEveFin.Location = new System.Drawing.Point(579, 253);
+            this.dtpEveFin.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEveFin.Name = "dtpEveFin";
+            this.dtpEveFin.Size = new System.Drawing.Size(265, 22);
+            this.dtpEveFin.TabIndex = 6;
+            // 
+            // dtpEveDeb
+            // 
+            this.dtpEveDeb.Location = new System.Drawing.Point(84, 253);
+            this.dtpEveDeb.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEveDeb.Name = "dtpEveDeb";
+            this.dtpEveDeb.Size = new System.Drawing.Size(265, 22);
+            this.dtpEveDeb.TabIndex = 5;
+            // 
+            // lblFinEve
+            // 
+            this.lblFinEve.AutoSize = true;
+            this.lblFinEve.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinEve.Location = new System.Drawing.Point(574, 205);
+            this.lblFinEve.Name = "lblFinEve";
+            this.lblFinEve.Size = new System.Drawing.Size(88, 25);
+            this.lblFinEve.TabIndex = 4;
+            this.lblFinEve.Text = "Date fin :";
+            // 
+            // lblDebut
+            // 
+            this.lblDebut.AutoSize = true;
+            this.lblDebut.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDebut.Location = new System.Drawing.Point(79, 205);
+            this.lblDebut.Name = "lblDebut";
+            this.lblDebut.Size = new System.Drawing.Size(114, 25);
+            this.lblDebut.TabIndex = 3;
+            this.lblDebut.Text = "Date début :";
+            // 
             // grb2
             // 
             this.grb2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -335,6 +451,14 @@
             this.grb2.Size = new System.Drawing.Size(1235, 178);
             this.grb2.TabIndex = 0;
             this.grb2.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Yu Gothic UI Semilight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(459, 71);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(524, 43);
+            this.textBox1.TabIndex = 3;
             // 
             // lblTitre
             // 
@@ -360,60 +484,15 @@
             this.tabPage2.Size = new System.Drawing.Size(200, 100);
             this.tabPage2.TabIndex = 0;
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Yu Gothic UI Semilight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(459, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(524, 43);
-            this.textBox1.TabIndex = 3;
-            // 
-            // lblDebut
-            // 
-            this.lblDebut.AutoSize = true;
-            this.lblDebut.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebut.Location = new System.Drawing.Point(79, 205);
-            this.lblDebut.Name = "lblDebut";
-            this.lblDebut.Size = new System.Drawing.Size(105, 25);
-            this.lblDebut.TabIndex = 3;
-            this.lblDebut.Text = "Date début";
-            // 
-            // lblFinEve
-            // 
-            this.lblFinEve.AutoSize = true;
-            this.lblFinEve.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinEve.Location = new System.Drawing.Point(574, 205);
-            this.lblFinEve.Name = "lblFinEve";
-            this.lblFinEve.Size = new System.Drawing.Size(105, 25);
-            this.lblFinEve.TabIndex = 4;
-            this.lblFinEve.Text = "Date début";
-            // 
-            // dtpEveDeb
-            // 
-            this.dtpEveDeb.Location = new System.Drawing.Point(84, 253);
-            this.dtpEveDeb.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpEveDeb.Name = "dtpEveDeb";
-            this.dtpEveDeb.Size = new System.Drawing.Size(265, 22);
-            this.dtpEveDeb.TabIndex = 5;
-            // 
-            // dtpEveFin
-            // 
-            this.dtpEveFin.Location = new System.Drawing.Point(579, 253);
-            this.dtpEveFin.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpEveFin.Name = "dtpEveFin";
-            this.dtpEveFin.Size = new System.Drawing.Size(265, 22);
-            this.dtpEveFin.TabIndex = 6;
-            // 
             // événement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1222, 661);
+            this.ClientSize = new System.Drawing.Size(1073, 655);
             this.Controls.Add(tbcEve);
             this.Name = "événement";
             this.Text = "événement";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             tbcEve.ResumeLayout(false);
             this.tab1a1.ResumeLayout(false);
             this.tab1a1.PerformLayout();
@@ -422,6 +501,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).EndInit();
             this.tabCréeEve.ResumeLayout(false);
             this.tabCréeEve.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grb2.ResumeLayout(false);
             this.grb2.PerformLayout();
             this.ResumeLayout(false);
@@ -463,5 +543,12 @@
         private System.Windows.Forms.Label lblDebut;
         private System.Windows.Forms.DateTimePicker dtpEveFin;
         private System.Windows.Forms.DateTimePicker dtpEveDeb;
+        private System.Windows.Forms.Button btnInvitation;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnEnregister;
+        private System.Windows.Forms.ComboBox cboCreateur;
+        private System.Windows.Forms.Label lblCreateur;
+        private System.Windows.Forms.RichTextBox rtbDescript;
+        private System.Windows.Forms.Label lblEveDescript;
     }
 }
