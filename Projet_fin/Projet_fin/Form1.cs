@@ -116,7 +116,7 @@ namespace Projet_fin
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            /*
             clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedText.ToString();
           
@@ -125,7 +125,7 @@ namespace Projet_fin
                            WHERE titreEvent = '" + evt + "';";
 
             OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = co;
+            /*cmd.Connection = co;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = req;
             MessageBox.Show(req);
@@ -135,7 +135,7 @@ namespace Projet_fin
              
             
             RemplirCheckListBox(noevent, clbBeneficiaires);
-            MessageBox.Show(evt);
+            MessageBox.Show(evt);*/
 
         }
 

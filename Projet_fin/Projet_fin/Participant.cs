@@ -36,6 +36,7 @@ namespace Projet_fin
             Remplir(req, "events");
             cbxEvent.DataSource = ds.Tables["events"];
             cbxEvent.DisplayMember = "titreEvent";
+            aff_info();
         }
 
         private void Remplir(String requete, String nomTable)
@@ -59,7 +60,17 @@ namespace Projet_fin
                                                FROM Evenements
                                                WHERE titreEvent = " + evnt + ");";
 
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandText = rqt;
+            cmd.Connection = co;
+            OleDbDataReader dr = cmd.ExecuteReader();
+            dataGridView1.DataSource = dr;
+            MessageBox.Show(dr.ToString());
+        }
 
+        private void cbxEvent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            aff_info();
         }
 
     }
