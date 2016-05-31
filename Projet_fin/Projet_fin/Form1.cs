@@ -82,8 +82,7 @@ namespace Projet_fin
             OleDbDataAdapter da = new OleDbDataAdapter();
             da.SelectCommand = cmd;
 
-            da.Fill(ds, nomTable);
-           // MessageBox.Show(ds.Tables[nomTable].Rows.Count.ToString());             
+            da.Fill(ds, nomTable);             
         }
 
 
@@ -117,27 +116,34 @@ namespace Projet_fin
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-            
-        }
 
-        private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
-        {
             clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedText.ToString();
+          
             string req = @"SELECT codeEvent
                            FROM Evenements 
                            WHERE titreEvent = '" + evt + "';";
-            
+
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = req;
             int noevent = (int)cmd.ExecuteScalar();
             RemplirCheckListBox(noevent, clbBeneficiaires);
-            
-            
-            
+            MessageBox.Show(evt);
+
+        }
+
+        private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void cbxEvenement_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
