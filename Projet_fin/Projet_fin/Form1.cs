@@ -128,7 +128,12 @@ namespace Projet_fin
             /*cmd.Connection = co;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = req;
+            MessageBox.Show(req);
             int noevent = (int)cmd.ExecuteScalar();
+            
+            
+             
+            
             RemplirCheckListBox(noevent, clbBeneficiaires);
             MessageBox.Show(evt);*/
 
