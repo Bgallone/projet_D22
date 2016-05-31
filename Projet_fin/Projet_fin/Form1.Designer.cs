@@ -328,6 +328,7 @@
             this.cbxEvenement.TabIndex = 9;
             this.cbxEvenement.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cbxEvenement.SelectionChangeCommitted += new System.EventHandler(this.cbxEvenement_SelectionChangeCommitted);
+            this.cbxEvenement.Click += new System.EventHandler(this.cbxEvenement_Click);
             // 
             // checkBox1
             // 
