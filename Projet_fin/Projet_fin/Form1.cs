@@ -56,9 +56,9 @@ namespace Projet_fin
             string req = @"Select p.nomPart
                            From Participants p, Invites i
                            Where p.codeParticipant = i.codePart    
-                           and i.codeEvent = '" + noevent + "';";
+                           and i.codeEvent = " + noevent + ";";
             cmd.CommandText = req;
-            MessageBox.Show(req.ToString());
+            
             OleDbDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
@@ -123,7 +123,7 @@ namespace Projet_fin
 
         private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
+            clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedText.ToString();
             string req = @"SELECT codeEvent
                            FROM Evenements 
@@ -135,7 +135,7 @@ namespace Projet_fin
             cmd.CommandText = req;
             int noevent = (int)cmd.ExecuteScalar();
             RemplirCheckListBox(noevent, clbBeneficiaires);
-            co.Close();
+            
             
             
         }
