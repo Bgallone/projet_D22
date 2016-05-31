@@ -34,10 +34,14 @@ namespace Projet_fin
             cmd.CommandType = CommandType.Text;
             string req = @"SELECT [titreEvent] 
                             FROM Evenements
-                WHERE codeEvent = '"+NumReq+"';";
+                WHERE codeEvent = "+NumReq+";";
             cmd.CommandText = req;
             res = cmd.ExecuteScalar().ToString();
             LblEveInt.Text = res;
+            req =@"SELECT [nomPart p]
+                    FROM Participants p
+                    WHERE codeParticipant =(SELECT [codeCreateur]
+                                            FROM Evenements )"
         
         }
         private void button3_Click(object sender, EventArgs e)
