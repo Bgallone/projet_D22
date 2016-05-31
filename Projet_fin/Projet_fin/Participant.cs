@@ -49,6 +49,18 @@ namespace Projet_fin
             //MessageBox.Show(ds.Tables[nomTable].Rows.Count.ToString()); //debug         
         }
 
+        private void aff_info()
+        {
+            String evnt = cbxEvent.Text;
+            String rqt = @"SELECT p.nomPart, p.prenomPart 
+                           FROM Invites i,Participants p 
+                           WHERE i.codePart = p.codeParticipant 
+                           AND i.codeEvent = ( SELECT codeEvent
+                                               FROM Evenements
+                                               WHERE titreEvent = " + evnt + ");";
+
+
+        }
 
     }
 }
