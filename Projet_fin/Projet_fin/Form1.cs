@@ -125,12 +125,12 @@ namespace Projet_fin
                            WHERE titreEvent = '" + evt + "';";
 
             OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = co;
+            /*cmd.Connection = co;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = req;
             int noevent = (int)cmd.ExecuteScalar();
             RemplirCheckListBox(noevent, clbBeneficiaires);
-            MessageBox.Show(evt);
+            MessageBox.Show(evt);*/
 
         }
 
