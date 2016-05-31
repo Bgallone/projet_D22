@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxEvent = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -52,13 +52,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Choix de l\'événement :";
             // 
-            // comboBox1
+            // cbxEvent
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(216, 84);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(262, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cbxEvent.FormattingEnabled = true;
+            this.cbxEvent.Location = new System.Drawing.Point(216, 84);
+            this.cbxEvent.Name = "cbxEvent";
+            this.cbxEvent.Size = new System.Drawing.Size(262, 21);
+            this.cbxEvent.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -89,23 +89,13 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
-            // button1
+            // comboBox2
             // 
-            this.button1.Location = new System.Drawing.Point(391, 369);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Ajouter un invité";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(408, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Inviter";
-            this.button2.UseVisualStyleBackColor = true;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(113, 31);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(289, 21);
+            this.comboBox2.TabIndex = 2;
             // 
             // label3
             // 
@@ -116,13 +106,23 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Quel participant ?";
             // 
-            // comboBox2
+            // button2
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(113, 31);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(289, 21);
-            this.comboBox2.TabIndex = 2;
+            this.button2.Location = new System.Drawing.Point(408, 30);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Inviter";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(391, 369);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(143, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Ajouter un invité";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -153,11 +153,12 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxEvent);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Name = "Participant";
             this.Text = "Participant";
+            this.Load += new System.EventHandler(this.Participant_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -169,7 +170,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxEvent;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
