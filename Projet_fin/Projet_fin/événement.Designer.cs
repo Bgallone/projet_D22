@@ -232,29 +232,30 @@
             // 
             // btnFin
             // 
+            this.btnFin.Image = ((System.Drawing.Image)(resources.GetObject("btnFin.Image")));
             this.btnFin.Location = new System.Drawing.Point(690, 472);
             this.btnFin.Name = "btnFin";
-            this.btnFin.Size = new System.Drawing.Size(60, 49);
+            this.btnFin.Size = new System.Drawing.Size(60, 50);
             this.btnFin.TabIndex = 5;
-            this.btnFin.Text = ">>";
             this.btnFin.UseVisualStyleBackColor = true;
             this.btnFin.Click += new System.EventHandler(this.btnFin_Click);
             // 
             // btnSuiv
             // 
+            this.btnSuiv.Image = ((System.Drawing.Image)(resources.GetObject("btnSuiv.Image")));
             this.btnSuiv.Location = new System.Drawing.Point(624, 472);
             this.btnSuiv.Name = "btnSuiv";
-            this.btnSuiv.Size = new System.Drawing.Size(60, 49);
+            this.btnSuiv.Size = new System.Drawing.Size(60, 50);
             this.btnSuiv.TabIndex = 4;
-            this.btnSuiv.Text = ">";
             this.btnSuiv.UseVisualStyleBackColor = true;
             this.btnSuiv.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnPre
             // 
+            this.btnPre.Image = ((System.Drawing.Image)(resources.GetObject("btnPre.Image")));
             this.btnPre.Location = new System.Drawing.Point(558, 472);
             this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(60, 49);
+            this.btnPre.Size = new System.Drawing.Size(60, 50);
             this.btnPre.TabIndex = 3;
             this.btnPre.Text = "<";
             this.btnPre.UseVisualStyleBackColor = true;
@@ -262,11 +263,11 @@
             // 
             // BtnDebut
             // 
+            this.BtnDebut.Image = ((System.Drawing.Image)(resources.GetObject("BtnDebut.Image")));
             this.BtnDebut.Location = new System.Drawing.Point(492, 472);
             this.BtnDebut.Name = "BtnDebut";
-            this.BtnDebut.Size = new System.Drawing.Size(60, 49);
+            this.BtnDebut.Size = new System.Drawing.Size(60, 50);
             this.BtnDebut.TabIndex = 2;
-            this.BtnDebut.Text = "<<";
             this.BtnDebut.UseVisualStyleBackColor = true;
             this.BtnDebut.Click += new System.EventHandler(this.BtnDebut_Click);
             // 
@@ -312,9 +313,10 @@
             // ptb_événement
             // 
             this.ptb_événement.ErrorImage = null;
+            this.ptb_événement.Image = ((System.Drawing.Image)(resources.GetObject("ptb_événement.Image")));
             this.ptb_événement.Location = new System.Drawing.Point(170, 77);
             this.ptb_événement.Name = "ptb_événement";
-            this.ptb_événement.Size = new System.Drawing.Size(74, 67);
+            this.ptb_événement.Size = new System.Drawing.Size(70, 70);
             this.ptb_événement.TabIndex = 0;
             this.ptb_événement.TabStop = false;
             // 
@@ -356,7 +358,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(935, 485);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(88, 89);
+            this.pictureBox1.Size = new System.Drawing.Size(90, 90);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
