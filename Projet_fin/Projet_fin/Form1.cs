@@ -116,7 +116,7 @@ namespace Projet_fin
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            /*
             clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedText.ToString();
           
@@ -130,7 +130,7 @@ namespace Projet_fin
             cmd.CommandText = req;
             int noevent = (int)cmd.ExecuteScalar();
             RemplirCheckListBox(noevent, clbBeneficiaires);
-            MessageBox.Show(evt);
+            MessageBox.Show(evt);*/
 
         }
 
