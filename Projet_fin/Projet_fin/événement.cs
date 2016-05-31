@@ -38,10 +38,11 @@ namespace Projet_fin
             cmd.CommandText = req;
             res = cmd.ExecuteScalar().ToString();
             LblEveInt.Text = res;
-            req =@"SELECT [nomPart p]
+            req = @"SELECT [nomPart p]
                     FROM Participants p
                     WHERE codeParticipant =(SELECT [codeCreateur]
-                                            FROM Evenements )"
+                                            FROM Evenements
+                                            WHERE codeEvent = " + NumReq + ");";
         
         }
         private void button3_Click(object sender, EventArgs e)
