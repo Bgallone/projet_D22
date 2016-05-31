@@ -116,7 +116,7 @@ namespace Projet_fin
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            /*
             clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedText.ToString();
           
