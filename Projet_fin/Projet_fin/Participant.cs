@@ -48,8 +48,6 @@ namespace Projet_fin
         {
             
             String evnt = cbxEvent.Text;
-            MessageBox.Show(evnt);
-            //String rqt = @"SELECT * FROM Evenements WHERE titreEvent = '"+ evnt +"';";
             String rqt = @"
                            SELECT p.codeParticipant as Code, p.prenomPart + ' ' + p.nomPart as [Nom et Prenom], p.mobile as [N° téléphone], p.nbParts as Parts, p.solde
                            FROM Invites i,Participants p 
@@ -74,11 +72,6 @@ namespace Projet_fin
             }else{
                 load = true;
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
     }
