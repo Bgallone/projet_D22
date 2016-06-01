@@ -129,7 +129,7 @@
             this.btnInv.TabIndex = 5;
             this.btnInv.Text = "Ajouter un invité";
             this.btnInv.UseVisualStyleBackColor = true;
-            this.btnInv.Click += new System.EventHandler(this.button1_Click);
+            this.btnInv.Click += new System.EventHandler(this.btnInv_Click);
             // 
             // label4
             // 

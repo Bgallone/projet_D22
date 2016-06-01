@@ -74,5 +74,14 @@ namespace Projet_fin
             }
         }
 
+        private void btnInv_Click(object sender, EventArgs e)
+        {
+            gbxAdd.Visible = true;
+            cbxAdd.Visible = true;
+            btnAdd.Visible = true;
+            lblAdd.Visible = true;
+        }
+
+
     }
 }
