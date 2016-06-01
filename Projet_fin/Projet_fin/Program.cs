@@ -17,6 +17,7 @@ namespace Projet_fin
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmLancement());
+            
         }
     }
 }
