@@ -46,13 +46,13 @@ namespace Projet_fin
             cbxEvenement.DisplayMember = "titreEvent";
             cbxEvenement.ValueMember = "codeEvent";
 
-            req = @"SELECT nomPart + ' ' + prenomPart AS part
+            req = @"SELECT nomPart,prenomPart
                     FROM Participants;";
             cmd.CommandText = req;
-            OleDbDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
+            
+            for(int i = 0; i < 8; i++)
             {
-                cbxPayePar.Items.Add(dr.GetString(0));
+                cbxPayePar.Items.Add("WESH ALORS");
             }
 
         }
