@@ -16,9 +16,11 @@ namespace Projet_fin
     public partial class FrmLancement : Form
     {
      
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =./Resources/bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataSet ds = new DataSet();
+
+       
 
 
         public FrmLancement()
@@ -29,23 +31,31 @@ namespace Projet_fin
 
         private void FrmLancement_Load(object sender, EventArgs e)
         {
-            co.ConnectionString = chco;
-            co.Open();
+          
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
+            co.ConnectionString = chco;
+            co.Open();
+            
             cmd.CommandType = CommandType.Text;
-            string req = @"SELECT [titreEvent] 
+            string req = @"SELECT [titreEvent], [codeEvent] 
                             FROM Evenements;";
             cmd.CommandText = req;
             Remplir(req, "events");
             cbxEvenement.DataSource = ds.Tables["events"];
             cbxEvenement.DisplayMember = "titreEvent";
-            
-            
-            
+            cbxEvenement.ValueMember = "codeEvent";
+          
+        }
 
-            
-            
+        private void Remplir(String requete, String nomTable)
+        {
+          
+            OleDbCommand cmd = new OleDbCommand(requete, co);
+            OleDbDataAdapter da = new OleDbDataAdapter();
+            da.SelectCommand = cmd;
+
+            da.Fill(ds, nomTable);
         }
 
         private void RemplirCheckListBox(int noevent, CheckedListBox clb) {
@@ -75,15 +85,7 @@ namespace Projet_fin
             Form1.Show(); 
         }
 
-        private void Remplir(String requete, String nomTable)
-        {
-
-            OleDbCommand cmd = new OleDbCommand(requete, co);
-            OleDbDataAdapter da = new OleDbDataAdapter();
-            da.SelectCommand = cmd;
-
-            da.Fill(ds, nomTable);             
-        }
+        
 
 
 
@@ -113,35 +115,22 @@ namespace Projet_fin
         {
             Application.Exit();
         }
-
+        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
-            clbBeneficiaires.Items.Clear();
-            string evt = cbxEvenement.SelectedText.ToString();
-          
-            string req = @"SELECT codeEvent
-                           FROM Evenements 
-                           WHERE titreEvent = '" + evt + "';";
-
-            OleDbCommand cmd = new OleDbCommand();
-            /*cmd.Connection = co;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = req;
-            MessageBox.Show(req);
-            int noevent = (int)cmd.ExecuteScalar();
-            
-            
-             
-            
-            RemplirCheckListBox(noevent, clbBeneficiaires);
-            MessageBox.Show(evt);*/
+           
 
         }
 
         private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
         {
 
+
+            clbBeneficiaires.Items.Clear();
+            string evt = cbxEvenement.SelectedValue.ToString();
+            int noevent = int.Parse(evt) ;
+
+            RemplirCheckListBox(noevent, clbBeneficiaires);
 
 
         }
