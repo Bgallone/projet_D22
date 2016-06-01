@@ -127,19 +127,8 @@ namespace Projet_fin
 
 
             clbBeneficiaires.Items.Clear();
-            string evt = cbxEvenement.SelectedText.ToString();
-
-
-            string req = @"SELECT codeEvent
-                           FROM Evenements 
-                           WHERE titreEvent = '" + evt + "';";
-            MessageBox.Show(evt);
-
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = co;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = req;
-            int noevent = (int)cmd.ExecuteScalar();
+            string evt = cbxEvenement.SelectedValue.ToString();
+            int noevent = int.Parse(evt) ;
 
             RemplirCheckListBox(noevent, clbBeneficiaires);
 
