@@ -49,10 +49,10 @@ namespace Projet_fin
             req = @"SELECT nomPart,prenomPart
                     FROM Participants;";
             cmd.CommandText = req;
-            
-            for(int i = 0; i < 8; i++)
+            OleDbDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
             {
-                cbxPayePar.Items.Add("WESH ALORS");
+                cbxPayePar.Items.Add(dr.GetString(0) + ' ' + dr.GetString(1));
             }
 
         }
