@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Projet_fin
 {
-    public partial class LancerInvitation : Form
+    public partial class Invitation : Form
     {
-        public LancerInvitation()
+        public Invitation()
         {
             InitializeComponent();
         }
