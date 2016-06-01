@@ -31,6 +31,7 @@
             System.Windows.Forms.TabControl tbcEve;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(événement));
             this.tab1a1 = new System.Windows.Forms.TabPage();
+            this.cckRegle = new System.Windows.Forms.CheckBox();
             this.rtbEveDescri = new System.Windows.Forms.RichTextBox();
             this.lblFin = new System.Windows.Forms.Label();
             this.lblDeb = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cckRegle = new System.Windows.Forms.CheckBox();
             tbcEve = new System.Windows.Forms.TabControl();
             tbcEve.SuspendLayout();
             this.tab1a1.SuspendLayout();
@@ -120,6 +120,19 @@
             this.tab1a1.Size = new System.Drawing.Size(1231, 639);
             this.tab1a1.TabIndex = 0;
             this.tab1a1.Text = "Parcours des événements 1à1";
+            // 
+            // cckRegle
+            // 
+            this.cckRegle.AutoSize = true;
+            this.cckRegle.Enabled = false;
+            this.cckRegle.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.cckRegle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cckRegle.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.cckRegle.Location = new System.Drawing.Point(321, 409);
+            this.cckRegle.Name = "cckRegle";
+            this.cckRegle.Size = new System.Drawing.Size(18, 17);
+            this.cckRegle.TabIndex = 20;
+            this.cckRegle.UseVisualStyleBackColor = true;
             // 
             // rtbEveDescri
             // 
@@ -351,6 +364,7 @@
             this.btnInvitation.TabIndex = 13;
             this.btnInvitation.Text = "Lancer les invitations";
             this.btnInvitation.UseVisualStyleBackColor = true;
+            this.btnInvitation.Click += new System.EventHandler(this.btnInvitation_Click);
             // 
             // pictureBox1
             // 
@@ -381,6 +395,7 @@
             this.cboCreateur.Name = "cboCreateur";
             this.cboCreateur.Size = new System.Drawing.Size(315, 24);
             this.cboCreateur.TabIndex = 10;
+            this.cboCreateur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboCreateur_KeyPress);
             // 
             // lblCreateur
             // 
@@ -388,9 +403,9 @@
             this.lblCreateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreateur.Location = new System.Drawing.Point(79, 528);
             this.lblCreateur.Name = "lblCreateur";
-            this.lblCreateur.Size = new System.Drawing.Size(99, 24);
+            this.lblCreateur.Size = new System.Drawing.Size(93, 24);
             this.lblCreateur.TabIndex = 9;
-            this.lblCreateur.Text = "Créer par :";
+            this.lblCreateur.Text = "Créé par :";
             // 
             // rtbDescript
             // 
@@ -468,6 +483,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(524, 38);
             this.textBox1.TabIndex = 3;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // lblTitre
             // 
@@ -492,19 +508,6 @@
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(200, 100);
             this.tabPage2.TabIndex = 0;
-            // 
-            // cckRegle
-            // 
-            this.cckRegle.AutoSize = true;
-            this.cckRegle.Enabled = false;
-            this.cckRegle.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.cckRegle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cckRegle.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.cckRegle.Location = new System.Drawing.Point(321, 409);
-            this.cckRegle.Name = "cckRegle";
-            this.cckRegle.Size = new System.Drawing.Size(18, 17);
-            this.cckRegle.TabIndex = 20;
-            this.cckRegle.UseVisualStyleBackColor = true;
             // 
             // événement
             // 

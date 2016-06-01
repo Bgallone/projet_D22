@@ -32,12 +32,28 @@ namespace Projet_fin
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
             cmd.CommandType = CommandType.Text;
+            //nous donne le nombre d'événement.
             string req = @"SELECT count(*)
                             FROM Evenements;";
             cmd.CommandText = req;
             NbPage = (int)cmd.ExecuteScalar();
+
+            // met en place tout les participant dans la cboCreateur
+
+            req = @"SELECT [nomPart],[prenomPart]
+                   FROM Participants ;";
+
+            cmd.CommandText = req;
+            OleDbDataReader dr = cmd.ExecuteReader();
+            while(dr.Read())
+            {
+                cboCreateur.Items.Add(dr.GetString(0) +" "+ dr.GetString(1));
+            }
+
+            // on ferme la connections
             co.Close();
             remplir( NumReq);
+
         
         }
         private void button3_Click(object sender, EventArgs e)
@@ -156,6 +172,26 @@ namespace Projet_fin
 
         }
 
+
+        private void cboCreateur_KeyPress(object sender, KeyPressEventArgs e)
+        {
+          
+                e.Handled = true;
+            
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '^' || e.KeyChar == '#' || e.KeyChar == '|' || e.KeyChar == '&' || e.KeyChar == '~' || e.KeyChar == '}' || e.KeyChar == '{' || e.KeyChar == '\\' || e.KeyChar == '@')
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void btnInvitation_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }
