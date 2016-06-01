@@ -153,6 +153,14 @@ namespace Projet_fin
         {
 
         }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
+            string req = @"INSERT INTO Depenses(montant, dateDepense, commentaire";
+            OleDbCommand cmd = new OleDbCommand(req, co);
+            cmd.ExecuteNonQuery();
+   
+        }
     }
 }
     

@@ -17,6 +17,7 @@ namespace Projet_fin
         String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataSet ds = new DataSet();
+        bool load = false;
 
         public Participant()
         {
@@ -27,27 +28,18 @@ namespace Projet_fin
         {
             co.ConnectionString = chco;
             co.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = co;
-            cmd.CommandType = CommandType.Text;
             string req = @"SELECT [titreEvent] 
                             FROM Evenements;";
-            cmd.CommandText = req;
             Remplir(req, "events");
             cbxEvent.DataSource = ds.Tables["events"];
-            cbxEvent.DisplayMember = "titreEvent";
-            //ds.Clear();
-            aff_info();
-            
+            cbxEvent.DisplayMember = "titreEvent";       
         }
 
         private void Remplir(String requete, String nomTable)
         {
-            MessageBox.Show(requete +" \n"+ nomTable);
             OleDbCommand cmd = new OleDbCommand(requete, co);
             OleDbDataAdapter da = new OleDbDataAdapter();
             da.SelectCommand = cmd;
-
             da.Fill(ds, nomTable);
             //MessageBox.Show(ds.Tables[nomTable].Rows.Count.ToString()); //debug         
         }
@@ -56,27 +48,30 @@ namespace Projet_fin
         {
             
             String evnt = cbxEvent.Text;
-            String rqt = @"SELECT p.nomPart, p.prenomPart 
+            String rqt = @"
+                           SELECT p.codeParticipant as Code, p.prenomPart + ' ' + p.nomPart as [Nom et Prenom], p.mobile as [N° téléphone], p.nbParts as Parts, p.solde
                            FROM Invites i,Participants p 
                            WHERE i.codePart = p.codeParticipant 
-                           AND i.codeEvent = ( SELECT codeEvent
+                           AND i.codeEvent = (
+                                               SELECT codeEvent
                                                FROM Evenements
-                                               WHERE titreEvent = " + evnt + ");";
-
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.CommandText = rqt;
-            cmd.Connection = co;
-            //Remplir(rqt, "participants");
+                                               WHERE titreEvent = '" + evnt + "');";
             
-            
-            //OleDbDataReader dr = cmd.ExecuteReader();
-            dataGridView1.DataSource = ds;
-            //MessageBox.Show(dr.ToString());
+            OleDbDataAdapter da = new OleDbDataAdapter();
+            OleDbCommand cmd = new OleDbCommand(rqt, co);
+            da.SelectCommand = cmd;
+            DataSet participants = new DataSet();
+            da.Fill(participants,"participants");
+            dataGridView1.DataSource = participants.Tables[0];
         }
 
-        private void cbxEvent_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbxEvent_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            aff_info();
+            if (load){
+                aff_info();
+            }else{
+                load = true;
+            }
         }
 
     }
