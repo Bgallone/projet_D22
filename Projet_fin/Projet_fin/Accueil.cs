@@ -126,12 +126,20 @@ namespace Projet_fin
         private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
         {
 
-
+           
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+            cmd.CommandType = CommandType.Text;
             clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedValue.ToString();
             int noevent = int.Parse(evt);
 
             RemplirCheckListBox(noevent, clbBeneficiaires);
+           /* string req = @"Select description from Evenements where codeEvent = " + noevent + ";";
+            cmd.CommandText = req;
+            string descr = cmd.ExecuteScalar().ToString();
+            txtCommentaire.Text = descr;*/
+
 
 
         }
@@ -143,14 +151,7 @@ namespace Projet_fin
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.checkBox1.Checked)
-            {
-                foreach (CheckBox c in this.clbBeneficiaires.Controls)
-                {
 
-                    c.Checked = true;
-                }
-            }
         }
     }
 }
