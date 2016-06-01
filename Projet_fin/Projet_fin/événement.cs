@@ -186,11 +186,37 @@ namespace Projet_fin
             {
                 e.Handled = true; 
             }
+
+            if (txtTitre.Text.Substring(txtTitre.Text.Length , txtTitre.Text.Length) == " ")
+            {
+                if(e.KeyChar == ' ')
+                {
+                    e.Handled = true;
+                }
+            }
         }
 
         private void btnInvitation_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEnregister_Click(object sender, EventArgs e)
+        {
+            btnInvitation.Enabled = true; 
+        }
+
+        private void cboCreateur_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTitre.Text != " ") { 
+            rtbDescript.Enabled = true;
+            }
+         
         }
 
     }

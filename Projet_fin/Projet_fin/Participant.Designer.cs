@@ -32,15 +32,15 @@
             this.cbxEvent = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.gbxAdd = new System.Windows.Forms.GroupBox();
+            this.cbxAdd = new System.Windows.Forms.ComboBox();
+            this.lblAdd = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnInv = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gbxAdd.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@
             this.cbxEvent.Name = "cbxEvent";
             this.cbxEvent.Size = new System.Drawing.Size(262, 21);
             this.cbxEvent.TabIndex = 1;
-            this.cbxEvent.SelectedIndexChanged += new System.EventHandler(this.cbxEvent_SelectedIndexChanged);
+            this.cbxEvent.SelectedIndexChanged += new System.EventHandler(this.cbxEvent_SelectionChangeCommitted);
             // 
             // dataGridView1
             // 
@@ -80,51 +80,56 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Participants enregistrés";
             // 
-            // groupBox1
+            // gbxAdd
             // 
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Location = new System.Drawing.Point(25, 407);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(536, 73);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
+            this.gbxAdd.Controls.Add(this.cbxAdd);
+            this.gbxAdd.Controls.Add(this.lblAdd);
+            this.gbxAdd.Controls.Add(this.btnAdd);
+            this.gbxAdd.Location = new System.Drawing.Point(25, 407);
+            this.gbxAdd.Name = "gbxAdd";
+            this.gbxAdd.Size = new System.Drawing.Size(536, 73);
+            this.gbxAdd.TabIndex = 4;
+            this.gbxAdd.TabStop = false;
+            this.gbxAdd.Visible = false;
             // 
-            // comboBox2
+            // cbxAdd
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(113, 31);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(289, 21);
-            this.comboBox2.TabIndex = 2;
+            this.cbxAdd.FormattingEnabled = true;
+            this.cbxAdd.Location = new System.Drawing.Point(113, 31);
+            this.cbxAdd.Name = "cbxAdd";
+            this.cbxAdd.Size = new System.Drawing.Size(289, 21);
+            this.cbxAdd.TabIndex = 2;
+            this.cbxAdd.Visible = false;
             // 
-            // label3
+            // lblAdd
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Quel participant ?";
+            this.lblAdd.AutoSize = true;
+            this.lblAdd.Location = new System.Drawing.Point(17, 35);
+            this.lblAdd.Name = "lblAdd";
+            this.lblAdd.Size = new System.Drawing.Size(90, 13);
+            this.lblAdd.TabIndex = 1;
+            this.lblAdd.Text = "Quel participant ?";
+            this.lblAdd.Visible = false;
             // 
-            // button2
+            // btnAdd
             // 
-            this.button2.Location = new System.Drawing.Point(408, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Inviter";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(408, 30);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Inviter";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Visible = false;
             // 
-            // button1
+            // btnInv
             // 
-            this.button1.Location = new System.Drawing.Point(391, 369);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Ajouter un invité";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnInv.Location = new System.Drawing.Point(391, 369);
+            this.btnInv.Name = "btnInv";
+            this.btnInv.Size = new System.Drawing.Size(143, 23);
+            this.btnInv.TabIndex = 5;
+            this.btnInv.Text = "Ajouter un invité";
+            this.btnInv.UseVisualStyleBackColor = true;
+            this.btnInv.Click += new System.EventHandler(this.btnInv_Click);
             // 
             // label4
             // 
@@ -152,8 +157,8 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(573, 492);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnInv);
+            this.Controls.Add(this.gbxAdd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbxEvent);
             this.Controls.Add(this.label1);
@@ -162,8 +167,8 @@
             this.Text = "Participant";
             this.Load += new System.EventHandler(this.Participant_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbxAdd.ResumeLayout(false);
+            this.gbxAdd.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -176,11 +181,11 @@
         private System.Windows.Forms.ComboBox cbxEvent;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox gbxAdd;
+        private System.Windows.Forms.ComboBox cbxAdd;
+        private System.Windows.Forms.Label lblAdd;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnInv;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
     }

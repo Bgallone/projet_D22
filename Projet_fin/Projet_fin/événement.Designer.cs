@@ -65,7 +65,7 @@
             this.lblFinEve = new System.Windows.Forms.Label();
             this.lblDebut = new System.Windows.Forms.Label();
             this.grb2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTitre = new System.Windows.Forms.TextBox();
             this.lblTitre = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -357,6 +357,7 @@
             // 
             // btnInvitation
             // 
+            this.btnInvitation.Enabled = false;
             this.btnInvitation.Location = new System.Drawing.Point(897, 580);
             this.btnInvitation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInvitation.Name = "btnInvitation";
@@ -379,6 +380,7 @@
             // 
             // btnEnregister
             // 
+            this.btnEnregister.Enabled = false;
             this.btnEnregister.Location = new System.Drawing.Point(629, 519);
             this.btnEnregister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEnregister.Name = "btnEnregister";
@@ -386,15 +388,18 @@
             this.btnEnregister.TabIndex = 11;
             this.btnEnregister.Text = "Enregistrer";
             this.btnEnregister.UseVisualStyleBackColor = true;
+            this.btnEnregister.Click += new System.EventHandler(this.btnEnregister_Click);
             // 
             // cboCreateur
             // 
+            this.cboCreateur.Enabled = false;
             this.cboCreateur.FormattingEnabled = true;
             this.cboCreateur.Location = new System.Drawing.Point(204, 527);
             this.cboCreateur.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboCreateur.Name = "cboCreateur";
             this.cboCreateur.Size = new System.Drawing.Size(315, 24);
             this.cboCreateur.TabIndex = 10;
+            this.cboCreateur.SelectedIndexChanged += new System.EventHandler(this.cboCreateur_SelectedIndexChanged);
             this.cboCreateur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboCreateur_KeyPress);
             // 
             // lblCreateur
@@ -409,6 +414,7 @@
             // 
             // rtbDescript
             // 
+            this.rtbDescript.Enabled = false;
             this.rtbDescript.Location = new System.Drawing.Point(84, 343);
             this.rtbDescript.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbDescript.Name = "rtbDescript";
@@ -465,7 +471,7 @@
             // grb2
             // 
             this.grb2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.grb2.Controls.Add(this.textBox1);
+            this.grb2.Controls.Add(this.txtTitre);
             this.grb2.Controls.Add(this.lblTitre);
             this.grb2.Location = new System.Drawing.Point(-4, -14);
             this.grb2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -475,15 +481,16 @@
             this.grb2.TabIndex = 0;
             this.grb2.TabStop = false;
             // 
-            // textBox1
+            // txtTitre
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(459, 71);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(524, 38);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.txtTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitre.Location = new System.Drawing.Point(459, 71);
+            this.txtTitre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTitre.Name = "txtTitre";
+            this.txtTitre.Size = new System.Drawing.Size(524, 38);
+            this.txtTitre.TabIndex = 3;
+            this.txtTitre.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtTitre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // lblTitre
             // 
@@ -563,7 +570,7 @@
         private System.Windows.Forms.Label lblDeb;
         private System.Windows.Forms.GroupBox grb2;
         private System.Windows.Forms.Label lblTitre;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTitre;
         private System.Windows.Forms.Label lblFinEve;
         private System.Windows.Forms.Label lblDebut;
         private System.Windows.Forms.DateTimePicker dtpEveFin;
