@@ -156,6 +156,9 @@ namespace Projet_fin
 
         }
 
+        private void rtbEveDescri_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

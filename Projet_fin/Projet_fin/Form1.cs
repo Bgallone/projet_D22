@@ -11,32 +11,32 @@ using System.Data.OleDb;
 
 namespace Projet_fin
 {
-   
+
 
     public partial class FrmLancement : Form
     {
-     
+
         String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =./Resources/bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataSet ds = new DataSet();
 
-       
+
 
 
         public FrmLancement()
         {
             InitializeComponent();
-            
+
         }
 
         private void FrmLancement_Load(object sender, EventArgs e)
         {
-          
+
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
             co.ConnectionString = chco;
             co.Open();
-            
+
             cmd.CommandType = CommandType.Text;
             string req = @"SELECT [titreEvent], [codeEvent] 
                             FROM Evenements;";
@@ -45,12 +45,12 @@ namespace Projet_fin
             cbxEvenement.DataSource = ds.Tables["events"];
             cbxEvenement.DisplayMember = "titreEvent";
             cbxEvenement.ValueMember = "codeEvent";
-          
+
         }
 
         private void Remplir(String requete, String nomTable)
         {
-          
+
             OleDbCommand cmd = new OleDbCommand(requete, co);
             OleDbDataAdapter da = new OleDbDataAdapter();
             da.SelectCommand = cmd;
@@ -58,34 +58,35 @@ namespace Projet_fin
             da.Fill(ds, nomTable);
         }
 
-        private void RemplirCheckListBox(int noevent, CheckedListBox clb) {
+        private void RemplirCheckListBox(int noevent, CheckedListBox clb)
+        {
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
-            
+
             cmd.CommandType = CommandType.Text;
             string req = @"Select p.nomPart
                            From Participants p, Invites i
                            Where p.codeParticipant = i.codePart    
                            and i.codeEvent = " + noevent + ";";
             cmd.CommandText = req;
-            
+
             OleDbDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
             {
                 clb.Items.Add(dr.GetString(0));
             }
-            
-          
+
+
         }
 
         private void btn_part_Click(object sender, EventArgs e)
         {
             Form Form1 = new Participant();
-            Form1.Show(); 
+            Form1.Show();
         }
 
-        
+
 
 
 
@@ -93,7 +94,7 @@ namespace Projet_fin
         private void btn_event_Click(object sender, EventArgs e)
         {
             Form Form1 = new événement();
-            Form1.Show(); 
+            Form1.Show();
         }
 
         private void btn_Accueil_Click(object sender, EventArgs e)
@@ -115,10 +116,10 @@ namespace Projet_fin
         {
             Application.Exit();
         }
-        
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
 
         }
 
@@ -128,7 +129,7 @@ namespace Projet_fin
 
             clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedValue.ToString();
-            int noevent = int.Parse(evt) ;
+            int noevent = int.Parse(evt);
 
             RemplirCheckListBox(noevent, clbBeneficiaires);
 
@@ -139,5 +140,19 @@ namespace Projet_fin
         {
 
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBox1.Checked)
+            {
+                foreach (CheckBox c in this.clbBeneficiaires.Controls)
+                {
+
+                    c.Checked = true;
+                }
+            }
+        }
     }
 }
+    
+
