@@ -26,6 +26,7 @@ namespace Projet_fin
         int NbPage;
         private void événement_Load(object sender, EventArgs e)
         {
+            
             co.ConnectionString = chco;
             co.Open();
             OleDbCommand cmd = new OleDbCommand();
@@ -44,7 +45,9 @@ namespace Projet_fin
             if (NumReq != NbPage)
             {
                 NumReq++;
+                cckRegle.Checked = false;
                 remplir(NumReq);
+
                 lblNumChange.Text = "" + NumReq + " ";
                 pgb_Prog.Value += 100/(NbPage-1);
             }
@@ -56,6 +59,7 @@ namespace Projet_fin
             if (NumReq != 1 )
             {
                 NumReq--;
+                cckRegle.Checked = false;
                 remplir(NumReq);
                 lblNumChange.Text = "" + NumReq + " ";
                 pgb_Prog.Value -= 100/(NbPage-1);
@@ -67,6 +71,7 @@ namespace Projet_fin
             if (NumReq != 1)
             {
                 NumReq = 1;
+                cckRegle.Checked = false;
                 remplir(NumReq);
                 lblNumChange.Text = "" + NumReq + " ";
                 pgb_Prog.Value = 0;
@@ -76,6 +81,7 @@ namespace Projet_fin
         private void btnFin_Click(object sender, EventArgs e)
         {
             NumReq = NbPage;
+            cckRegle.Checked = false;
             remplir(NumReq);
             lblNumChange.Text = "" + NumReq + " ";
             pgb_Prog.Value = 100;
@@ -116,7 +122,7 @@ namespace Projet_fin
                     WHERE codeEvent = " + NumReq +";";
             cmd.CommandText = req;
             res = cmd.ExecuteScalar().ToString();
-            LblEveDescri.Text = res;
+            rtbEveDescri.Text = res;
 
             // met la date de debut 
             req = @"SELECT [dateDebut]
@@ -135,6 +141,16 @@ namespace Projet_fin
             lblFin.Text = res;
 
             //coche si l'événement est réglée 
+
+            req = @"SELECT [soldeON]
+                    FROM Evenements
+                    WHERE codeEvent = " + NumReq + ";";
+            cmd.CommandText = req;
+            res = cmd.ExecuteScalar().ToString();
+            if (res == "True")
+            {
+                cckRegle.Checked = true;
+            }
 
             co.Close();
 

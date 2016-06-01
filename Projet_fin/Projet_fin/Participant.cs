@@ -52,6 +52,7 @@ namespace Projet_fin
 
         private void aff_info()
         {
+            
             String evnt = cbxEvent.Text;
             String rqt = @"SELECT p.nomPart, p.prenomPart 
                            FROM Invites i,Participants p 
