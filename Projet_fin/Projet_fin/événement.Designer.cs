@@ -388,9 +388,9 @@
             this.lblCreateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreateur.Location = new System.Drawing.Point(79, 528);
             this.lblCreateur.Name = "lblCreateur";
-            this.lblCreateur.Size = new System.Drawing.Size(99, 24);
+            this.lblCreateur.Size = new System.Drawing.Size(93, 24);
             this.lblCreateur.TabIndex = 9;
-            this.lblCreateur.Text = "Créer par :";
+            this.lblCreateur.Text = "Créé par :";
             // 
             // rtbDescript
             // 
