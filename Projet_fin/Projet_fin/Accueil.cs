@@ -46,6 +46,15 @@ namespace Projet_fin
             cbxEvenement.DisplayMember = "titreEvent";
             cbxEvenement.ValueMember = "codeEvent";
 
+            req = @"SELECT nomPart + ' ' + prenomPart AS part
+                    FROM Participants;";
+            cmd.CommandText = req;
+            OleDbDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                cbxPayePar.Items.Add(dr.GetString(0));
+            }
+
         }
 
         private void Remplir(String requete, String nomTable)
@@ -156,7 +165,11 @@ namespace Projet_fin
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            string req = @"INSERT INTO Depenses(montant, dateDepense, commentaire,";
+            double montant = double.Parse(txtDepense.Text);
+            string commentaire = txtCommentaire.Text;
+
+            string req = @"INSERT INTO Depenses(montant, dateDepense, commentaire,codePart) 
+                            VALUES(";
             OleDbCommand cmd = new OleDbCommand(req, co);
             cmd.ExecuteNonQuery();
    
