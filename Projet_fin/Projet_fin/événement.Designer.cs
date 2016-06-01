@@ -144,7 +144,6 @@
             this.rtbEveDescri.Size = new System.Drawing.Size(544, 52);
             this.rtbEveDescri.TabIndex = 19;
             this.rtbEveDescri.Text = "";
-            this.rtbEveDescri.TextChanged += new System.EventHandler(this.rtbEveDescri_TextChanged);
             // 
             // lblFin
             // 
@@ -365,6 +364,7 @@
             this.btnInvitation.TabIndex = 13;
             this.btnInvitation.Text = "Lancer les invitations";
             this.btnInvitation.UseVisualStyleBackColor = true;
+            this.btnInvitation.Click += new System.EventHandler(this.btnInvitation_Click);
             // 
             // pictureBox1
             // 
@@ -395,7 +395,6 @@
             this.cboCreateur.Name = "cboCreateur";
             this.cboCreateur.Size = new System.Drawing.Size(315, 24);
             this.cboCreateur.TabIndex = 10;
-            this.cboCreateur.TextChanged += new System.EventHandler(this.cboCreateur_TextChanged);
             this.cboCreateur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboCreateur_KeyPress);
             // 
             // lblCreateur
@@ -484,6 +483,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(524, 38);
             this.textBox1.TabIndex = 3;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // lblTitre
             // 

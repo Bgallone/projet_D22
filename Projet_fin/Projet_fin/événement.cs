@@ -172,15 +172,6 @@ namespace Projet_fin
 
         }
 
-        private void rtbEveDescri_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboCreateur_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
 
         private void cboCreateur_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -188,5 +179,19 @@ namespace Projet_fin
                 e.Handled = true;
             
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '^' || e.KeyChar == '#' || e.KeyChar == '|' || e.KeyChar == '&' || e.KeyChar == '~' || e.KeyChar == '}' || e.KeyChar == '{' || e.KeyChar == '\\' || e.KeyChar == '@')
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void btnInvitation_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
