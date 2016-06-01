@@ -421,6 +421,8 @@
             this.rtbDescript.Size = new System.Drawing.Size(760, 121);
             this.rtbDescript.TabIndex = 8;
             this.rtbDescript.Text = "";
+            this.rtbDescript.TextChanged += new System.EventHandler(this.rtbDescript_TextChanged);
+            this.rtbDescript.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtbDescript_KeyPress);
             // 
             // lblEveDescript
             // 

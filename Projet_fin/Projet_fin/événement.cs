@@ -186,12 +186,14 @@ namespace Projet_fin
             {
                 e.Handled = true; 
             }
-
-            if (txtTitre.Text.Substring(txtTitre.Text.Length , txtTitre.Text.Length) == " ")
+            if(txtTitre.Text.Length>0)
             {
-                if(e.KeyChar == ' ')
+                if (txtTitre.Text.Substring(txtTitre.Text.Length-1) == " ")
                 {
-                    e.Handled = true;
+                    if(e.KeyChar == ' ')
+                    {
+                        e.Handled = true;
+                    }
                 }
             }
         }
@@ -208,7 +210,7 @@ namespace Projet_fin
 
         private void cboCreateur_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            btnEnregister.Enabled = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -217,6 +219,28 @@ namespace Projet_fin
             rtbDescript.Enabled = true;
             }
          
+        }
+
+        private void rtbDescript_TextChanged(object sender, EventArgs e)
+        {
+            if (rtbDescript.Text != " ")
+            {
+                cboCreateur.Enabled = true;
+            }
+        }
+
+        private void rtbDescript_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (rtbDescript.Text.Length > 0)
+                        {
+                            if (rtbDescript.Text.Substring(rtbDescript.Text.Length - 1) == " ")
+                            {
+                                if (e.KeyChar == ' ')
+                                {
+                                    e.Handled = true;
+                                }
+                            }
+                        }
         }
 
     }
