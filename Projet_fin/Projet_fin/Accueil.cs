@@ -46,14 +46,7 @@ namespace Projet_fin
             cbxEvenement.DisplayMember = "titreEvent";
             cbxEvenement.ValueMember = "codeEvent";
 
-            req = @"SELECT nomPart,prenomPart
-                    FROM Participants;";
-            cmd.CommandText = req;
-            OleDbDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                cbxPayePar.Items.Add(dr.GetString(0) + ' ' + dr.GetString(1));
-            }
+           
 
         }
 
@@ -144,10 +137,17 @@ namespace Projet_fin
             int noevent = int.Parse(evt);
 
             RemplirCheckListBox(noevent, clbBeneficiaires);
-           /* string req = @"Select description from Evenements where codeEvent = " + noevent + ";";
+          
+            string req = @"Select p.nomPart
+                           From Participants p, Invites i
+                           Where p.codeParticipant = i.codePart    
+                           and i.codeEvent = " + noevent + ";";
             cmd.CommandText = req;
-            string descr = cmd.ExecuteScalar().ToString();
-            txtCommentaire.Text = descr;*/
+            OleDbDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                cbxPayePar.Items.Add(dr.GetString(0));
+            }
 
 
 
