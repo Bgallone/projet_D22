@@ -395,6 +395,8 @@
             this.cboCreateur.Name = "cboCreateur";
             this.cboCreateur.Size = new System.Drawing.Size(315, 24);
             this.cboCreateur.TabIndex = 10;
+            this.cboCreateur.TextChanged += new System.EventHandler(this.cboCreateur_TextChanged);
+            this.cboCreateur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboCreateur_KeyPress);
             // 
             // lblCreateur
             // 

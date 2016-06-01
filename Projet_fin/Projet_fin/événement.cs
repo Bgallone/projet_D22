@@ -176,5 +176,17 @@ namespace Projet_fin
         {
 
         }
+
+        private void cboCreateur_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cboCreateur_KeyPress(object sender, KeyPressEventArgs e)
+        {
+          
+                e.Handled = true;
+            
+        }
     }
 }
