@@ -36,12 +36,14 @@ namespace Projet_fin
             Remplir(req, "events");
             cbxEvent.DataSource = ds.Tables["events"];
             cbxEvent.DisplayMember = "titreEvent";
+            //ds.Clear();
             aff_info();
+            
         }
 
         private void Remplir(String requete, String nomTable)
         {
-
+            MessageBox.Show(requete +" \n"+ nomTable);
             OleDbCommand cmd = new OleDbCommand(requete, co);
             OleDbDataAdapter da = new OleDbDataAdapter();
             da.SelectCommand = cmd;
@@ -64,9 +66,12 @@ namespace Projet_fin
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandText = rqt;
             cmd.Connection = co;
-            OleDbDataReader dr = cmd.ExecuteReader();
-            dataGridView1.DataSource = dr;
-            MessageBox.Show(dr.ToString());
+            //Remplir(rqt, "participants");
+            
+            
+            //OleDbDataReader dr = cmd.ExecuteReader();
+            dataGridView1.DataSource = ds;
+            //MessageBox.Show(dr.ToString());
         }
 
         private void cbxEvent_SelectedIndexChanged(object sender, EventArgs e)
