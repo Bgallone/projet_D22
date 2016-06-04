@@ -165,13 +165,19 @@ namespace Projet_fin
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            double montant = double.Parse(txtDepense.Text);
+            double montant = 12;
             string commentaire = txtCommentaire.Text;
+            string desc = txtDepense.Text;
+            int codePart = cbxPayePar.SelectedIndex;
+            DateTime date = dateTimePicker1.Value.Date;
 
-            string req = @"INSERT INTO Depenses(montant, dateDepense, commentaire,codePart) 
-                            VALUES(";
+            string req = @"INSERT INTO Depenses(numDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
+                            VALUES('15', 'wesh alors', '18', '" + date + "','4', 'wesh', '4'); ";
+            
+            MessageBox.Show(req);
             OleDbCommand cmd = new OleDbCommand(req, co);
-            cmd.ExecuteNonQuery();
+            int n = cmd.ExecuteNonQuery();
+            MessageBox.Show(n.ToString());
    
         }
     }
