@@ -30,19 +30,15 @@ namespace Projet_fin
             co.Open();
             string req = @"SELECT [titreEvent] 
                             FROM Evenements;";
-            Remplir(req, "events");
-            cbxEvent.DataSource = ds.Tables["events"];
-            cbxEvent.DisplayMember = "titreEvent";       
-        }
-
-        private void Remplir(String requete, String nomTable)
-        {
-            OleDbCommand cmd = new OleDbCommand(requete, co);
+            OleDbCommand cmd = new OleDbCommand(req, co);
             OleDbDataAdapter da = new OleDbDataAdapter();
             da.SelectCommand = cmd;
-            da.Fill(ds, nomTable);
-            //MessageBox.Show(ds.Tables[nomTable].Rows.Count.ToString()); //debug         
+            da.Fill(ds, "events");
+            
+            cbxEvent.DataSource = ds.Tables["events"];
+            cbxEvent.DisplayMember = "titreEvent";  
         }
+
 
         private void aff_info()
         {
@@ -80,6 +76,21 @@ namespace Projet_fin
             cbxAdd.Visible = true;
             btnAdd.Visible = true;
             lblAdd.Visible = true;
+
+            String evt = cbxEvent.Text;
+            String reqt = @"
+                           SELECT p.prenomPart + ' ' + p.nomPart as nom
+                           FROM Participants p 
+                          ;";
+            DataSet invite = new DataSet();
+
+            OleDbDataAdapter dt = new OleDbDataAdapter();
+            OleDbCommand cmd = new OleDbCommand(reqt, co);
+            dt.SelectCommand = cmd;
+           
+            dt.Fill(invite, "invite");
+            cbxAdd.DataSource = invite.Tables["invite"];
+            cbxAdd.DisplayMember = "nom";
         }
 
 
