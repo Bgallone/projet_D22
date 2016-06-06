@@ -14,10 +14,11 @@ namespace Projet_fin
     public partial class Participant : Form
     {
 
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
-        OleDbConnection co = new OleDbConnection();
-        DataSet ds = new DataSet();
-        bool load = false;
+        private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
+        private OleDbConnection co = new OleDbConnection();
+        private DataSet ds = new DataSet();
+        private int CodeEvent = 1;
+        private bool load = false;
 
         public Participant()
         {
@@ -34,15 +35,15 @@ namespace Projet_fin
             OleDbDataAdapter da = new OleDbDataAdapter();
             da.SelectCommand = cmd;
             da.Fill(ds, "events");
-            
+
             cbxEvent.DataSource = ds.Tables["events"];
-            cbxEvent.DisplayMember = "titreEvent";  
+            cbxEvent.DisplayMember = "titreEvent";
         }
 
 
         private void aff_info()
         {
-            
+
             String evnt = cbxEvent.Text;
             String rqt = @"
                            SELECT p.codeParticipant as Code, p.prenomPart + ' ' + p.nomPart as [Nom et Prenom], p.mobile as [N° téléphone], p.nbParts as Parts, p.solde
@@ -52,12 +53,12 @@ namespace Projet_fin
                                                SELECT codeEvent
                                                FROM Evenements
                                                WHERE titreEvent = '" + evnt + "');";
-            
+
             OleDbDataAdapter da = new OleDbDataAdapter();
             OleDbCommand cmd = new OleDbCommand(rqt, co);
             da.SelectCommand = cmd;
             DataSet participants = new DataSet();
-            da.Fill(participants,"participants");
+            da.Fill(participants, "participants");
             dataGridView1.DataSource = participants.Tables[0];
         }
 
@@ -110,9 +111,30 @@ namespace Projet_fin
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            String evt = cbxEvent.Text;
+            String nom = cbxAdd.Text;
+            String mdp = getRandomPassword();
+            String req = @"INSERT INTO invite Depenses(codeEvent, codePart, login) VALUES ((SELECT codeEvent FROM Evenements WHERE titreEvent = '" + evt + "'),(SELECT codeParticipant FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ),(SELECT SUBSTR(prenomPart, 1, 1)+ nomPart FROM Participant WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ), '" + mdp + "'); ";
         }
 
+
+        private static char[] randomChars = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0' };
+        private static readonly Random rand = new Random();
+
+
+
+        private static string getRandomPassword()
+        {
+
+            char[] password = new char[10];
+
+            for (int i = 0; i < 10; ++i)
+
+                password[i] = randomChars[rand.Next(0, randomChars.Length)];
+
+            return new string(password);
+
+        }
 
     }
 }
