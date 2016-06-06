@@ -15,33 +15,51 @@ namespace Projet_fin
     {
 
         String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
-
+        OleDbConnection co = new OleDbConnection();
+        DataTable Liaison;
+        BindingSource BS = new BindingSource();
         public événement()
         {
             InitializeComponent();
         }
         int NumReq=1;
         int NbPage;
+
+ 
         private void événement_Load(object sender, EventArgs e)
         {
             string requete = @"SELECT e.*,[p.nomPart] FROM Evenements e , Participants p
                             WHERE p.codeParticipant =e.codeCreateur;";
            
-            OleDbConnection co = new OleDbConnection(chco);
+            co = new OleDbConnection(chco);
             OleDbCommand cmd = new OleDbCommand(requete, co);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataSet resultat = new DataSet();
             
             da.SelectCommand = cmd;
 
-            da.Fill(resultat,"JeanLouis");
+            da.Fill(resultat,"TableDeLiaison");
             
             //nous donne le nombre d'événement.
-            DataTable Liaison = resultat.Tables["JeanLouis"];
+            Liaison = resultat.Tables["TableDeLiaison"];
+
             NbPage = Liaison.Rows.Count;
 
+
+            BS.DataSource = Liaison;
+
+            LblCréateur.DataBindings.Add("Text", BS, "codeCreateur");
+            LblEveInt.DataBindings.Add("Text", BS, "titreEvent");
+            rtbEveDescri.DataBindings.Add("Text", BS, "description");
+            lblDeb.DataBindings.Add("Text", BS, "dateDebut");
+            lblFin.DataBindings.Add("Text", BS, "dateFin");
+            cckRegle.DataBindings.Add("Checked", BS, "soldeON");
+
             // met en place tout les participant dans la cboCreateur
-/*
+            OleDbCommand cmd1 = new OleDbCommand();
+            cmd1.Connection = co;
+            co.ConnectionString = chco;
+            co.Open();
             string req = @"SELECT [nomPart],[prenomPart]
                    FROM Participants ;";
 
@@ -54,7 +72,7 @@ namespace Projet_fin
 
             // on ferme la connections
             co.Close();
-            remplir( NumReq);*/
+            
 
         
         }
@@ -64,7 +82,13 @@ namespace Projet_fin
             {
                 NumReq++;
                 cckRegle.Checked = false;
-                remplir(NumReq);
+               /* //remplir(NumReq,Liaison);
+                LblCréateur.DataBindings.
+                LblEveInt.DataBindings.
+                rtbEveDescri.DataBindings.
+                lblDeb.DataBindings.
+                lblFin.DataBindings.
+                cckRegle.DataBindings.*/
 
                 lblNumChange.Text = "" + NumReq + " ";
             }
@@ -77,7 +101,7 @@ namespace Projet_fin
             {
                 NumReq--;
                 cckRegle.Checked = false;
-                remplir(NumReq);
+                //remplir(NumReq,Liaison);
                 lblNumChange.Text = "" + NumReq + " ";
             }
         }
@@ -88,7 +112,7 @@ namespace Projet_fin
             {
                 NumReq = 1;
                 cckRegle.Checked = false;
-                remplir(NumReq);
+                //remplir(NumReq, Liaison);
                 lblNumChange.Text = "" + NumReq + " ";
             }
         }
@@ -97,78 +121,10 @@ namespace Projet_fin
         {
             NumReq = NbPage;
             cckRegle.Checked = false;
-            remplir(NumReq);
+            //remplir(NumReq, Liaison);
             lblNumChange.Text = "" + NumReq + " ";
         }
 
-        private void remplir(int Numero_req){
-            /*
-            string res = "";
-            co.ConnectionString = chco;
-            co.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = co;
-            cmd.CommandType = CommandType.Text;
-            
-            // met le nom de l'événement
-            string req = @"SELECT [titreEvent] 
-                            FROM Evenements
-                WHERE codeEvent = "+NumReq+";";
-
-            cmd.CommandText = req;
-            res = cmd.ExecuteScalar().ToString();
-            LblEveInt.Text = res;
-
-            // met le nom du créateur 
-            req = @"SELECT [p.nomPart]
-                    FROM Participants p
-                    WHERE p.codeParticipant =(SELECT [codeCreateur]
-                                            FROM Evenements
-                                            WHERE codeEvent = "+NumReq+");";
-            cmd.CommandText = req;
-            res = cmd.ExecuteScalar().ToString();
-            LblCréateur.Text = res;
-            
-            // met la description de l'événement 
-
-            req = @"SELECT [description]
-                    FROM Evenements
-                    WHERE codeEvent = " + NumReq +";";
-            cmd.CommandText = req;
-            res = cmd.ExecuteScalar().ToString();
-            rtbEveDescri.Text = res;
-
-            // met la date de debut 
-            req = @"SELECT [dateDebut]
-                    FROM Evenements
-                    WHERE codeEvent = " + NumReq + ";";
-            cmd.CommandText = req;
-            res = cmd.ExecuteScalar().ToString();
-            lblDeb.Text = res;
-           
-            //met la date de fin 
-            req = @"SELECT [dateFin]
-                    FROM Evenements
-                    WHERE codeEvent = " + NumReq + ";";
-            cmd.CommandText = req;
-            res = cmd.ExecuteScalar().ToString();
-            lblFin.Text = res;
-
-            //coche si l'événement est réglée 
-
-            req = @"SELECT [soldeON]
-                    FROM Evenements
-                    WHERE codeEvent = " + NumReq + ";";
-            cmd.CommandText = req;
-            res = cmd.ExecuteScalar().ToString();
-            if (res == "True")
-            {
-                cckRegle.Checked = true;
-            }
-
-            co.Close();*/
-
-        }
 
 
         private void cboCreateur_KeyPress(object sender, KeyPressEventArgs e)
