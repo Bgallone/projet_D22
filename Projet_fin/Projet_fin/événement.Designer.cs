@@ -47,7 +47,6 @@
             this.btnSuiv = new System.Windows.Forms.Button();
             this.btnPre = new System.Windows.Forms.Button();
             this.BtnDebut = new System.Windows.Forms.Button();
-            this.pgb_Prog = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblNumChange = new System.Windows.Forms.Label();
             this.lblNévé = new System.Windows.Forms.Label();
@@ -111,7 +110,6 @@
             this.tab1a1.Controls.Add(this.btnSuiv);
             this.tab1a1.Controls.Add(this.btnPre);
             this.tab1a1.Controls.Add(this.BtnDebut);
-            this.tab1a1.Controls.Add(this.pgb_Prog);
             this.tab1a1.Controls.Add(this.groupBox1);
             this.tab1a1.Location = new System.Drawing.Point(4, 28);
             this.tab1a1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -277,14 +275,6 @@
             this.BtnDebut.TabIndex = 2;
             this.BtnDebut.UseVisualStyleBackColor = true;
             this.BtnDebut.Click += new System.EventHandler(this.BtnDebut_Click);
-            // 
-            // pgb_Prog
-            // 
-            this.pgb_Prog.Location = new System.Drawing.Point(485, 539);
-            this.pgb_Prog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pgb_Prog.Name = "pgb_Prog";
-            this.pgb_Prog.Size = new System.Drawing.Size(255, 36);
-            this.pgb_Prog.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -556,7 +546,6 @@
         private System.Windows.Forms.Button btnSuiv;
         private System.Windows.Forms.Button btnPre;
         private System.Windows.Forms.Button BtnDebut;
-        private System.Windows.Forms.ProgressBar pgb_Prog;
         private System.Windows.Forms.Label lblNumChange;
         private System.Windows.Forms.Label lblNévé;
         private System.Windows.Forms.PictureBox ptb_événement;

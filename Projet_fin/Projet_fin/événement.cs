@@ -15,8 +15,6 @@ namespace Projet_fin
     {
 
         String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
-        OleDbConnection co = new OleDbConnection();
-        DataSet ds = new DataSet();
 
         public événement()
         {
@@ -26,21 +24,25 @@ namespace Projet_fin
         int NbPage;
         private void événement_Load(object sender, EventArgs e)
         {
+            string requete = @"SELECT e.*,[p.nomPart] FROM Evenements e , Participants p
+                            WHERE p.codeParticipant =e.codeCreateur;";
+           
+            OleDbConnection co = new OleDbConnection(chco);
+            OleDbCommand cmd = new OleDbCommand(requete, co);
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            DataSet resultat = new DataSet();
             
-            co.ConnectionString = chco;
-            co.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = co;
-            cmd.CommandType = CommandType.Text;
+            da.SelectCommand = cmd;
+
+            da.Fill(resultat,"JeanLouis");
+            
             //nous donne le nombre d'événement.
-            string req = @"SELECT count(*)
-                            FROM Evenements;";
-            cmd.CommandText = req;
-            NbPage = (int)cmd.ExecuteScalar();
+            DataTable Liaison = resultat.Tables["JeanLouis"];
+            NbPage = Liaison.Rows.Count;
 
             // met en place tout les participant dans la cboCreateur
-
-            req = @"SELECT [nomPart],[prenomPart]
+/*
+            string req = @"SELECT [nomPart],[prenomPart]
                    FROM Participants ;";
 
             cmd.CommandText = req;
@@ -52,7 +54,7 @@ namespace Projet_fin
 
             // on ferme la connections
             co.Close();
-            remplir( NumReq);
+            remplir( NumReq);*/
 
         
         }
@@ -65,7 +67,6 @@ namespace Projet_fin
                 remplir(NumReq);
 
                 lblNumChange.Text = "" + NumReq + " ";
-                pgb_Prog.Value += 100/(NbPage-1);
             }
 
         }
@@ -78,7 +79,6 @@ namespace Projet_fin
                 cckRegle.Checked = false;
                 remplir(NumReq);
                 lblNumChange.Text = "" + NumReq + " ";
-                pgb_Prog.Value -= 100/(NbPage-1);
             }
         }
 
@@ -90,7 +90,6 @@ namespace Projet_fin
                 cckRegle.Checked = false;
                 remplir(NumReq);
                 lblNumChange.Text = "" + NumReq + " ";
-                pgb_Prog.Value = 0;
             }
         }
 
@@ -100,11 +99,10 @@ namespace Projet_fin
             cckRegle.Checked = false;
             remplir(NumReq);
             lblNumChange.Text = "" + NumReq + " ";
-            pgb_Prog.Value = 100;
         }
 
         private void remplir(int Numero_req){
-
+            /*
             string res = "";
             co.ConnectionString = chco;
             co.Open();
@@ -168,7 +166,7 @@ namespace Projet_fin
                 cckRegle.Checked = true;
             }
 
-            co.Close();
+            co.Close();*/
 
         }
 
@@ -200,7 +198,9 @@ namespace Projet_fin
 
         private void btnInvitation_Click(object sender, EventArgs e)
         {
-
+            Form inv = new Invitation();
+            inv.ShowDialog();
+            
         }
 
         private void btnEnregister_Click(object sender, EventArgs e)
