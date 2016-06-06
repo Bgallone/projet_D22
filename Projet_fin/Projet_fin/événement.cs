@@ -28,18 +28,17 @@ namespace Projet_fin
  
         private void événement_Load(object sender, EventArgs e)
         {
-            string requete = @"SELECT e.*,[p.nomPart] FROM Evenements e , Participants p
+            string requete = @"SELECT e.*,[p.nomPart] as NomCrea FROM Evenements e , Participants p
                             WHERE p.codeParticipant =e.codeCreateur;";
            
             co = new OleDbConnection(chco);
             OleDbCommand cmd = new OleDbCommand(requete, co);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataSet resultat = new DataSet();
-            
+           
             da.SelectCommand = cmd;
 
             da.Fill(resultat,"TableDeLiaison");
-            
             //nous donne le nombre d'événement.
             Liaison = resultat.Tables["TableDeLiaison"];
 
@@ -48,7 +47,7 @@ namespace Projet_fin
 
             BS.DataSource = Liaison;
 
-            LblCréateur.DataBindings.Add("Text", BS, "codeCreateur");
+            LblCréateur.DataBindings.Add("Text", BS, "NomCrea");
             LblEveInt.DataBindings.Add("Text", BS, "titreEvent");
             rtbEveDescri.DataBindings.Add("Text", BS, "description");
             lblDeb.DataBindings.Add("Text", BS, "dateDebut");
@@ -81,15 +80,8 @@ namespace Projet_fin
             if (NumReq != NbPage)
             {
                 NumReq++;
-                cckRegle.Checked = false;
-               /* //remplir(NumReq,Liaison);
-                LblCréateur.DataBindings.
-                LblEveInt.DataBindings.
-                rtbEveDescri.DataBindings.
-                lblDeb.DataBindings.
-                lblFin.DataBindings.
-                cckRegle.DataBindings.*/
-
+               //change
+                BS.MoveNext();
                 lblNumChange.Text = "" + NumReq + " ";
             }
 
@@ -100,8 +92,8 @@ namespace Projet_fin
             if (NumReq != 1 )
             {
                 NumReq--;
-                cckRegle.Checked = false;
-                //remplir(NumReq,Liaison);
+                //change
+                BS.MovePrevious();
                 lblNumChange.Text = "" + NumReq + " ";
             }
         }
@@ -111,8 +103,8 @@ namespace Projet_fin
             if (NumReq != 1)
             {
                 NumReq = 1;
-                cckRegle.Checked = false;
-                //remplir(NumReq, Liaison);
+                //change
+                BS.MoveFirst();
                 lblNumChange.Text = "" + NumReq + " ";
             }
         }
@@ -120,8 +112,8 @@ namespace Projet_fin
         private void btnFin_Click(object sender, EventArgs e)
         {
             NumReq = NbPage;
-            cckRegle.Checked = false;
-            //remplir(NumReq, Liaison);
+            //change
+            BS.MoveLast();
             lblNumChange.Text = "" + NumReq + " ";
         }
 

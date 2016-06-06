@@ -234,7 +234,7 @@
             // btnFin
             // 
             this.btnFin.Image = ((System.Drawing.Image)(resources.GetObject("btnFin.Image")));
-            this.btnFin.Location = new System.Drawing.Point(717, 473);
+            this.btnFin.Location = new System.Drawing.Point(937, 489);
             this.btnFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFin.Name = "btnFin";
             this.btnFin.Size = new System.Drawing.Size(80, 62);
@@ -245,7 +245,7 @@
             // btnSuiv
             // 
             this.btnSuiv.Image = ((System.Drawing.Image)(resources.GetObject("btnSuiv.Image")));
-            this.btnSuiv.Location = new System.Drawing.Point(632, 473);
+            this.btnSuiv.Location = new System.Drawing.Point(937, 277);
             this.btnSuiv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSuiv.Name = "btnSuiv";
             this.btnSuiv.Size = new System.Drawing.Size(80, 62);
@@ -256,7 +256,7 @@
             // btnPre
             // 
             this.btnPre.Image = ((System.Drawing.Image)(resources.GetObject("btnPre.Image")));
-            this.btnPre.Location = new System.Drawing.Point(515, 473);
+            this.btnPre.Location = new System.Drawing.Point(39, 277);
             this.btnPre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPre.Name = "btnPre";
             this.btnPre.Size = new System.Drawing.Size(80, 62);
@@ -268,7 +268,7 @@
             // BtnDebut
             // 
             this.BtnDebut.Image = ((System.Drawing.Image)(resources.GetObject("BtnDebut.Image")));
-            this.BtnDebut.Location = new System.Drawing.Point(428, 473);
+            this.BtnDebut.Location = new System.Drawing.Point(39, 489);
             this.BtnDebut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnDebut.Name = "BtnDebut";
             this.BtnDebut.Size = new System.Drawing.Size(80, 62);
