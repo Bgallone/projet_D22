@@ -63,9 +63,13 @@ namespace Projet_fin
 
         private void cbxEvent_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (load){
+            if (load)
+            {
                 aff_info();
-            }else{
+                refresh_add();
+            }
+            else
+            {
                 load = true;
             }
         }
@@ -77,20 +81,36 @@ namespace Projet_fin
             btnAdd.Visible = true;
             lblAdd.Visible = true;
 
+            refresh_add();
+        }
+
+        private void refresh_add()
+        {
             String evt = cbxEvent.Text;
-            String reqt = @"
-                           SELECT p.prenomPart + ' ' + p.nomPart as nom
-                           FROM Participants p 
-                          ;";
+            String reqt = @"SELECT p.prenomPart + ' ' + p.nomPart as nom
+                           FROM Participants p
+                           WHERE p.codeParticipant NOT IN (                           
+                                           SELECT p.codeParticipant
+                                           FROM Invites i,Participants p 
+                                           WHERE i.codePart = p.codeParticipant 
+                                           AND i.codeEvent = (
+                                                               SELECT codeEvent
+                                                               FROM Evenements
+                                                               WHERE titreEvent = '" + evt + "'));";
             DataSet invite = new DataSet();
 
             OleDbDataAdapter dt = new OleDbDataAdapter();
             OleDbCommand cmd = new OleDbCommand(reqt, co);
             dt.SelectCommand = cmd;
-           
+
             dt.Fill(invite, "invite");
             cbxAdd.DataSource = invite.Tables["invite"];
             cbxAdd.DisplayMember = "nom";
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
         }
 
 
