@@ -172,12 +172,18 @@ namespace Projet_fin
             DateTime date = dateTimePicker1.Value.Date;
 
             string req = @"INSERT INTO Depenses(numDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('15', 'wesh alors', '18', '" + date + "','4', 'wesh', '4'); ";
+                            VALUES('14', 'wesh alors', '18', '" + date + "','4', 'wesh', '4'); ";
             
             MessageBox.Show(req);
             OleDbCommand cmd = new OleDbCommand(req, co);
             int n = cmd.ExecuteNonQuery();
             MessageBox.Show(n.ToString());
+
+            string reqtest = "SELECT description FROM Depenses WHERE numDepense = 1";
+            cmd.CommandText = reqtest;
+            string res = cmd.ExecuteScalar().ToString();
+            MessageBox.Show(res);
+
    
         }
     }
