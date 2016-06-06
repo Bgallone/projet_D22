@@ -19,6 +19,7 @@ namespace Projet_fin
         String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =./Resources/bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataSet ds = new DataSet();
+        int noevent;
 
 
 
@@ -134,7 +135,7 @@ namespace Projet_fin
             cmd.CommandType = CommandType.Text;
             clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedValue.ToString();
-            int noevent = int.Parse(evt);
+            noevent = int.Parse(evt);
 
             RemplirCheckListBox(noevent, clbBeneficiaires);
           
@@ -160,24 +161,43 @@ namespace Projet_fin
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (checkBox1.Checked)
+            {
+                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
+                {
+                    clbBeneficiaires.SetItemChecked(i, true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
+                {
+                    clbBeneficiaires.SetItemChecked(i, false);
+                }
+            }
         }
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            string req = @"INSERT INTO Depenses(numDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('" + txtDepense.Text + "', '" + int.Parse(txtDepense.Text) +"', '" + dateTimePicker1.Value.Date +
-                                      "','4', '" + txtCommentaire.Text + "', '"+ cbxPayePar.SelectedIndex +"'); ";
+
+            
+            string req = @"INSERT INTO Depenses(description,montant, dateDepense, codeEvent, commentaire,codePart) 
+                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
+                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ cbxPayePar.SelectedIndex +"');";
+            
+
             
             MessageBox.Show(req);
             OleDbCommand cmd = new OleDbCommand(req, co);
             int n = cmd.ExecuteNonQuery();
             MessageBox.Show(n.ToString());
+       
 
-            string reqtest = "SELECT description FROM Depenses WHERE numDepense = 1";
+            /*
+            string reqtest = "SELECT description FROM Depenses WHERE numDepense = 14";
             cmd.CommandText = reqtest;
             string res = cmd.ExecuteScalar().ToString();
-            MessageBox.Show(res);
+            MessageBox.Show(res);*/
 
    
         }
