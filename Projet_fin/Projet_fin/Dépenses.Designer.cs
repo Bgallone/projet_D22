@@ -31,21 +31,24 @@
             this.cbxEvenement = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbxFiltre = new System.Windows.Forms.ComboBox();
-            this.chxFiltre = new System.Windows.Forms.CheckBox();
             this.dgvDepense = new System.Windows.Forms.DataGridView();
             this.btnChercher = new System.Windows.Forms.Button();
+            this.grpFiltre = new System.Windows.Forms.GroupBox();
+            this.chxAll = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepense)).BeginInit();
+            this.grpFiltre.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbxEvenement
             // 
             this.cbxEvenement.FormattingEnabled = true;
-            this.cbxEvenement.Location = new System.Drawing.Point(136, 50);
+            this.cbxEvenement.Location = new System.Drawing.Point(120, 50);
             this.cbxEvenement.Name = "cbxEvenement";
             this.cbxEvenement.Size = new System.Drawing.Size(221, 24);
             this.cbxEvenement.TabIndex = 0;
+            this.cbxEvenement.SelectedIndexChanged += new System.EventHandler(this.cbxEvenement_SelectedIndexChanged);
+            this.cbxEvenement.SelectionChangeCommitted += new System.EventHandler(this.cbxEvenement_SelectionChangeCommitted);
             // 
             // label1
             // 
@@ -66,24 +69,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // cbxFiltre
-            // 
-            this.cbxFiltre.FormattingEnabled = true;
-            this.cbxFiltre.Location = new System.Drawing.Point(570, 53);
-            this.cbxFiltre.Name = "cbxFiltre";
-            this.cbxFiltre.Size = new System.Drawing.Size(165, 24);
-            this.cbxFiltre.TabIndex = 3;
-            // 
-            // chxFiltre
-            // 
-            this.chxFiltre.AutoSize = true;
-            this.chxFiltre.Location = new System.Drawing.Point(451, 53);
-            this.chxFiltre.Name = "chxFiltre";
-            this.chxFiltre.Size = new System.Drawing.Size(114, 21);
-            this.chxFiltre.TabIndex = 5;
-            this.chxFiltre.Text = "Filtrage  par :";
-            this.chxFiltre.UseVisualStyleBackColor = true;
-            // 
             // dgvDepense
             // 
             this.dgvDepense.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -95,28 +80,50 @@
             // 
             // btnChercher
             // 
-            this.btnChercher.Location = new System.Drawing.Point(635, 166);
+            this.btnChercher.Location = new System.Drawing.Point(167, 147);
             this.btnChercher.Name = "btnChercher";
             this.btnChercher.Size = new System.Drawing.Size(100, 29);
             this.btnChercher.TabIndex = 6;
             this.btnChercher.Text = "Rechercher";
             this.btnChercher.UseVisualStyleBackColor = true;
             // 
+            // grpFiltre
+            // 
+            this.grpFiltre.Controls.Add(this.btnChercher);
+            this.grpFiltre.Location = new System.Drawing.Point(462, 13);
+            this.grpFiltre.Name = "grpFiltre";
+            this.grpFiltre.Size = new System.Drawing.Size(273, 182);
+            this.grpFiltre.TabIndex = 7;
+            this.grpFiltre.TabStop = false;
+            this.grpFiltre.Text = "Filtre de recherche";
+            // 
+            // chxAll
+            // 
+            this.chxAll.AutoSize = true;
+            this.chxAll.Location = new System.Drawing.Point(38, 92);
+            this.chxAll.Name = "chxAll";
+            this.chxAll.Size = new System.Drawing.Size(213, 21);
+            this.chxAll.TabIndex = 8;
+            this.chxAll.Text = "Tous évenements confondus";
+            this.chxAll.UseVisualStyleBackColor = true;
+            this.chxAll.CheckedChanged += new System.EventHandler(this.chxAll_CheckedChanged);
+            // 
             // Dépenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 546);
-            this.Controls.Add(this.btnChercher);
-            this.Controls.Add(this.chxFiltre);
-            this.Controls.Add(this.cbxFiltre);
+            this.Controls.Add(this.chxAll);
+            this.Controls.Add(this.cbxEvenement);
+            this.Controls.Add(this.grpFiltre);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbxEvenement);
             this.Name = "Dépenses";
             this.Text = "Dépenses";
+            this.Load += new System.EventHandler(this.Dépenses_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepense)).EndInit();
+            this.grpFiltre.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,8 +135,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvDepense;
-        private System.Windows.Forms.ComboBox cbxFiltre;
-        private System.Windows.Forms.CheckBox chxFiltre;
         private System.Windows.Forms.Button btnChercher;
+        private System.Windows.Forms.GroupBox grpFiltre;
+        private System.Windows.Forms.CheckBox chxAll;
     }
 }

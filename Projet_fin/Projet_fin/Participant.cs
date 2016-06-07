@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
+using System.Threading;
+using System.ComponentModel;
 
 namespace Projet_fin
 {
@@ -116,6 +121,9 @@ namespace Projet_fin
             String nom = cbxAdd.Text;
             String pwd = getRandomPassword();
             String req = @"INSERT INTO invite Depenses(codeEvent, codePart, login,mdp) VALUES ((SELECT codeEvent FROM Evenements WHERE titreEvent = '" + evt + "'),(SELECT codeParticipant FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ),(SELECT SUBSTR(prenomPart, 1, 1)+ nomPart FROM Participant WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ), '" + pwd + "'); ";
+            SendMail("Florian.Holtzinger@etu.unistra.fr", "test", "Coucou, tu veux voir ma bite ?");
+           
+        
         }
 
 
@@ -134,6 +142,41 @@ namespace Projet_fin
                 password[i] = randomChars[rand.Next(0, randomChars.Length)];
 
             return new string(password);
+
+        }
+
+        public static void SendMail(string adresses, string subject, string message)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                //ajouter les destinataires
+                /*foreach (string adress in adresses)
+                {
+                    */mail.To.Add(adresses);/*
+                }*/
+
+                mail.Subject = subject;
+                mail.Body = message;
+                //définir l'expéditeur
+                mail.From = new MailAddress("no-replay@boncompte.fr", "Invitation évènement");
+                //définir les paramètres smtp pour l'envoi
+                SmtpClient smtpServer = new SmtpClient
+                {
+                    Host = "mailserver.u-strasbg.fr",
+                    Port = 587,
+                    EnableSsl = false,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential("baptiste.gallone@etu.unistra.fr", "gallone67#")
+                };
+                //envoi du mail
+                smtpServer.Send(mail);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
         }
 

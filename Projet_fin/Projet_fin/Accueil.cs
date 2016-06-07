@@ -16,12 +16,12 @@ namespace Projet_fin
     public partial class FrmLancement : Form
     {
 
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
+        private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
         //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
         //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =.\Resources\bdEvents.mdb";
-        OleDbConnection co = new OleDbConnection();
-        DataSet ds = new DataSet();
-        int noevent;
+        private OleDbConnection co = new OleDbConnection();
+        private DataSet ds = new DataSet();
+        private int noevent;
         
 
 
@@ -52,6 +52,8 @@ namespace Projet_fin
             cbxEvenement.DisplayMember = "titreEvent";
             cbxEvenement.ValueMember = "codeEvent";
             co.Close();
+
+            
            
            
 
@@ -108,15 +110,9 @@ namespace Projet_fin
             Form1.Show();
         }
 
-        private void btn_Accueil_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void btn_RAZ_Click(object sender, EventArgs e)
         {
@@ -133,11 +129,7 @@ namespace Projet_fin
             Application.Exit();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-
-        }
 
         private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -177,7 +169,8 @@ namespace Projet_fin
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (
+                chxToutCocher.Checked)
             {
                 for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
                 {
@@ -222,7 +215,7 @@ namespace Projet_fin
 
         private void btn_dep_Click(object sender, EventArgs e)
         {
-            Form Form1 = Dépenses(chco);
+            Form Form1 = new Dépenses(chco);
             Form1.Show();
         }
     }
