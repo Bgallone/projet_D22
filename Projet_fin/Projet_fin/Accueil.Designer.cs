@@ -274,7 +274,7 @@
             this.txtCommentaire.Location = new System.Drawing.Point(47, 158);
             this.txtCommentaire.Name = "txtCommentaire";
             this.txtCommentaire.Size = new System.Drawing.Size(582, 96);
-            this.txtCommentaire.TabIndex = 15;
+            this.txtCommentaire.TabIndex = 4;
             this.txtCommentaire.Text = "";
             // 
             // label12
@@ -292,7 +292,7 @@
             this.txtDepense.Location = new System.Drawing.Point(131, 67);
             this.txtDepense.Name = "txtDepense";
             this.txtDepense.Size = new System.Drawing.Size(253, 20);
-            this.txtDepense.TabIndex = 11;
+            this.txtDepense.TabIndex = 2;
             // 
             // cbxPayePar
             // 
@@ -300,7 +300,7 @@
             this.cbxPayePar.Location = new System.Drawing.Point(131, 291);
             this.cbxPayePar.Name = "cbxPayePar";
             this.cbxPayePar.Size = new System.Drawing.Size(253, 21);
-            this.cbxPayePar.TabIndex = 10;
+            this.cbxPayePar.TabIndex = 5;
             // 
             // cbxEvenement
             // 
@@ -309,7 +309,7 @@
             this.cbxEvenement.Location = new System.Drawing.Point(131, 39);
             this.cbxEvenement.Name = "cbxEvenement";
             this.cbxEvenement.Size = new System.Drawing.Size(253, 21);
-            this.cbxEvenement.TabIndex = 9;
+            this.cbxEvenement.TabIndex = 1;
             this.cbxEvenement.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cbxEvenement.SelectionChangeCommitted += new System.EventHandler(this.cbxEvenement_SelectionChangeCommitted);
             this.cbxEvenement.Click += new System.EventHandler(this.cbxEvenement_Click);
@@ -320,7 +320,7 @@
             this.checkBox1.Location = new System.Drawing.Point(131, 324);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(108, 17);
-            this.checkBox1.TabIndex = 8;
+            this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "Tout selectionner";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -357,7 +357,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(429, 55);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 4;
+            this.dateTimePicker1.TabIndex = 6;
             // 
             // label8
             // 
@@ -400,7 +400,7 @@
             this.txtMontant.Location = new System.Drawing.Point(131, 104);
             this.txtMontant.Name = "txtMontant";
             this.txtMontant.Size = new System.Drawing.Size(72, 20);
-            this.txtMontant.TabIndex = 20;
+            this.txtMontant.TabIndex = 3;
             // 
             // FrmLancement
             // 
