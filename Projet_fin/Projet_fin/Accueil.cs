@@ -21,6 +21,7 @@ namespace Projet_fin
         OleDbConnection co = new OleDbConnection();
         DataSet ds = new DataSet();
         int noevent;
+        
 
 
 
@@ -43,27 +44,32 @@ namespace Projet_fin
             string req = @"SELECT [titreEvent], [codeEvent] 
                             FROM Evenements WHERE soldeON = false;";
             cmd.CommandText = req;
+            co.Close();
             Remplir(req, "events");
+            co.Open();
             cbxEvenement.DataSource = ds.Tables["events"];
             cbxEvenement.DisplayMember = "titreEvent";
             cbxEvenement.ValueMember = "codeEvent";
-
+            co.Close();
+           
            
 
         }
 
         private void Remplir(String requete, String nomTable)
         {
-
+            co.Open();
             OleDbCommand cmd = new OleDbCommand(requete, co);
             OleDbDataAdapter da = new OleDbDataAdapter();
             da.SelectCommand = cmd;
 
             da.Fill(ds, nomTable);
+            co.Close();
         }
 
         private void RemplirCheckListBox(int noevent, CheckedListBox clb)
         {
+            co.Open();
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
 
@@ -81,7 +87,7 @@ namespace Projet_fin
                 clb.Items.Add(dr.GetString(0));
             }
 
-
+            co.Close();
         }
 
         private void btn_part_Click(object sender, EventArgs e)
@@ -129,7 +135,7 @@ namespace Projet_fin
 
         private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
+            co.Open();
             cbxPayePar.Items.Clear();
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
@@ -137,9 +143,10 @@ namespace Projet_fin
             clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedValue.ToString();
             noevent = int.Parse(evt);
-
+            co.Close();
             RemplirCheckListBox(noevent, clbBeneficiaires);
-          
+
+            co.Open();
             string req = @"Select p.nomPart, p.codeParticipant
                            From Participants p, Invites i
                            Where p.codeParticipant = i.codePart    
@@ -151,8 +158,8 @@ namespace Projet_fin
                 cbxPayePar.Items.Add(dr.GetString(0));
 
             }
-           
 
+            co.Close();
 
 
         }
@@ -182,7 +189,9 @@ namespace Projet_fin
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            co.Open();
             string req = @"SELECT codeParticipant FROM Participants WHERE nomPart = '" + cbxPayePar.Text + "';";
+            MessageBox.Show(req);
             OleDbCommand cmd = new OleDbCommand(req, co);
             int codePart = int.Parse(cmd.ExecuteScalar().ToString());
 
@@ -199,8 +208,8 @@ namespace Projet_fin
             
             int n = cmd.ExecuteNonQuery();
             MessageBox.Show(n.ToString());
-       
 
+            co.Close();
 
    
         }
