@@ -14,15 +14,16 @@ namespace Projet_fin
     public partial class Participant : Form
     {
 
-        private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
+        private String chco ;//= @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
         private OleDbConnection co = new OleDbConnection();
         private DataSet ds = new DataSet();
         private int CodeEvent = 1;
         private bool load = false;
 
-        public Participant()
+        public Participant(String chco)
         {
             InitializeComponent();
+            this.chco = chco;
         }
 
         private void Participant_Load(object sender, EventArgs e)

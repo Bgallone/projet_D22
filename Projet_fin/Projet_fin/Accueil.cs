@@ -93,7 +93,7 @@ namespace Projet_fin
 
         private void btn_part_Click(object sender, EventArgs e)
         {
-            Form Form1 = new Participant();
+            Form Form1 = new Participant(chco);
             Form1.Show();
         }
 
@@ -104,7 +104,7 @@ namespace Projet_fin
 
         private void btn_event_Click(object sender, EventArgs e)
         {
-            Form Form1 = new événement();
+            Form Form1 = new événement(chco);
             Form1.Show();
         }
 
