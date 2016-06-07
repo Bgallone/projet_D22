@@ -84,7 +84,7 @@
             this.btn_part.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_part.Name = "btn_part";
             this.btn_part.Size = new System.Drawing.Size(55, 55);
-            this.btn_part.TabIndex = 12;
+            this.btn_part.TabIndex = 13;
             this.btn_part.UseVisualStyleBackColor = true;
             this.btn_part.Click += new System.EventHandler(this.btn_part_Click);
             // 
@@ -105,7 +105,7 @@
             this.btn_bilan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_bilan.Name = "btn_bilan";
             this.btn_bilan.Size = new System.Drawing.Size(55, 55);
-            this.btn_bilan.TabIndex = 16;
+            this.btn_bilan.TabIndex = 15;
             this.btn_bilan.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -235,7 +235,7 @@
             this.btnRAZ.Location = new System.Drawing.Point(528, 375);
             this.btnRAZ.Name = "btnRAZ";
             this.btnRAZ.Size = new System.Drawing.Size(75, 23);
-            this.btnRAZ.TabIndex = 19;
+            this.btnRAZ.TabIndex = 9;
             this.btnRAZ.Text = "R-A-Z";
             this.btnRAZ.UseVisualStyleBackColor = true;
             this.btnRAZ.Click += new System.EventHandler(this.btn_RAZ_Click);
@@ -245,7 +245,7 @@
             this.btnQuit.Location = new System.Drawing.Point(528, 405);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(75, 23);
-            this.btnQuit.TabIndex = 18;
+            this.btnQuit.TabIndex = 10;
             this.btnQuit.Text = "Quitter";
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btn_Quit_Click);
@@ -255,7 +255,7 @@
             this.btnValider.Location = new System.Drawing.Point(528, 346);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(75, 23);
-            this.btnValider.TabIndex = 17;
+            this.btnValider.TabIndex = 8;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
