@@ -186,9 +186,12 @@ namespace Projet_fin
             OleDbCommand cmd = new OleDbCommand(req, co);
             int codePart = int.Parse(cmd.ExecuteScalar().ToString());
 
-
-            req = @"INSERT INTO Depenses(numDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('18','" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
+            req = @"Select count(*) from Depenses;";
+            cmd.CommandText = req;
+            int numDep = int.Parse(cmd.ExecuteScalar().ToString());
+            
+            req = @"INSERT INTO Depenses(numDepense,description,montant, dateDepense, codeEvent, commentaire,codePart) 
+                            VALUES('" + numDep + "', '" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
                                       "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ codePart +"');";
 
             cmd.CommandText = req;
@@ -198,11 +201,6 @@ namespace Projet_fin
             MessageBox.Show(n.ToString());
        
 
-            /*
-            string reqtest = "SELECT description FROM Depenses WHERE numDepense = 14";
-            cmd.CommandText = reqtest;
-            string res = cmd.ExecuteScalar().ToString();
-            MessageBox.Show(res);*/
 
    
         }
