@@ -187,7 +187,7 @@ namespace Projet_fin
 
 
             req = @"INSERT INTO Depenses(nulDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
+                            VALUES('18','" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
                                       "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ codePart +"');";
 
             cmd.CommandText = req;
