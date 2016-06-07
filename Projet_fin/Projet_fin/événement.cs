@@ -14,7 +14,7 @@ namespace Projet_fin
     public partial class événement : Form
     {
 
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
+        //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataTable Liaison;
         BindingSource BS = new BindingSource();
