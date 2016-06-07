@@ -16,8 +16,8 @@ namespace Projet_fin
     public partial class FrmLancement : Form
     {
 
-        //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =.\Resources\bdEvents.mdb";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
+        //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =.\Resources\bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataSet ds = new DataSet();
         int noevent;
@@ -187,7 +187,7 @@ namespace Projet_fin
             int codePart = int.Parse(cmd.ExecuteScalar().ToString());
 
 
-            req = @"INSERT INTO Depenses(nulDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
+            req = @"INSERT INTO Depenses(numDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
                             VALUES('18','" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
                                       "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ codePart +"');";
 

@@ -332,6 +332,7 @@
             this.ptb_événement.Size = new System.Drawing.Size(93, 86);
             this.ptb_événement.TabIndex = 0;
             this.ptb_événement.TabStop = false;
+            this.ptb_événement.Click += new System.EventHandler(this.ptb_événement_Click);
             // 
             // tabCréeEve
             // 
@@ -439,7 +440,7 @@
             // dtpEveFin
             // 
             this.dtpEveFin.Location = new System.Drawing.Point(579, 254);
-            this.dtpEveFin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpEveFin.Margin = new System.Windows.Forms.Padding(4);
             this.dtpEveFin.Name = "dtpEveFin";
             this.dtpEveFin.Size = new System.Drawing.Size(265, 22);
             this.dtpEveFin.TabIndex = 6;
@@ -447,7 +448,7 @@
             // dtpEveDeb
             // 
             this.dtpEveDeb.Location = new System.Drawing.Point(84, 254);
-            this.dtpEveDeb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpEveDeb.Margin = new System.Windows.Forms.Padding(4);
             this.dtpEveDeb.Name = "dtpEveDeb";
             this.dtpEveDeb.Size = new System.Drawing.Size(265, 22);
             this.dtpEveDeb.TabIndex = 5;
