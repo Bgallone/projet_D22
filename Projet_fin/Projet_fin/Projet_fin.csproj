@@ -112,9 +112,6 @@
     <None Include="Resources\small-house-vector-icon-252940.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\bdEvents.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\Bilan.png" />
     <Content Include="Resources\Event.png" />
     <Content Include="Resources\House.png" />
