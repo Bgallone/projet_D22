@@ -14,7 +14,7 @@ namespace Projet_fin
     public partial class événement : Form
     {
 
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataTable Liaison;
         BindingSource BS = new BindingSource();
@@ -158,34 +158,42 @@ namespace Projet_fin
             cmd.Connection = co;
             co.ConnectionString = chco;
             co.Open();
+
+            //Titre de l'éve
             string titre = txtTitre.Text;
-            MessageBox.Show(titre);
+
+
             // on gere les dates 
             DateTime dateDeb =  ConvertToDateTime(dtpEveDeb.Text);
-            MessageBox.Show(""+dateDeb);
-            DateTime dateFin = ConvertToDateTime(dtpEveFin.Text);
-            MessageBox.Show(""+dateFin);
 
+            DateTime dateFin = ConvertToDateTime(dtpEveFin.Text);
+
+            //Si les dates sont incorrect
             if (dateDeb > dateFin)
             {
                 MessageBox.Show("La date de fin ne peut pas être avant la date de début.");
             }
+            //Si les dates sont justes 
             else {
+
+            //description de l'événement 
             string description = rtbDescript.Text;
-            MessageBox.Show(description);
+
+            
             string Nom = cboCreateur.Text;
-            btnInvitation.Enabled = true;
-            /*
-            string req = @"INSERT INTO Depenses(description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) + "', '" + dateTimePicker1.Value.Date +
-                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '" + cbxPayePar.SelectedIndex + "');";
+            
+            int evenum = NumReq+1;
+            string req =@"SELECT codeCreateur "
+            int codCrea = 1;
+            string valSolde = "False";
 
+            req = @"INSERT INTO Evenements(codeEvent,titreEvent,dateDebut,dateFin,description,soldeON,codeCreateur)
+                            VALUES('" + evenum + "','" + titre + "','" + dateDeb + "','" + dateFin + "','" + description + "','" + valSolde + "','" + codCrea + "');";
 
-
-            MessageBox.Show(req);
-            OleDbCommand cmd = new OleDbCommand(req, co);
+            cmd.CommandText = req;
             int n = cmd.ExecuteNonQuery();
-            MessageBox.Show(n.ToString());*/
+            MessageBox.Show("" + n);
+            btnInvitation.Enabled = true;
             co.Close();
             }
         }
