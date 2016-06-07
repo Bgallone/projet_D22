@@ -181,16 +181,18 @@ namespace Projet_fin
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-
-            
-            string req = @"INSERT INTO Depenses(description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
-                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ cbxPayePar.SelectedValue +"');";
-            
-
-            
-            MessageBox.Show(req);
+            string req = @"SELECT codeParticipant FROM Participants WHERE nomPart = '" + cbxPayePar.Text + "';";
             OleDbCommand cmd = new OleDbCommand(req, co);
+            int codePart = int.Parse(cmd.ExecuteScalar().ToString());
+
+
+            req = @"INSERT INTO Depenses(description,montant, dateDepense, codeEvent, commentaire,codePart) 
+                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
+                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ codePart +"');";
+
+            cmd.CommandText = req;
+            MessageBox.Show(req);
+            
             int n = cmd.ExecuteNonQuery();
             MessageBox.Show(n.ToString());
        
