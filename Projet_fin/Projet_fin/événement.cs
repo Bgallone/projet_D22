@@ -175,18 +175,14 @@ namespace Projet_fin
             MessageBox.Show(description);
             string Nom = cboCreateur.Text;
             btnInvitation.Enabled = true;
-            
-            string req = @"INSERT INTO (description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
-                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ cbxPayePar.SelectedIndex +"');";
+            int evenum = NumReq+1;
+            int codCrea = 1;
+            string valSolde = "False";
+
+            string req = @"INSERT INTO Evenements(codeEvent,titreEvent,dateDebut,dateFin,description,soldeON,codeCreateur)
+                            VALUES('" + evenum + "','" + titre + "','" + dateDeb + "','" + dateFin + "','" + description + "','" + valSolde + "','" + codCrea + "');";
             
 
-            
-            MessageBox.Show(req);
-            OleDbCommand cmd = new OleDbCommand(req, co);
-            int n = cmd.ExecuteNonQuery();
-            MessageBox.Show(n.ToString());
-            co.Close();
             }
         }
 
