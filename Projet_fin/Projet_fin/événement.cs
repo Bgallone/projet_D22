@@ -203,10 +203,10 @@ namespace Projet_fin
             int evenum = int.Parse(cmd.ExecuteScalar().ToString())+1;
 
 
-            string valSolde = "False";
+            bool valSolde = false;
 
             req = @"INSERT INTO Evenements(codeEvent,titreEvent,dateDebut,dateFin,description,soldeON,codeCreateur)
-                            VALUES(" + evenum + ",'" + titre + "',#" + dateDeb + "#,#" + dateFin + "#,'" + description + "','" + valSolde + "'," + codCrea + ");";
+                            VALUES(" + evenum + ",'" + titre + "',#" + dateDeb + "#,#" + dateFin + "#,'" + description + "'," + valSolde + "," + codCrea + ");";
 
             cmd.CommandText = req;
             MessageBox.Show(req);
