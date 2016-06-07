@@ -175,13 +175,11 @@ namespace Projet_fin
             MessageBox.Show(description);
             string Nom = cboCreateur.Text;
             btnInvitation.Enabled = true;
-            /*
-            string req = @"INSERT INTO Depenses(description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) + "', '" + dateTimePicker1.Value.Date +
-                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '" + cbxPayePar.SelectedIndex + "');";
+            
+            /*string req = 
 
 
-
+                /*
             MessageBox.Show(req);
             OleDbCommand cmd = new OleDbCommand(req, co);
             int n = cmd.ExecuteNonQuery();
