@@ -16,7 +16,7 @@ namespace Projet_fin
     public partial class FrmLancement : Form
     {
 
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataSet ds = new DataSet();
         int noevent;
@@ -129,7 +129,7 @@ namespace Projet_fin
         private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
         {
 
-           
+            cbxPayePar.Items.Clear();
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
             cmd.CommandType = CommandType.Text;
@@ -139,7 +139,7 @@ namespace Projet_fin
 
             RemplirCheckListBox(noevent, clbBeneficiaires);
           
-            string req = @"Select p.nomPart
+            string req = @"Select p.nomPart, p.codeParticipant
                            From Participants p, Invites i
                            Where p.codeParticipant = i.codePart    
                            and i.codeEvent = " + noevent + ";";
@@ -148,7 +148,9 @@ namespace Projet_fin
             while (dr.Read())
             {
                 cbxPayePar.Items.Add(dr.GetString(0));
+
             }
+           
 
 
 

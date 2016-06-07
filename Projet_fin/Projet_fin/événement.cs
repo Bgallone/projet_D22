@@ -14,7 +14,7 @@ namespace Projet_fin
     public partial class événement : Form
     {
 
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataTable Liaison;
         BindingSource BS = new BindingSource();
@@ -176,14 +176,16 @@ namespace Projet_fin
             string Nom = cboCreateur.Text;
             btnInvitation.Enabled = true;
             
-            /*string req = 
+            string req = @"INSERT INTO (description,montant, dateDepense, codeEvent, commentaire,codePart) 
+                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
+                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ cbxPayePar.SelectedIndex +"');";
+            
 
-
-                /*
+            
             MessageBox.Show(req);
             OleDbCommand cmd = new OleDbCommand(req, co);
             int n = cmd.ExecuteNonQuery();
-            MessageBox.Show(n.ToString());*/
+            MessageBox.Show(n.ToString());
             co.Close();
             }
         }
