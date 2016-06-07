@@ -165,7 +165,8 @@ namespace Projet_fin
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (chxToutCocher.Checked)
+            if (
+                chxToutCocher.Checked)
             {
                 for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
                 {
