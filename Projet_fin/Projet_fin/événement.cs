@@ -158,31 +158,43 @@ namespace Projet_fin
             cmd.Connection = co;
             co.ConnectionString = chco;
             co.Open();
+
+            //Titre de l'éve
             string titre = txtTitre.Text;
-            MessageBox.Show(titre);
+
+
             // on gere les dates 
             DateTime dateDeb =  ConvertToDateTime(dtpEveDeb.Text);
-            MessageBox.Show(""+dateDeb);
-            DateTime dateFin = ConvertToDateTime(dtpEveFin.Text);
-            MessageBox.Show(""+dateFin);
 
+            DateTime dateFin = ConvertToDateTime(dtpEveFin.Text);
+
+            //Si les dates sont incorrect
             if (dateDeb > dateFin)
             {
                 MessageBox.Show("La date de fin ne peut pas être avant la date de début.");
             }
+            //Si les dates sont justes 
             else {
+
+            //description de l'événement 
             string description = rtbDescript.Text;
-            MessageBox.Show(description);
+
+            
             string Nom = cboCreateur.Text;
-            btnInvitation.Enabled = true;
+            
             int evenum = NumReq+1;
+            string req =@"SELECT codeCreateur "
             int codCrea = 1;
             string valSolde = "False";
 
-            string req = @"INSERT INTO Evenements(codeEvent,titreEvent,dateDebut,dateFin,description,soldeON,codeCreateur)
+            req = @"INSERT INTO Evenements(codeEvent,titreEvent,dateDebut,dateFin,description,soldeON,codeCreateur)
                             VALUES('" + evenum + "','" + titre + "','" + dateDeb + "','" + dateFin + "','" + description + "','" + valSolde + "','" + codCrea + "');";
-            
 
+            cmd.CommandText = req;
+            int n = cmd.ExecuteNonQuery();
+            MessageBox.Show("" + n);
+            btnInvitation.Enabled = true;
+            co.Close();
             }
         }
 
