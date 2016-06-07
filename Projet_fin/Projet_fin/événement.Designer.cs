@@ -47,7 +47,6 @@
             this.btnSuiv = new System.Windows.Forms.Button();
             this.btnPre = new System.Windows.Forms.Button();
             this.BtnDebut = new System.Windows.Forms.Button();
-            this.pgb_Prog = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblNumChange = new System.Windows.Forms.Label();
             this.lblNévé = new System.Windows.Forms.Label();
@@ -111,7 +110,6 @@
             this.tab1a1.Controls.Add(this.btnSuiv);
             this.tab1a1.Controls.Add(this.btnPre);
             this.tab1a1.Controls.Add(this.BtnDebut);
-            this.tab1a1.Controls.Add(this.pgb_Prog);
             this.tab1a1.Controls.Add(this.groupBox1);
             this.tab1a1.Location = new System.Drawing.Point(4, 28);
             this.tab1a1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -128,7 +126,8 @@
             this.cckRegle.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.cckRegle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cckRegle.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.cckRegle.Location = new System.Drawing.Point(321, 409);
+            this.cckRegle.Location = new System.Drawing.Point(341, 514);
+            this.cckRegle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cckRegle.Name = "cckRegle";
             this.cckRegle.Size = new System.Drawing.Size(18, 17);
             this.cckRegle.TabIndex = 20;
@@ -138,7 +137,8 @@
             // 
             this.rtbEveDescri.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.rtbEveDescri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbEveDescri.Location = new System.Drawing.Point(345, 287);
+            this.rtbEveDescri.Location = new System.Drawing.Point(384, 324);
+            this.rtbEveDescri.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbEveDescri.Name = "rtbEveDescri";
             this.rtbEveDescri.ReadOnly = true;
             this.rtbEveDescri.Size = new System.Drawing.Size(544, 52);
@@ -147,15 +147,17 @@
             // 
             // lblFin
             // 
-            this.lblFin.Location = new System.Drawing.Point(500, 354);
+            this.lblFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFin.Location = new System.Drawing.Point(599, 438);
             this.lblFin.Name = "lblFin";
-            this.lblFin.Size = new System.Drawing.Size(95, 14);
+            this.lblFin.Size = new System.Drawing.Size(95, 17);
             this.lblFin.TabIndex = 18;
             this.lblFin.Text = "**/**/****";
             // 
             // lblDeb
             // 
-            this.lblDeb.Location = new System.Drawing.Point(292, 354);
+            this.lblDeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeb.Location = new System.Drawing.Point(359, 439);
             this.lblDeb.Name = "lblDeb";
             this.lblDeb.Size = new System.Drawing.Size(96, 16);
             this.lblDeb.TabIndex = 17;
@@ -164,79 +166,87 @@
             // LblEveInt
             // 
             this.LblEveInt.AutoSize = true;
-            this.LblEveInt.Location = new System.Drawing.Point(359, 239);
+            this.LblEveInt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEveInt.Location = new System.Drawing.Point(359, 262);
             this.LblEveInt.Name = "LblEveInt";
-            this.LblEveInt.Size = new System.Drawing.Size(137, 17);
+            this.LblEveInt.Size = new System.Drawing.Size(161, 20);
             this.LblEveInt.TabIndex = 15;
             this.LblEveInt.Text = "Nom de l\'événement";
             // 
             // LblCréateur
             // 
             this.LblCréateur.AutoSize = true;
+            this.LblCréateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCréateur.Location = new System.Drawing.Point(359, 181);
             this.LblCréateur.Name = "LblCréateur";
-            this.LblCréateur.Size = new System.Drawing.Size(238, 17);
+            this.LblCréateur.Size = new System.Drawing.Size(279, 20);
             this.LblCréateur.TabIndex = 14;
             this.LblCréateur.Text = "Changer par le nom de l\'oganisateur";
             // 
             // lblFini
             // 
             this.lblFini.AutoSize = true;
-            this.lblFini.Location = new System.Drawing.Point(252, 409);
+            this.lblFini.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFini.Location = new System.Drawing.Point(252, 512);
             this.lblFini.Name = "lblFini";
-            this.lblFini.Size = new System.Drawing.Size(53, 17);
+            this.lblFini.Size = new System.Drawing.Size(69, 20);
             this.lblFini.TabIndex = 11;
             this.lblFini.Text = "Réglé :";
             // 
             // lblau
             // 
             this.lblau.AutoSize = true;
-            this.lblau.Location = new System.Drawing.Point(461, 354);
+            this.lblau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblau.Location = new System.Drawing.Point(523, 436);
             this.lblau.Name = "lblau";
-            this.lblau.Size = new System.Drawing.Size(32, 17);
+            this.lblau.Size = new System.Drawing.Size(41, 20);
             this.lblau.TabIndex = 10;
             this.lblau.Text = "au :";
             // 
             // lbldu
             // 
             this.lbldu.AutoSize = true;
-            this.lbldu.Location = new System.Drawing.Point(252, 354);
+            this.lbldu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldu.Location = new System.Drawing.Point(252, 436);
             this.lbldu.Name = "lbldu";
-            this.lbldu.Size = new System.Drawing.Size(34, 17);
+            this.lbldu.Size = new System.Drawing.Size(45, 20);
             this.lbldu.TabIndex = 9;
             this.lbldu.Text = "Du :";
             // 
             // lblDescri
             // 
             this.lblDescri.AutoSize = true;
-            this.lblDescri.Location = new System.Drawing.Point(252, 290);
+            this.lblDescri.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescri.Location = new System.Drawing.Point(252, 324);
             this.lblDescri.Name = "lblDescri";
-            this.lblDescri.Size = new System.Drawing.Size(87, 17);
+            this.lblDescri.Size = new System.Drawing.Size(118, 20);
             this.lblDescri.TabIndex = 8;
             this.lblDescri.Text = "Description :";
             // 
             // lblInti
             // 
             this.lblInti.AutoSize = true;
-            this.lblInti.Location = new System.Drawing.Point(252, 239);
+            this.lblInti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInti.Location = new System.Drawing.Point(252, 258);
             this.lblInti.Name = "lblInti";
-            this.lblInti.Size = new System.Drawing.Size(57, 17);
+            this.lblInti.Size = new System.Drawing.Size(78, 20);
             this.lblInti.TabIndex = 7;
             this.lblInti.Text = "Intitulé :";
             // 
             // lblCrée
             // 
             this.lblCrée.AutoSize = true;
+            this.lblCrée.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCrée.Location = new System.Drawing.Point(252, 181);
             this.lblCrée.Name = "lblCrée";
-            this.lblCrée.Size = new System.Drawing.Size(71, 17);
+            this.lblCrée.Size = new System.Drawing.Size(94, 20);
             this.lblCrée.TabIndex = 6;
             this.lblCrée.Text = "Créé par :";
             // 
             // btnFin
             // 
             this.btnFin.Image = ((System.Drawing.Image)(resources.GetObject("btnFin.Image")));
-            this.btnFin.Location = new System.Drawing.Point(717, 473);
+            this.btnFin.Location = new System.Drawing.Point(979, 551);
             this.btnFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFin.Name = "btnFin";
             this.btnFin.Size = new System.Drawing.Size(80, 62);
@@ -247,7 +257,7 @@
             // btnSuiv
             // 
             this.btnSuiv.Image = ((System.Drawing.Image)(resources.GetObject("btnSuiv.Image")));
-            this.btnSuiv.Location = new System.Drawing.Point(632, 473);
+            this.btnSuiv.Location = new System.Drawing.Point(979, 470);
             this.btnSuiv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSuiv.Name = "btnSuiv";
             this.btnSuiv.Size = new System.Drawing.Size(80, 62);
@@ -258,7 +268,7 @@
             // btnPre
             // 
             this.btnPre.Image = ((System.Drawing.Image)(resources.GetObject("btnPre.Image")));
-            this.btnPre.Location = new System.Drawing.Point(515, 473);
+            this.btnPre.Location = new System.Drawing.Point(39, 470);
             this.btnPre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPre.Name = "btnPre";
             this.btnPre.Size = new System.Drawing.Size(80, 62);
@@ -270,21 +280,13 @@
             // BtnDebut
             // 
             this.BtnDebut.Image = ((System.Drawing.Image)(resources.GetObject("BtnDebut.Image")));
-            this.BtnDebut.Location = new System.Drawing.Point(428, 473);
+            this.BtnDebut.Location = new System.Drawing.Point(39, 551);
             this.BtnDebut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnDebut.Name = "BtnDebut";
             this.BtnDebut.Size = new System.Drawing.Size(80, 62);
             this.BtnDebut.TabIndex = 2;
             this.BtnDebut.UseVisualStyleBackColor = true;
             this.BtnDebut.Click += new System.EventHandler(this.BtnDebut_Click);
-            // 
-            // pgb_Prog
-            // 
-            this.pgb_Prog.Location = new System.Drawing.Point(485, 539);
-            this.pgb_Prog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pgb_Prog.Name = "pgb_Prog";
-            this.pgb_Prog.Size = new System.Drawing.Size(255, 36);
-            this.pgb_Prog.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -437,7 +439,7 @@
             // dtpEveFin
             // 
             this.dtpEveFin.Location = new System.Drawing.Point(579, 254);
-            this.dtpEveFin.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEveFin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpEveFin.Name = "dtpEveFin";
             this.dtpEveFin.Size = new System.Drawing.Size(265, 22);
             this.dtpEveFin.TabIndex = 6;
@@ -445,7 +447,7 @@
             // dtpEveDeb
             // 
             this.dtpEveDeb.Location = new System.Drawing.Point(84, 254);
-            this.dtpEveDeb.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEveDeb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpEveDeb.Name = "dtpEveDeb";
             this.dtpEveDeb.Size = new System.Drawing.Size(265, 22);
             this.dtpEveDeb.TabIndex = 5;
@@ -491,6 +493,7 @@
             this.txtTitre.Name = "txtTitre";
             this.txtTitre.Size = new System.Drawing.Size(524, 38);
             this.txtTitre.TabIndex = 3;
+            this.txtTitre.Text = " ";
             this.txtTitre.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtTitre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -556,7 +559,6 @@
         private System.Windows.Forms.Button btnSuiv;
         private System.Windows.Forms.Button btnPre;
         private System.Windows.Forms.Button BtnDebut;
-        private System.Windows.Forms.ProgressBar pgb_Prog;
         private System.Windows.Forms.Label lblNumChange;
         private System.Windows.Forms.Label lblNévé;
         private System.Windows.Forms.PictureBox ptb_événement;

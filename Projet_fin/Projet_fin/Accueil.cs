@@ -16,9 +16,10 @@ namespace Projet_fin
     public partial class FrmLancement : Form
     {
 
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =./Resources/bdEvents.mdb";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =C:\Users\Arthur\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataSet ds = new DataSet();
+        int noevent;
 
 
 
@@ -134,7 +135,7 @@ namespace Projet_fin
             cmd.CommandType = CommandType.Text;
             clbBeneficiaires.Items.Clear();
             string evt = cbxEvenement.SelectedValue.ToString();
-            int noevent = int.Parse(evt);
+            noevent = int.Parse(evt);
 
             RemplirCheckListBox(noevent, clbBeneficiaires);
           
@@ -162,41 +163,42 @@ namespace Projet_fin
         {
             if (checkBox1.Checked)
             {
-               
-                foreach(Control c in this.clbBeneficiaires.Items)
+                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
                 {
-                    MessageBox.Show("slt");
-                   
+                    clbBeneficiaires.SetItemChecked(i, true);
                 }
             }
             else
             {
-               
+                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
+                {
+                    clbBeneficiaires.SetItemChecked(i, false);
+                }
             }
         }
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            double montant = 12;
-            string commentaire = txtCommentaire.Text;
-            string desc = txtDepense.Text;
-            int codePart = cbxPayePar.SelectedIndex;
-            DateTime date = dateTimePicker1.Value.Date;
 
-            string req = @"INSERT INTO Depenses(numDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('15', 'wesh alors', '18', '" + date + "','4', 'wesh', '4'); ";
+            
+            string req = @"INSERT INTO Depenses(description,montant, dateDepense, codeEvent, commentaire,codePart) 
+                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
+                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ cbxPayePar.SelectedIndex +"');";
+            
 
-            string reqtest = @"SELECT description FROM Depenses WHERE numDepense = 15;";
-            OleDbCommand cd = new OleDbCommand();
-            cd.Connection = co;
-            cd.CommandText = reqtest;
-            string res = cd.ExecuteScalar().ToString();
-            MessageBox.Show(res);
             
             MessageBox.Show(req);
             OleDbCommand cmd = new OleDbCommand(req, co);
             int n = cmd.ExecuteNonQuery();
             MessageBox.Show(n.ToString());
+       
+
+            /*
+            string reqtest = "SELECT description FROM Depenses WHERE numDepense = 14";
+            cmd.CommandText = reqtest;
+            string res = cmd.ExecuteScalar().ToString();
+            MessageBox.Show(res);*/
+
    
         }
     }
