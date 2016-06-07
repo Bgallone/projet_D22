@@ -114,7 +114,10 @@ namespace Projet_fin
 
         private void btn_RAZ_Click(object sender, EventArgs e)
         {
-
+            txtCommentaire.Clear();
+            txtDepense.Clear();
+            txtMontant.Clear();
+            
         }
 
         private void btn_Quit_Click(object sender, EventArgs e)
