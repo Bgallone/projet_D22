@@ -160,7 +160,19 @@ namespace Projet_fin
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (checkBox1.Checked)
+            {
+               
+                foreach(Control c in this.clbBeneficiaires.Items)
+                {
+                    MessageBox.Show("slt");
+                   
+                }
+            }
+            else
+            {
+               
+            }
         }
 
         private void btnValider_Click(object sender, EventArgs e)
@@ -173,6 +185,13 @@ namespace Projet_fin
 
             string req = @"INSERT INTO Depenses(numDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
                             VALUES('15', 'wesh alors', '18', '" + date + "','4', 'wesh', '4'); ";
+
+            string reqtest = @"SELECT description FROM Depenses WHERE numDepense = 15;";
+            OleDbCommand cd = new OleDbCommand();
+            cd.Connection = co;
+            cd.CommandText = reqtest;
+            string res = cd.ExecuteScalar().ToString();
+            MessageBox.Show(res);
             
             MessageBox.Show(req);
             OleDbCommand cmd = new OleDbCommand(req, co);
