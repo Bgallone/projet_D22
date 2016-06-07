@@ -16,7 +16,7 @@ namespace Projet_fin
     public partial class FrmLancement : Form
     {
 
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =./Resources/bdEvents.mdb";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =C:\Users\Arthur\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
         OleDbConnection co = new OleDbConnection();
         DataSet ds = new DataSet();
         int noevent;
@@ -40,7 +40,7 @@ namespace Projet_fin
 
             cmd.CommandType = CommandType.Text;
             string req = @"SELECT [titreEvent], [codeEvent] 
-                            FROM Evenements;";
+                            FROM Evenements WHERE soldeON = false;";
             cmd.CommandText = req;
             Remplir(req, "events");
             cbxEvenement.DataSource = ds.Tables["events"];
@@ -186,7 +186,7 @@ namespace Projet_fin
             int codePart = int.Parse(cmd.ExecuteScalar().ToString());
 
 
-            req = @"INSERT INTO Depenses(description,montant, dateDepense, codeEvent, commentaire,codePart) 
+            req = @"INSERT INTO Depenses(nulDepense, description,montant, dateDepense, codeEvent, commentaire,codePart) 
                             VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
                                       "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ codePart +"');";
 
