@@ -69,6 +69,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             tbcEve = new System.Windows.Forms.TabControl();
             tbcEve.SuspendLayout();
             this.tab1a1.SuspendLayout();
@@ -332,7 +333,6 @@
             this.ptb_événement.Size = new System.Drawing.Size(93, 86);
             this.ptb_événement.TabIndex = 0;
             this.ptb_événement.TabStop = false;
-
             // 
             // tabCréeEve
             // 
@@ -589,5 +589,6 @@
         private System.Windows.Forms.Label lblEveDescript;
         private System.Windows.Forms.RichTextBox rtbEveDescri;
         private System.Windows.Forms.CheckBox cckRegle;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }

@@ -123,6 +123,8 @@ namespace Projet_fin
             txtCommentaire.Clear();
             txtDepense.Clear();
             txtMontant.Clear();
+            clbBeneficiaires.Items.Clear();
+
             
         }
 
@@ -216,6 +218,12 @@ namespace Projet_fin
             co.Close();
 
    
+        }
+
+        private void btn_dep_Click(object sender, EventArgs e)
+        {
+            Form Form1 = Dépenses(chco);
+            Form1.Show();
         }
     }
 }
