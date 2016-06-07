@@ -14,7 +14,9 @@ namespace Projet_fin
     public partial class événement : Form
     {
 
-        //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
+        //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =.\Resources\bdEvents.mdb";
+        
         OleDbConnection co = new OleDbConnection();
         DataTable Liaison;
         BindingSource BS = new BindingSource();
@@ -179,18 +181,28 @@ namespace Projet_fin
             //description de l'événement 
             string description = rtbDescript.Text;
 
-            
+            //On recupere le nom du bonhomme;
             string Nom = cboCreateur.Text;
-            
+            Char delimiter = ' ';
+            String[] substrings = Nom.Split(delimiter);
+            Nom = substrings[0];
+
+           
+            string req = @"SELECT codeCreateur FROM Evenements 
+                           WHERE (SELECT codeParticipant FROM Participants
+                                   WHERE (upper)nomPart ='"+Nom+"');";
+            MessageBox.Show(req);
+            cmd.CommandText = req;
+            int codCrea = int.Parse(cmd.ExecuteScalar().ToString()); 
+
             int evenum = NumReq+1;
-            string req =@"SELECT codeCreateur "
-            int codCrea = 1;
             string valSolde = "False";
 
             req = @"INSERT INTO Evenements(codeEvent,titreEvent,dateDebut,dateFin,description,soldeON,codeCreateur)
                             VALUES('" + evenum + "','" + titre + "','" + dateDeb + "','" + dateFin + "','" + description + "','" + valSolde + "','" + codCrea + "');";
 
             cmd.CommandText = req;
+
             int n = cmd.ExecuteNonQuery();
             MessageBox.Show("" + n);
             btnInvitation.Enabled = true;
