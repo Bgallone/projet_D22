@@ -168,7 +168,7 @@ namespace Projet_fin
 
             // on gere les dates 
             DateTime dateDeb =  ConvertToDateTime(dtpEveDeb.Text);
-
+            
             DateTime dateFin = ConvertToDateTime(dtpEveFin.Text);
 
             //Si les dates sont incorrect
@@ -205,7 +205,7 @@ namespace Projet_fin
             string valSolde = "False";
 
             req = @"INSERT INTO Evenements(codeEvent,titreEvent,dateDebut,dateFin,description,soldeON,codeCreateur)
-                            VALUES('" + evenum + "','" + titre + "','" + dateDeb + "','" + dateFin + "','" + description + "','" + valSolde + "','" + codCrea + "');";
+                            VALUES(" + evenum + ",'" + titre + "',#" + dateDeb + "#,#" + dateFin + "#,'" + description + "','" + valSolde + "'," + codCrea + ");";
 
             cmd.CommandText = req;
             MessageBox.Show(req);
