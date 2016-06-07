@@ -22,23 +22,23 @@ namespace Projet_fin
         {
             InitializeComponent();
         }
-        int NumReq=1;
+        int NumReq = 1;
         int NbPage;
 
- 
+
         private void événement_Load(object sender, EventArgs e)
         {
             string requete = @"SELECT e.*,[p.nomPart] as NomCrea FROM Evenements e , Participants p
                             WHERE p.codeParticipant =e.codeCreateur;";
-           
+
             co = new OleDbConnection(chco);
             OleDbCommand cmd = new OleDbCommand(requete, co);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataSet resultat = new DataSet();
-           
+
             da.SelectCommand = cmd;
 
-            da.Fill(resultat,"TableDeLiaison");
+            da.Fill(resultat, "TableDeLiaison");
             //nous donne le nombre d'événement.
             Liaison = resultat.Tables["TableDeLiaison"];
 
@@ -64,23 +64,23 @@ namespace Projet_fin
 
             cmd.CommandText = req;
             OleDbDataReader dr = cmd.ExecuteReader();
-            while(dr.Read())
+            while (dr.Read())
             {
-                cboCreateur.Items.Add(dr.GetString(0) +" "+ dr.GetString(1));
+                cboCreateur.Items.Add(dr.GetString(0) + " " + dr.GetString(1));
             }
 
             // on ferme la connections
             co.Close();
-            
 
-        
+
+
         }
         private void button3_Click(object sender, EventArgs e)
         {
             if (NumReq != NbPage)
             {
                 NumReq++;
-               //change
+                //change
                 BS.MoveNext();
                 lblNumChange.Text = "" + NumReq + " ";
             }
@@ -89,7 +89,7 @@ namespace Projet_fin
 
         private void btnPre_Click(object sender, EventArgs e)
         {
-            if (NumReq != 1 )
+            if (NumReq != 1)
             {
                 NumReq--;
                 //change
@@ -121,22 +121,22 @@ namespace Projet_fin
 
         private void cboCreateur_KeyPress(object sender, KeyPressEventArgs e)
         {
-          
-                e.Handled = true;
-            
+
+            e.Handled = true;
+
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '^' || e.KeyChar == '#' || e.KeyChar == '|' || e.KeyChar == '&' || e.KeyChar == '~' || e.KeyChar == '}' || e.KeyChar == '{' || e.KeyChar == '\\' || e.KeyChar == '@')
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
-            if(txtTitre.Text.Length>0)
+            if (txtTitre.Text.Length > 0)
             {
-                if (txtTitre.Text.Substring(txtTitre.Text.Length-1) == " ")
+                if (txtTitre.Text.Substring(txtTitre.Text.Length - 1) == " ")
                 {
-                    if(e.KeyChar == ' ')
+                    if (e.KeyChar == ' ')
                     {
                         e.Handled = true;
                     }
@@ -148,12 +148,46 @@ namespace Projet_fin
         {
             Form inv = new Invitation();
             inv.ShowDialog();
-            
+
         }
 
         private void btnEnregister_Click(object sender, EventArgs e)
         {
-            btnInvitation.Enabled = true; 
+          
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+            co.ConnectionString = chco;
+            co.Open();
+            string titre = txtTitre.Text;
+            MessageBox.Show(titre);
+            // on gere les dates 
+            DateTime dateDeb =  ConvertToDateTime(dtpEveDeb.Text);
+            MessageBox.Show(""+dateDeb);
+            DateTime dateFin = ConvertToDateTime(dtpEveFin.Text);
+            MessageBox.Show(""+dateFin);
+
+            if (dateDeb > dateFin)
+            {
+                MessageBox.Show("La date de fin ne peut pas être avant la date de début.");
+            }
+            else {
+            string description = rtbDescript.Text;
+            MessageBox.Show(description);
+            string Nom = cboCreateur.Text;
+            btnInvitation.Enabled = true;
+            /*
+            string req = @"INSERT INTO Depenses(description,montant, dateDepense, codeEvent, commentaire,codePart) 
+                            VALUES('" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) + "', '" + dateTimePicker1.Value.Date +
+                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '" + cbxPayePar.SelectedIndex + "');";
+
+
+
+            MessageBox.Show(req);
+            OleDbCommand cmd = new OleDbCommand(req, co);
+            int n = cmd.ExecuteNonQuery();
+            MessageBox.Show(n.ToString());*/
+            co.Close();
+            }
         }
 
         private void cboCreateur_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,10 +197,11 @@ namespace Projet_fin
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (txtTitre.Text != " ") { 
-            rtbDescript.Enabled = true;
+            if (txtTitre.Text != " ")
+            {
+                rtbDescript.Enabled = true;
             }
-         
+
         }
 
         private void rtbDescript_TextChanged(object sender, EventArgs e)
@@ -180,16 +215,25 @@ namespace Projet_fin
         private void rtbDescript_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (rtbDescript.Text.Length > 0)
-                        {
-                            if (rtbDescript.Text.Substring(rtbDescript.Text.Length - 1) == " ")
-                            {
-                                if (e.KeyChar == ' ')
-                                {
-                                    e.Handled = true;
-                                }
-                            }
-                        }
+            {
+                if (rtbDescript.Text.Substring(rtbDescript.Text.Length - 1) == " ")
+                {
+                    if (e.KeyChar == ' ')
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
         }
+
+        private static DateTime ConvertToDateTime(string value)
+        {
+            DateTime convertedDate;
+            convertedDate = Convert.ToDateTime(value);
+            return convertedDate;
+            
+        }
+
 
     }
 }
