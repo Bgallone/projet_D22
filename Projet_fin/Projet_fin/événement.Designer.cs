@@ -332,7 +332,7 @@
             this.ptb_événement.Size = new System.Drawing.Size(93, 86);
             this.ptb_événement.TabIndex = 0;
             this.ptb_événement.TabStop = false;
-            this.ptb_événement.Click += new System.EventHandler(this.ptb_événement_Click);
+
             // 
             // tabCréeEve
             // 

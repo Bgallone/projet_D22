@@ -14,6 +14,7 @@ namespace Projet_fin
     public partial class événement : Form
     {
 
+        //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
         String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
         //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =.\Resources\bdEvents.mdb";
         
@@ -190,21 +191,27 @@ namespace Projet_fin
            
             string req = @"SELECT codeCreateur FROM Evenements 
                            WHERE (SELECT codeParticipant FROM Participants
-                                   WHERE (upper)nomPart ='"+Nom+"');";
+                                   WHERE nomPart ='"+Nom+"');";
             MessageBox.Show(req);
             cmd.CommandText = req;
-            int codCrea = int.Parse(cmd.ExecuteScalar().ToString()); 
+            int codCrea = int.Parse(cmd.ExecuteScalar().ToString());
 
-            int evenum = NumReq+1;
+            //Num de l'événement 
+            req = @"SELECT count(*)  FROM Evenements";
+            cmd.CommandText = req;
+            int evenum = int.Parse(cmd.ExecuteScalar().ToString())+1;
+
+
             string valSolde = "False";
 
             req = @"INSERT INTO Evenements(codeEvent,titreEvent,dateDebut,dateFin,description,soldeON,codeCreateur)
                             VALUES('" + evenum + "','" + titre + "','" + dateDeb + "','" + dateFin + "','" + description + "','" + valSolde + "','" + codCrea + "');";
 
             cmd.CommandText = req;
+            MessageBox.Show(req);
 
             int n = cmd.ExecuteNonQuery();
-            MessageBox.Show("" + n);
+            MessageBox.Show(n.ToString());
             btnInvitation.Enabled = true;
             co.Close();
             }
