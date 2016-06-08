@@ -55,6 +55,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bdEventsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Bilan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bilan.Designer.cs">
+      <DependentUpon>Bilan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dépenses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </Compile>
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bilan.resx">
+      <DependentUpon>Bilan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dépenses.resx">
       <DependentUpon>Dépenses.cs</DependentUpon>

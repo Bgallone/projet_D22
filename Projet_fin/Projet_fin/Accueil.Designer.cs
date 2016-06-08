@@ -106,6 +106,7 @@
             this.btn_bilan.Size = new System.Drawing.Size(75, 69);
             this.btn_bilan.TabIndex = 15;
             this.btn_bilan.UseVisualStyleBackColor = true;
+            this.btn_bilan.Click += new System.EventHandler(this.btn_bilan_Click);
             // 
             // label3
             // 

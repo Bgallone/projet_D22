@@ -33,7 +33,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDepense = new System.Windows.Forms.DataGridView();
             this.chxAll = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxParticipant = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepense)).BeginInit();
@@ -89,14 +89,15 @@
             this.chxAll.UseVisualStyleBackColor = true;
             this.chxAll.CheckedChanged += new System.EventHandler(this.chxAll_CheckedChanged);
             // 
-            // comboBox1
+            // cbxParticipant
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(514, 50);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(221, 24);
-            this.comboBox1.TabIndex = 9;
+            this.cbxParticipant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxParticipant.FormattingEnabled = true;
+            this.cbxParticipant.Location = new System.Drawing.Point(514, 50);
+            this.cbxParticipant.Name = "cbxParticipant";
+            this.cbxParticipant.Size = new System.Drawing.Size(221, 24);
+            this.cbxParticipant.TabIndex = 9;
+            this.cbxParticipant.SelectionChangeCommitted += new System.EventHandler(this.cbxParticipant_SelectionChangeCommitted);
             // 
             // label2
             // 
@@ -113,7 +114,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 546);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxParticipant);
             this.Controls.Add(this.chxAll);
             this.Controls.Add(this.cbxEvenement);
             this.Controls.Add(this.groupBox1);
@@ -135,7 +136,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvDepense;
         private System.Windows.Forms.CheckBox chxAll;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxParticipant;
         private System.Windows.Forms.Label label2;
     }
 }

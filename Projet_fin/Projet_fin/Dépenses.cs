@@ -128,5 +128,15 @@ namespace Projet_fin
             remplirDataGridView(req1);
             co.Close();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxParticipant_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

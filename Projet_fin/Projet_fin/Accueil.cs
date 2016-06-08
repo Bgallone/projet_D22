@@ -238,6 +238,12 @@ namespace Projet_fin
             Form Form1 = new Dépenses(chco);
             Form1.Show();
         }
+
+        private void btn_bilan_Click(object sender, EventArgs e)
+        {
+            Form Form1 = new Bilan();
+            Form1.Show();
+        }
     }
 }
     
