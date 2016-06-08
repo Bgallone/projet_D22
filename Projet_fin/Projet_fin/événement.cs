@@ -34,7 +34,6 @@ namespace Projet_fin
         {
             string requete = @"SELECT e.*,[p.nomPart] as NomCrea FROM Evenements e , Participants p
                             WHERE p.codeParticipant =e.codeCreateur;";
-
             co = new OleDbConnection(chco);
             OleDbCommand cmd = new OleDbCommand(requete, co);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
@@ -189,14 +188,16 @@ namespace Projet_fin
             String[] substrings = Nom.Split(delimiter);
             Nom = substrings[0];
 
-           
-            string req = @"SELECT codeCreateur FROM Evenements 
-                           WHERE (SELECT codeParticipant FROM Participants
-                                   WHERE nomPart ='"+Nom+"');";
+
+            string req = @"SELECT codeParticipant FROM Participants
+                            WHERE nomPart ='" + Nom + "';";
+                                   
             MessageBox.Show(req);
             cmd.CommandText = req;
+            
             int codCrea = int.Parse(cmd.ExecuteScalar().ToString());
 
+            MessageBox.Show(""+codCrea);
             //Num de l'événement 
             req = @"SELECT count(*)  FROM Evenements";
             cmd.CommandText = req;
@@ -207,7 +208,6 @@ namespace Projet_fin
 
             req = @"INSERT INTO Evenements(codeEvent,titreEvent,dateDebut,dateFin,description,soldeON,codeCreateur)
                             VALUES(" + evenum + ",'" + titre + "',#" + dateDeb + "#,#" + dateFin + "#,'" + description + "'," + valSolde + "," + codCrea + ");";
-
             cmd.CommandText = req;
             MessageBox.Show(req);
 
