@@ -131,7 +131,7 @@ namespace Projet_fin
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '^' || e.KeyChar == '#' || e.KeyChar == '|' || e.KeyChar == '&' || e.KeyChar == '~' || e.KeyChar == '}' || e.KeyChar == '{' || e.KeyChar == '\\' || e.KeyChar == '@')
+            if (e.KeyChar == '\'' || e.KeyChar == '^' || e.KeyChar == '#' || e.KeyChar == '|' || e.KeyChar == '&' || e.KeyChar == '~' || e.KeyChar == '}' || e.KeyChar == '{' || e.KeyChar == '\\' || e.KeyChar == '@')
             {
                 e.Handled = true;
             }
@@ -182,7 +182,7 @@ namespace Projet_fin
             //description de l'événement 
             string description = rtbDescript.Text;
 
-            //On recupere le nom du bonhomme;
+            //On recupere le nom du créateur;
             string Nom = cboCreateur.Text;
             Char delimiter = ' ';
             String[] substrings = Nom.Split(delimiter);
@@ -244,7 +244,7 @@ namespace Projet_fin
             {
                 if (rtbDescript.Text.Substring(rtbDescript.Text.Length - 1) == " ")
                 {
-                    if (e.KeyChar == ' ')
+                    if (e.KeyChar == ' ' || e.KeyChar == '\'')
                     {
                         e.Handled = true;
                     }
