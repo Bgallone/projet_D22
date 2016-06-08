@@ -181,9 +181,19 @@ namespace Projet_fin
                     string req = @"INSERT INTO Invites (codeEvent, codePart, login,mdp) 
                                     VALUES (" + Evenum + "," + id + ",'" + login + "','" + pwd + "');";
 
+                    int n = 0;
                     MessageBox.Show(req);
                     cmd.CommandText = req;
-                    int n = cmd.ExecuteNonQuery();
+                    try
+                    {
+                        n = cmd.ExecuteNonQuery();
+                    }
+                     catch (Exception et)
+                    {
+                        Console.WriteLine(et.Message);
+                    }
+
+
                     MessageBox.Show(n + "");
                 }
             }
