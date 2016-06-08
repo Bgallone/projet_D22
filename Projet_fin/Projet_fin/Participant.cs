@@ -136,7 +136,15 @@ namespace Projet_fin
             //Florian.Holtzinger@etu.unistra.fr
             MessageBox.Show(req);
             cmd.CommandText = req;
-            int n = cmd.ExecuteNonQuery();
+            int n = 0;
+            try
+            {
+                n = cmd.ExecuteNonQuery();
+            }
+            catch (Exception et)
+            {
+                Console.WriteLine(et.Message);
+            }
             MessageBox.Show(n+ "");
         }
 

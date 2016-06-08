@@ -24,9 +24,10 @@ namespace Projet_fin
         private DataSet ds3 = new DataSet();
         int noevtcourant;
 
-        public Bilan()
+        public Bilan(String chco)
         {
             InitializeComponent();
+            this.chco = chco;
         }
 
         private void Bilan_Load(object sender, EventArgs e)
