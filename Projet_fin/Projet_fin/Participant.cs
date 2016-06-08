@@ -118,13 +118,17 @@ namespace Projet_fin
             String evt = cbxEvent.Text;
             String nom = cbxAdd.Text;
             String pwd = getRandomPassword();
-            MessageBox.Show("wut");
-            String req = @"INSERT INTO invite Depenses(codeEvent, codePart, login,mdp) VALUES ((SELECT codeEvent FROM Evenements WHERE titreEvent = '" + evt + "'),(SELECT codeParticipant FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ),(SELECT SUBSTR(prenomPart, 1, 1)+ nomPart FROM Participant WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ), '" + pwd + "'); ";
-            SendMail("baptiste.gallone @etu.unistra.fr", "test", "Coucou, 42");
+            String rqt = @"SELECT adresseMail FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
+            OleDbCommand cmd = new OleDbCommand(rqt, co);
+            String email = cmd.ExecuteScalar() + "";
+            String req = @"INSERT INTO invite (codeEvent, codePart, login,mdp) VALUES ((SELECT codeEvent FROM Evenements WHERE titreEvent = '" + evt + "'),(SELECT codeParticipant FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ),(SELECT SUBSTR(prenomPart, 1, 1)+ nomPart FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ),'" + pwd + "');";
+            SendMail(email, " Tu es invité à l'événement : "+ evt , "Bonjour, \n\n Tu es invité a l'événement : "+ evt + " \n Ton mot de passe est :" +pwd+ "\n\n\n Mail automatique ne pas répondre svp");
             //baptiste.gallone@etu.unistra.fr
             //Florian.Holtzinger@etu.unistra.fr
-
-
+            MessageBox.Show(req);
+            cmd.CommandText = req;
+            //int n = cmd.ExecuteNonQuery();
+            //MessageBox.Show(n+ "");
         }
 
 
