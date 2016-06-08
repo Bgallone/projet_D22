@@ -97,9 +97,11 @@ namespace Projet_fin
         {
             if (chxAll.Checked)
             {
+                ds2.Clear();
                 string req = @"SELECT p.nomPart, p.prenomPart, d.description , d.montant
                             FROM Participants p, Depenses d
                             WHERE p.codeParticipant = d.codePart";
+                remplirDataGridView(req);
                 
 
             }
@@ -113,15 +115,10 @@ namespace Projet_fin
         {
             co.Open();
             ds2.Clear();
-
-/*
-            string req = @"SELECT codeEvent 
-                            FROM Evenements
-                            WHERE titreEvent = '" + cbxEvenement.Text + "';";*/
-           
-
-//            evtcourant = int.Parse(cmd.ExecuteScalar().ToString());
-           
+            if (chxAll.Checked)
+            {
+                chxAll.Checked = false;
+            }
 
             string req1 = @"SELECT p.nomPart, p.prenomPart, d.description , d.montant
                             FROM Participants p, Depenses d

@@ -32,16 +32,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDepense = new System.Windows.Forms.DataGridView();
-            this.btnChercher = new System.Windows.Forms.Button();
-            this.grpFiltre = new System.Windows.Forms.GroupBox();
             this.chxAll = new System.Windows.Forms.CheckBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepense)).BeginInit();
-            this.grpFiltre.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbxEvenement
             // 
+            this.cbxEvenement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEvenement.FormattingEnabled = true;
             this.cbxEvenement.Location = new System.Drawing.Point(120, 50);
             this.cbxEvenement.Name = "cbxEvenement";
@@ -78,25 +78,6 @@
             this.dgvDepense.Size = new System.Drawing.Size(709, 305);
             this.dgvDepense.TabIndex = 0;
             // 
-            // btnChercher
-            // 
-            this.btnChercher.Location = new System.Drawing.Point(167, 147);
-            this.btnChercher.Name = "btnChercher";
-            this.btnChercher.Size = new System.Drawing.Size(100, 29);
-            this.btnChercher.TabIndex = 6;
-            this.btnChercher.Text = "Rechercher";
-            this.btnChercher.UseVisualStyleBackColor = true;
-            // 
-            // grpFiltre
-            // 
-            this.grpFiltre.Controls.Add(this.btnChercher);
-            this.grpFiltre.Location = new System.Drawing.Point(462, 13);
-            this.grpFiltre.Name = "grpFiltre";
-            this.grpFiltre.Size = new System.Drawing.Size(273, 182);
-            this.grpFiltre.TabIndex = 7;
-            this.grpFiltre.TabStop = false;
-            this.grpFiltre.Text = "Filtre de recherche";
-            // 
             // chxAll
             // 
             this.chxAll.AutoSize = true;
@@ -108,14 +89,33 @@
             this.chxAll.UseVisualStyleBackColor = true;
             this.chxAll.CheckedChanged += new System.EventHandler(this.chxAll_CheckedChanged);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(514, 50);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(221, 24);
+            this.comboBox1.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(433, 53);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 17);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Participant";
+            // 
             // Dépenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 546);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.chxAll);
             this.Controls.Add(this.cbxEvenement);
-            this.Controls.Add(this.grpFiltre);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "Dépenses";
@@ -123,7 +123,6 @@
             this.Load += new System.EventHandler(this.Dépenses_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepense)).EndInit();
-            this.grpFiltre.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,8 +134,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvDepense;
-        private System.Windows.Forms.Button btnChercher;
-        private System.Windows.Forms.GroupBox grpFiltre;
         private System.Windows.Forms.CheckBox chxAll;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
     }
 }
