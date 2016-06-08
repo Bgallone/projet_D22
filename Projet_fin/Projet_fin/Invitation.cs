@@ -73,7 +73,7 @@ namespace Projet_fin
 
             //On cherche tous les autres participants. 
             req = @"SELECT nomPart , prenomPart FROM  Participants 
-                            WHERE  codeParticipant != " + codeCrée + ";";
+                            WHERE  codeParticipant = " + codeCrée + ";";
 
             
             cmd.CommandText = req;
