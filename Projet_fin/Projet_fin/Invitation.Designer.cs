@@ -32,17 +32,19 @@
             this.clbBeneficiaires = new System.Windows.Forms.CheckedListBox();
             this.grbCouleur = new System.Windows.Forms.GroupBox();
             this.chxTtSelectionner = new System.Windows.Forms.CheckBox();
+            this.btnValidation = new System.Windows.Forms.Button();
             this.grbCouleur.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitreInv
             // 
             this.lblTitreInv.AutoSize = true;
-            this.lblTitreInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitreInv.Location = new System.Drawing.Point(203, 74);
+            this.lblTitreInv.Font = new System.Drawing.Font("Monotype Corsiva", 18F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitreInv.Location = new System.Drawing.Point(203, 72);
             this.lblTitreInv.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitreInv.Name = "lblTitreInv";
-            this.lblTitreInv.Size = new System.Drawing.Size(290, 31);
+            this.lblTitreInv.Size = new System.Drawing.Size(290, 37);
             this.lblTitreInv.TabIndex = 7;
             this.lblTitreInv.Text = "Gestion des Invitations";
             // 
@@ -75,6 +77,19 @@
             this.chxTtSelectionner.TabIndex = 19;
             this.chxTtSelectionner.Text = "Tout selectionner";
             this.chxTtSelectionner.UseVisualStyleBackColor = true;
+            this.chxTtSelectionner.CheckedChanged += new System.EventHandler(this.toutcocher);
+            // 
+            // btnValidation
+            // 
+            this.btnValidation.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidation.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.btnValidation.Location = new System.Drawing.Point(165, 331);
+            this.btnValidation.Name = "btnValidation";
+            this.btnValidation.Size = new System.Drawing.Size(313, 32);
+            this.btnValidation.TabIndex = 20;
+            this.btnValidation.Text = "Envoyer invitation";
+            this.btnValidation.UseVisualStyleBackColor = true;
+            this.btnValidation.Click += new System.EventHandler(this.btnValidation_Click);
             // 
             // Invitation
             // 
@@ -82,6 +97,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(637, 435);
+            this.Controls.Add(this.btnValidation);
             this.Controls.Add(this.chxTtSelectionner);
             this.Controls.Add(this.clbBeneficiaires);
             this.Controls.Add(this.grbCouleur);
@@ -101,5 +117,6 @@
         private System.Windows.Forms.CheckedListBox clbBeneficiaires;
         private System.Windows.Forms.GroupBox grbCouleur;
         private System.Windows.Forms.CheckBox chxTtSelectionner;
+        private System.Windows.Forms.Button btnValidation;
     }
 }
