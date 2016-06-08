@@ -120,7 +120,7 @@ namespace Projet_fin
                 chxAll.Checked = false;
             }
 
-            string req1 = @"SELECT p.nomPart, p.prenomPart, d.description , d.montant
+            string req1 = @"SELECT p.nomPart, p.prenomPart, d.dateDepense, d.description , d.montant
                             FROM Participants p, Depenses d
                             WHERE p.codeParticipant = d.codePart 
                             AND codeEvent = " + cbxEvenement.SelectedValue + ";";
