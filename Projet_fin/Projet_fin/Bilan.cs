@@ -114,15 +114,20 @@ namespace Projet_fin
                                                 WHERE nomPart = '" + cbxParticipant.Text + "'); ";;
             remplirDataGridView(reqdgv1, dgvDépensé, ds2);
 
+            string get = @"SELECT codePart 
+                           FROM Beneficiaires b, Participants p
+                           WHERE b.codePart = p.codeParticipant;";
 
-            /* string reqdgv2 = @"SELECT p.nomPart, d.description, d.dateDepense, d.montant
-                             FROM Participants p, Depenses d, Beneficiaires b
-                             WHERE b.codePart = d.codePart
-                             AND d.codePart = p.codeParticipant
-                             AND d.codePart = (SELECT codeParticipant
-                                               FROM Participants
-                                               WHERE nomPart = '" + cbxParticipant.Text + "';";*/
-            string reqdgv2 = "Select * from Participants";
+
+
+            string reqdgv2 = @"SELECT p.nomPart, d.description, d.dateDepense, d.montant
+                             FROM Participants p, Depenses d
+                             WHERE p.codeParticipant = d.codePart
+                             AND d.codePart = (SELECT codePart 
+                                               FROM Beneficiaires b, Participants p
+                                               WHERE b.codePart = p.codeParticipant;
+                                               AND p.nomPart = '" + cbxParticipant.Text + "');" ;
+            MessageBox.Show(reqdgv2);
             remplirDataGridView(reqdgv2, dgvArembourser, ds3);
             co.Close();
         }
