@@ -137,7 +137,6 @@ namespace Projet_fin
                     string rqt = @"SELECT adresseMail 
                                     FROM Participants 
                                     WHERE nomPart = '" + nom + "';";
-                    MessageBox.Show(rqt);
                     cmd.CommandText = rqt;
                     string email = cmd.ExecuteScalar().ToString();
 
@@ -182,7 +181,6 @@ namespace Projet_fin
                                     VALUES (" + Evenum + "," + id + ",'" + login + "','" + pwd + "');";
 
                     int n = 0;
-                    MessageBox.Show(req);
                     cmd.CommandText = req;
                     try
                     {
