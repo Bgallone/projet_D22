@@ -163,7 +163,7 @@ namespace Projet_fin
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void toutcocher(object sender, EventArgs e)
         {
             if (chxToutCocher.Checked)
             {

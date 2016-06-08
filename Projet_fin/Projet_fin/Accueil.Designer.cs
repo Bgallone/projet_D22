@@ -338,7 +338,7 @@
             this.chxToutCocher.TabIndex = 6;
             this.chxToutCocher.Text = "Tout selectionner";
             this.chxToutCocher.UseVisualStyleBackColor = true;
-            this.chxToutCocher.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.chxToutCocher.CheckedChanged += new System.EventHandler(this.toutcocher);
             // 
             // label11
             // 
