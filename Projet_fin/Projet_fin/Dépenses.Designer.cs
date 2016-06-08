@@ -75,7 +75,7 @@
             this.dgvDepense.Location = new System.Drawing.Point(7, 22);
             this.dgvDepense.Name = "dgvDepense";
             this.dgvDepense.RowTemplate.Height = 24;
-            this.dgvDepense.Size = new System.Drawing.Size(709, 305);
+            this.dgvDepense.Size = new System.Drawing.Size(629, 305);
             this.dgvDepense.TabIndex = 0;
             // 
             // chxAll
@@ -93,7 +93,7 @@
             // 
             this.cbxParticipant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxParticipant.FormattingEnabled = true;
-            this.cbxParticipant.Location = new System.Drawing.Point(514, 50);
+            this.cbxParticipant.Location = new System.Drawing.Point(428, 50);
             this.cbxParticipant.Name = "cbxParticipant";
             this.cbxParticipant.Size = new System.Drawing.Size(221, 24);
             this.cbxParticipant.TabIndex = 9;
@@ -102,7 +102,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(433, 53);
+            this.label2.Location = new System.Drawing.Point(347, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 10;
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 546);
+            this.ClientSize = new System.Drawing.Size(660, 546);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbxParticipant);
             this.Controls.Add(this.chxAll);
