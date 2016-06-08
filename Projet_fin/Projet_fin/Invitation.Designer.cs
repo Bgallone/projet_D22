@@ -87,6 +87,7 @@
             this.Controls.Add(this.grbCouleur);
             this.Name = "Invitation";
             this.Text = "Invitation";
+            this.Load += new System.EventHandler(this.Invitation_Load);
             this.grbCouleur.ResumeLayout(false);
             this.grbCouleur.PerformLayout();
             this.ResumeLayout(false);
