@@ -131,7 +131,7 @@ namespace Projet_fin
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '^' || e.KeyChar == '#' || e.KeyChar == '|' || e.KeyChar == '&' || e.KeyChar == '~' || e.KeyChar == '}' || e.KeyChar == '{' || e.KeyChar == '\\' || e.KeyChar == '@')
+            if (e.KeyChar == '\'' || e.KeyChar == '^' || e.KeyChar == '#' || e.KeyChar == '|' || e.KeyChar == '&' || e.KeyChar == '~' || e.KeyChar == '}' || e.KeyChar == '{' || e.KeyChar == '\\' || e.KeyChar == '@')
             {
                 e.Handled = true;
             }
@@ -182,7 +182,7 @@ namespace Projet_fin
             //description de l'événement 
             string description = rtbDescript.Text;
 
-            //On recupere le nom du bonhomme;
+            //On recupere le nom du créateur;
             string Nom = cboCreateur.Text;
             Char delimiter = ' ';
             String[] substrings = Nom.Split(delimiter);
@@ -208,8 +208,32 @@ namespace Projet_fin
                             VALUES(" + evenum + ",'" + titre + "',#" + dateDeb + "#,#" + dateFin + "#,'" + description + "'," + valSolde + "," + codCrea + ");";
             cmd.CommandText = req;
 
-
             int n = cmd.ExecuteNonQuery();
+             //on ajoute le créeteur à l'événement
+ 
+            //On lui donne un mdp 
+            string pwd = getRandomPassword();
+
+
+            //On lui donne un id fixe 
+            cmd.CommandText = "SELECT prenomPart FROM Participants WHERE nomPart = '" + Nom + "';";
+
+            string login = (cmd.ExecuteScalar().ToString()).Substring(0, 1);
+            cmd.CommandText = "SELECT nomPart FROM Participants WHERE  nomPart = '" + Nom + "';";
+            login += cmd.ExecuteScalar().ToString();
+            if (login.Length > 8)
+            {
+                login = login.Substring(0, 8);
+            }
+
+            // On l'ajoute au invité 
+            string reqInsCré = @"INSERT INTO Invites (codeEvent, codePart, login,mdp) 
+                VALUES (" + evenum + "," + codCrea + ",'" + login + "','" + pwd + "');";
+
+            cmd.CommandText = reqInsCré;
+            
+             n = cmd.ExecuteNonQuery();
+
 
             btnInvitation.Enabled = true;
             co.Close();
@@ -240,11 +264,15 @@ namespace Projet_fin
 
         private void rtbDescript_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == '\'')
+            {
+                e.Handled = true; 
+            }
             if (rtbDescript.Text.Length > 0)
             {
                 if (rtbDescript.Text.Substring(rtbDescript.Text.Length - 1) == " ")
                 {
-                    if (e.KeyChar == ' ')
+                    if (e.KeyChar == ' ' )
                     {
                         e.Handled = true;
                     }
@@ -259,6 +287,26 @@ namespace Projet_fin
             return convertedDate;
             
         }
+        
+        //Création du mdp 
+        private static char[] randomChars = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0' };
+        private static readonly Random rand = new Random();
+
+
+
+        private static string getRandomPassword()
+        {
+
+            char[] password = new char[10];
+
+            for (int i = 0; i < 10; ++i)
+
+                password[i] = randomChars[rand.Next(0, randomChars.Length)];
+
+            return new string(password);
+
+        }
+
 
 
     }

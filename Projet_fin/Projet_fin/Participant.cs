@@ -129,14 +129,26 @@ namespace Projet_fin
             cmd.CommandText = "SELECT prenomPart FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
             String login = (cmd.ExecuteScalar() + "").Substring(0,1);
             cmd.CommandText = "SELECT nomPart FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
-            login += cmd.ExecuteScalar() + "";
+            login += cmd.ExecuteScalar().ToString();
+            if (login.Length > 9)
+            {
+                login = login.Substring(0, 8);
+            }
             String req = @"INSERT INTO Invites (codeEvent, codePart, login,mdp) VALUES ("+ code +","+ codep + ",'" + login + "','" + pwd + "');";
             SendMail(email, " Tu es invité à l'événement : "+ evt , "Bonjour, \n\n Tu es invité a l'événement : "+ evt + " \n Ton mot de passe est :" +pwd+ "\n\n\n Mail automatique ne pas répondre svp");
             //baptiste.gallone@etu.unistra.fr
             //Florian.Holtzinger@etu.unistra.fr
             MessageBox.Show(req);
             cmd.CommandText = req;
-            int n = cmd.ExecuteNonQuery();
+            int n = 0;
+            try
+            {
+                n = cmd.ExecuteNonQuery();
+            }
+            catch (Exception et)
+            {
+                Console.WriteLine(et.Message);
+            }
             MessageBox.Show(n+ "");
         }
 

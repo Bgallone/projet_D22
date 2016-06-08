@@ -19,7 +19,7 @@ namespace Projet_fin
     {
         private String chco;
         private OleDbConnection co = new OleDbConnection();
-
+        private int Evenum ; 
 
         public Invitation(String chco)
         {
@@ -32,13 +32,21 @@ namespace Projet_fin
 
         private void Invitation_Load(object sender, EventArgs e)
         {   
+            
+            co.ConnectionString = chco;
+            co.Open();
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
-            co.ConnectionString = chco;
+            //Num de l'événement 
+            string req = @"SELECT count(*)  FROM Evenements";
+            cmd.CommandText = req;
+            Evenum = int.Parse(cmd.ExecuteScalar().ToString());
 
+            co.Close();
 
             RemplirCheckListBox();
 
+          
         }
         private void RemplirCheckListBox()
         {
@@ -47,16 +55,13 @@ namespace Projet_fin
             cmd.Connection = co;
 
             cmd.CommandType = CommandType.Text;
-            //Num de l'événement 
-            string req = @"SELECT count(*)  FROM Evenements";
-            cmd.CommandText = req;
-            int evenum = int.Parse(cmd.ExecuteScalar().ToString());
-
+            
             //Num du créateur de l'évenement 
-            req = @"SELECT codeCreateur FROM Evenements 
-                           WHERE codeEvent = " + evenum + ";";
+            string req = @"SELECT codeCreateur FROM Evenements 
+                           WHERE codeEvent = " + Evenum + ";";
             cmd.CommandText = req;
             int codeCrée = int.Parse(cmd.ExecuteScalar().ToString());
+
 
             //On cherche tous les autres participants. 
             req = @"SELECT nomPart , prenomPart FROM  Participants 
@@ -93,6 +98,137 @@ namespace Projet_fin
                 }
             }
         }
+       
+
+        private void btnValidation_Click(object sender, EventArgs e)
+        {           co.Open();
+                    OleDbCommand cmd = new OleDbCommand();
+                    cmd.Connection = co;
+
+                    cmd.CommandType = CommandType.Text;
+
+            for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
+            {
+                if (clbBeneficiaires.GetItemChecked(i))
+                {
+                    //on recupére l'id du participant coché 
+                    string nom = clbBeneficiaires.Items[i].ToString();
+                  
+                    string reqid = @"SELECT codeParticipant
+                                     FROM Participants
+                                     WHERE nomPart = '" + nom + "';";
+
+                    cmd.CommandText = reqid;
+                    int id = int.Parse(cmd.ExecuteScalar().ToString());
+
+
+                    //On lui donne un mdp 
+                    string pwd = getRandomPassword();
+
+
+                    //On lui donne un id fixe 
+                    cmd.CommandText = "SELECT prenomPart FROM Participants WHERE nomPart = '" + nom + "';";
+
+                    string login = (cmd.ExecuteScalar().ToString()).Substring(0, 1);
+                    cmd.CommandText = "SELECT nomPart FROM Participants WHERE  nomPart = '" + nom + "';";
+                    login += cmd.ExecuteScalar().ToString();
+                    if(login.Length > 8)
+                    {
+                        login = login.Substring(0, 8);
+                    }
+
+
+                    //on recupére son Email
+                    string rqt = @"SELECT adresseMail 
+                                    FROM Participants 
+                                    WHERE nomPart = '" + nom + "';";
+
+                    cmd.CommandText = rqt;
+                    string email = cmd.ExecuteScalar().ToString();
+
+                    
+
+                 
+
+                    // on recupére le nom de l'évenement 
+                    string rqtNomEve = @"SELECT titreEvent 
+                                         FROM Evenements
+                                         WHERE codeEvent = " + Evenum + ";";
+                    cmd.CommandText = rqtNomEve;
+
+                    string evt = cmd.ExecuteScalar().ToString();
+
+                    // description de l'évenement
+                    string rqtDescriEve = @"SELECT description
+                                         FROM Evenements
+                                         WHERE codeEvent = " + Evenum + ";";
+                    cmd.CommandText = rqtDescriEve;
+                    string descriptEve = cmd.ExecuteScalar().ToString();
+
+                    //debut de l'évenement
+                    string rqtDebutEve = @"SELECT dateDebut
+                                         FROM Evenements
+                                         WHERE codeEvent = " + Evenum + ";";
+                    cmd.CommandText = rqtDebutEve;
+                    string dateDebEve = cmd.ExecuteScalar().ToString();
+
+                    //fin de l'événement
+                    string rqtFinEve = @"SELECT dateFin
+                                         FROM Evenements
+                                         WHERE codeEvent = " + Evenum + ";";
+                    cmd.CommandText = rqtFinEve;
+                    string dateFinEve = cmd.ExecuteScalar().ToString();
+
+                    //On envoit le mail
+                    SendMail(email, " Tu es invité à l'événement : " + evt, "Bonjour, \n\n Tu es invité a l'événement : " + evt + " \n Ton mot de passe est :" + pwd + "\n \n Description de l'évenement :" + descriptEve + "\n\n Du :"+dateDebEve+" Au :"+dateFinEve+"\n\n\n Mail automatique ne pas répondre svp");
+                    
+                    //On insert les valeurs 
+                    string req = @"INSERT INTO Invites (codeEvent, codePart, login,mdp) 
+                                    VALUES (" + Evenum + "," + id + ",'" + login + "','" + pwd + "');";
+
+ 
+                    //MessageBox.Show(req);
+                    cmd.CommandText = req;
+                    try
+                    {
+                       cmd.ExecuteNonQuery();
+                    }
+                     catch (Exception et)
+                    {
+                        Console.WriteLine(et.Message);
+                    }
+
+
+
+                }
+            }
+            co.Close();
+            
+
+        }
+
+        //Création du mdp 
+        private static char[] randomChars = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0' };
+        private static readonly Random rand = new Random();
+
+
+
+        private static string getRandomPassword()
+        {
+
+            char[] password = new char[10];
+
+            for (int i = 0; i < 10; ++i)
+
+                password[i] = randomChars[rand.Next(0, randomChars.Length)];
+
+            return new string(password);
+
+        }
+
+
+
+
         public static void SendMail(string adresses, string subject, string message)
         {
 
@@ -137,12 +273,6 @@ namespace Projet_fin
             }
 
         }
-
-        private void btnValidation_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
     }
 }
