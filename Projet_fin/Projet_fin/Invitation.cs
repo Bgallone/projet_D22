@@ -112,7 +112,7 @@ namespace Projet_fin
                 {
                     //on recupére l'id du participant coché 
                     string nom = clbBeneficiaires.Items[i].ToString();
-                    MessageBox.Show(nom);
+                    //MessageBox.Show(nom);
                     string reqid = @"SELECT codeParticipant
                                      FROM Participants
                                      WHERE nomPart = '" + nom + "';";
@@ -127,16 +127,21 @@ namespace Projet_fin
 
                     //On lui donne un id fixe 
                     cmd.CommandText = "SELECT prenomPart FROM Participants WHERE nomPart = '" + nom + "';";
-
+                    //MessageBox.Show("SELECT prenomPart FROM Participants WHERE nomPart = '" + nom + "';");
                     string login = (cmd.ExecuteScalar().ToString()).Substring(0, 1);
                     cmd.CommandText = "SELECT nomPart FROM Participants WHERE  nomPart = '" + nom + "';";
-                    login += cmd.ExecuteScalar().ToString().Substring(0, 8);
+                    login += cmd.ExecuteScalar().ToString();
+                    if(login.Length > 9)
+                    {
+                        login = login.Substring(0, 8);
+                    }
 
 
                     //on recupére son Email
                     string rqt = @"SELECT adresseMail 
                                     FROM Participants 
                                     WHERE nomPart = '" + nom + "';";
+                    MessageBox.Show(rqt);
                     cmd.CommandText = rqt;
                     string email = cmd.ExecuteScalar().ToString();
 
@@ -181,6 +186,7 @@ namespace Projet_fin
                                     VALUES (" + Evenum + "," + id + ",'" + login + "','" + pwd + "');";
 
                     int n = 0;
+                    //MessageBox.Show(req);
                     cmd.CommandText = req;
                     try
                     {
