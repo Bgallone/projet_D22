@@ -31,7 +31,7 @@
             this.lblTitreInv = new System.Windows.Forms.Label();
             this.clbBeneficiaires = new System.Windows.Forms.CheckedListBox();
             this.grbCouleur = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chxTtSelectionner = new System.Windows.Forms.CheckBox();
             this.grbCouleur.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,16 +65,16 @@
             this.grbCouleur.TabIndex = 18;
             this.grbCouleur.TabStop = false;
             // 
-            // checkBox1
+            // chxTtSelectionner
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(13, 110);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(140, 21);
-            this.checkBox1.TabIndex = 19;
-            this.checkBox1.Text = "Tout selectionner";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chxTtSelectionner.AutoSize = true;
+            this.chxTtSelectionner.Location = new System.Drawing.Point(13, 110);
+            this.chxTtSelectionner.Margin = new System.Windows.Forms.Padding(4);
+            this.chxTtSelectionner.Name = "chxTtSelectionner";
+            this.chxTtSelectionner.Size = new System.Drawing.Size(140, 21);
+            this.chxTtSelectionner.TabIndex = 19;
+            this.chxTtSelectionner.Text = "Tout selectionner";
+            this.chxTtSelectionner.UseVisualStyleBackColor = true;
             // 
             // Invitation
             // 
@@ -82,11 +82,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(637, 435);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chxTtSelectionner);
             this.Controls.Add(this.clbBeneficiaires);
             this.Controls.Add(this.grbCouleur);
             this.Name = "Invitation";
             this.Text = "Invitation";
+            this.Load += new System.EventHandler(this.Invitation_Load);
             this.grbCouleur.ResumeLayout(false);
             this.grbCouleur.PerformLayout();
             this.ResumeLayout(false);
@@ -99,6 +100,6 @@
         private System.Windows.Forms.Label lblTitreInv;
         private System.Windows.Forms.CheckedListBox clbBeneficiaires;
         private System.Windows.Forms.GroupBox grbCouleur;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chxTtSelectionner;
     }
 }

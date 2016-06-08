@@ -150,7 +150,7 @@ namespace Projet_fin
 
         private void btnInvitation_Click(object sender, EventArgs e)
         {
-            Form inv = new Invitation();
+            Form inv = new Invitation(chco);
             inv.ShowDialog();
 
         }
