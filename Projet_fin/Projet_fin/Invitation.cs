@@ -29,23 +29,6 @@ namespace Projet_fin
         }
 
 
-        private void toutcocher(object sender, EventArgs e)
-        {
-            if (chxTtSelectionner.Checked)
-            {
-                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
-                {
-                    clbBeneficiaires.SetItemChecked(i, true);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
-                {
-                    clbBeneficiaires.SetItemChecked(i, false);
-                }
-            }
-        }
 
         private void Invitation_Load(object sender, EventArgs e)
         {   
@@ -92,6 +75,24 @@ namespace Projet_fin
 
             co.Close();
         }
+        private void toutcocher(object sender, EventArgs e)
+        {
+            if (
+                chxTtSelectionner.Checked)
+            {
+                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
+                {
+                    clbBeneficiaires.SetItemChecked(i, true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
+                {
+                    clbBeneficiaires.SetItemChecked(i, false);
+                }
+            }
+        }
         public static void SendMail(string adresses, string subject, string message)
         {
 
@@ -134,6 +135,11 @@ namespace Projet_fin
             {
                 Console.WriteLine(e.Message);
             }
+
+        }
+
+        private void btnValidation_Click(object sender, EventArgs e)
+        {
 
         }
 
