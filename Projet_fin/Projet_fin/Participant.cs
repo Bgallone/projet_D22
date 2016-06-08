@@ -86,7 +86,6 @@ namespace Projet_fin
             cbxAdd.Visible = true;
             btnAdd.Visible = true;
             lblAdd.Visible = true;
-            MessageBox.Show("wat");
             refresh_add();
         }
 
@@ -149,10 +148,9 @@ namespace Projet_fin
 
         public static void SendMail(string adresses, string subject, string message)
         {
-            MessageBox.Show("try send mail");
+            
             try
             {
-                MessageBox.Show("try send mail");
                 MailMessage mail = new MailMessage();
                 //ajouter les destinataires
                 /*foreach (string adress in adresses)
