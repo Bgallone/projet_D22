@@ -83,8 +83,8 @@
             this.btn_part.Location = new System.Drawing.Point(31, 298);
             this.btn_part.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_part.Name = "btn_part";
-            this.btn_part.Size = new System.Drawing.Size(73, 68);
-            this.btn_part.TabIndex = 12;
+            this.btn_part.Size = new System.Drawing.Size(55, 55);
+            this.btn_part.TabIndex = 13;
             this.btn_part.UseVisualStyleBackColor = true;
             this.btn_part.Click += new System.EventHandler(this.btn_part_Click);
             // 
@@ -103,8 +103,8 @@
             this.btn_bilan.Location = new System.Drawing.Point(31, 514);
             this.btn_bilan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_bilan.Name = "btn_bilan";
-            this.btn_bilan.Size = new System.Drawing.Size(73, 68);
-            this.btn_bilan.TabIndex = 16;
+            this.btn_bilan.Size = new System.Drawing.Size(55, 55);
+            this.btn_bilan.TabIndex = 15;
             this.btn_bilan.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -143,6 +143,7 @@
             this.btn_dep.Size = new System.Drawing.Size(73, 68);
             this.btn_dep.TabIndex = 14;
             this.btn_dep.UseVisualStyleBackColor = true;
+            this.btn_dep.Click += new System.EventHandler(this.btn_dep_Click);
             // 
             // label5
             // 
@@ -185,7 +186,6 @@
             this.btn_Accueil.Size = new System.Drawing.Size(73, 68);
             this.btn_Accueil.TabIndex = 11;
             this.btn_Accueil.UseVisualStyleBackColor = false;
-
             // 
             // lbl_nvldepense
             // 
@@ -221,9 +221,9 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.lvl_nomEvent);
             this.groupBox1.Location = new System.Drawing.Point(121, 60);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(903, 558);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
@@ -231,7 +231,7 @@
             // txtMontant
             // 
             this.txtMontant.Location = new System.Drawing.Point(175, 128);
-            this.txtMontant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMontant.Margin = new System.Windows.Forms.Padding(4);
             this.txtMontant.Name = "txtMontant";
             this.txtMontant.Size = new System.Drawing.Size(95, 22);
             this.txtMontant.TabIndex = 3;
@@ -239,10 +239,10 @@
             // btnRAZ
             // 
             this.btnRAZ.Location = new System.Drawing.Point(704, 462);
-            this.btnRAZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRAZ.Margin = new System.Windows.Forms.Padding(4);
             this.btnRAZ.Name = "btnRAZ";
-            this.btnRAZ.Size = new System.Drawing.Size(100, 28);
-            this.btnRAZ.TabIndex = 19;
+            this.btnRAZ.Size = new System.Drawing.Size(75, 23);
+            this.btnRAZ.TabIndex = 9;
             this.btnRAZ.Text = "R-A-Z";
             this.btnRAZ.UseVisualStyleBackColor = true;
             this.btnRAZ.Click += new System.EventHandler(this.btn_RAZ_Click);
@@ -250,10 +250,10 @@
             // btnQuit
             // 
             this.btnQuit.Location = new System.Drawing.Point(704, 498);
-            this.btnQuit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(100, 28);
-            this.btnQuit.TabIndex = 18;
+            this.btnQuit.Size = new System.Drawing.Size(75, 23);
+            this.btnQuit.TabIndex = 10;
             this.btnQuit.Text = "Quitter";
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btn_Quit_Click);
@@ -261,10 +261,10 @@
             // btnValider
             // 
             this.btnValider.Location = new System.Drawing.Point(704, 426);
-            this.btnValider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(4);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(100, 28);
-            this.btnValider.TabIndex = 17;
+            this.btnValider.Size = new System.Drawing.Size(75, 23);
+            this.btnValider.TabIndex = 8;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
@@ -273,7 +273,7 @@
             // 
             this.clbBeneficiaires.FormattingEnabled = true;
             this.clbBeneficiaires.Location = new System.Drawing.Point(64, 421);
-            this.clbBeneficiaires.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.clbBeneficiaires.Margin = new System.Windows.Forms.Padding(4);
             this.clbBeneficiaires.Name = "clbBeneficiaires";
             this.clbBeneficiaires.Size = new System.Drawing.Size(447, 106);
             this.clbBeneficiaires.TabIndex = 16;
@@ -282,7 +282,7 @@
             // 
             this.txtCommentaire.BackColor = System.Drawing.SystemColors.Window;
             this.txtCommentaire.Location = new System.Drawing.Point(63, 194);
-            this.txtCommentaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCommentaire.Margin = new System.Windows.Forms.Padding(4);
             this.txtCommentaire.Name = "txtCommentaire";
             this.txtCommentaire.Size = new System.Drawing.Size(775, 117);
             this.txtCommentaire.TabIndex = 4;
@@ -302,7 +302,7 @@
             // 
             this.txtDepense.BackColor = System.Drawing.SystemColors.Window;
             this.txtDepense.Location = new System.Drawing.Point(175, 82);
-            this.txtDepense.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDepense.Margin = new System.Windows.Forms.Padding(4);
             this.txtDepense.Name = "txtDepense";
             this.txtDepense.Size = new System.Drawing.Size(336, 22);
             this.txtDepense.TabIndex = 2;
@@ -311,7 +311,7 @@
             // 
             this.cbxPayePar.FormattingEnabled = true;
             this.cbxPayePar.Location = new System.Drawing.Point(175, 358);
-            this.cbxPayePar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxPayePar.Margin = new System.Windows.Forms.Padding(4);
             this.cbxPayePar.Name = "cbxPayePar";
             this.cbxPayePar.Size = new System.Drawing.Size(336, 24);
             this.cbxPayePar.TabIndex = 5;
@@ -321,7 +321,7 @@
             this.cbxEvenement.BackColor = System.Drawing.SystemColors.Window;
             this.cbxEvenement.FormattingEnabled = true;
             this.cbxEvenement.Location = new System.Drawing.Point(175, 48);
-            this.cbxEvenement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEvenement.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEvenement.Name = "cbxEvenement";
             this.cbxEvenement.Size = new System.Drawing.Size(336, 24);
             this.cbxEvenement.TabIndex = 1;
@@ -331,8 +331,7 @@
             // chxToutCocher
             // 
             this.chxToutCocher.AutoSize = true;
-            this.chxToutCocher.Location = new System.Drawing.Point(175, 399);
-            this.chxToutCocher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chxToutCocher.Location = new System.Drawing.Point(131, 324);
             this.chxToutCocher.Name = "chxToutCocher";
             this.chxToutCocher.Size = new System.Drawing.Size(140, 21);
             this.chxToutCocher.TabIndex = 6;
@@ -373,7 +372,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(572, 68);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
             this.dateTimePicker1.TabIndex = 6;
@@ -427,7 +426,7 @@
             this.Controls.Add(this.lbl_nvldepense);
             this.Controls.Add(this.grbSection);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmLancement";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Load += new System.EventHandler(this.FrmLancement_Load);

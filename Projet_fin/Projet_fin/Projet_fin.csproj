@@ -50,6 +50,17 @@
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
+    <Compile Include="bdEventsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bdEventsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dépenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dépenses.Designer.cs">
+      <DependentUpon>Dépenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Invitation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +84,9 @@
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dépenses.resx">
+      <DependentUpon>Dépenses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Invitation.resx">
       <DependentUpon>Invitation.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +106,17 @@
     <EmbeddedResource Include="événement.resx">
       <DependentUpon>événement.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bdEventsDataSet.xsc">
+      <DependentUpon>bdEventsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="bdEventsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bdEventsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bdEventsDataSet.xss">
+      <DependentUpon>bdEventsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -112,6 +137,9 @@
     <None Include="Resources\small-house-vector-icon-252940.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bdEvents.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\bdEvents.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
