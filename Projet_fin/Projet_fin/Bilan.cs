@@ -16,15 +16,15 @@ namespace Projet_fin
 
     {
 
-        private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
-        // private String chco = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\bgallone\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
+        private String chco;
+      
         private OleDbConnection co = new OleDbConnection();
         private DataSet ds = new DataSet();
         private DataSet ds2 = new DataSet();
         private DataSet ds3 = new DataSet();
         int noevtcourant;
 
-        public Bilan(String chco)
+        public Bilan(string chco)
         {
             InitializeComponent();
             this.chco = chco;
@@ -115,15 +115,20 @@ namespace Projet_fin
                                                 WHERE nomPart = '" + cbxParticipant.Text + "'); ";;
             remplirDataGridView(reqdgv1, dgvDépensé, ds2);
 
+            string get = @"SELECT codePart 
+                           FROM Beneficiaires b, Participants p
+                           WHERE b.codePart = p.codeParticipant;";
 
-            /* string reqdgv2 = @"SELECT p.nomPart, d.description, d.dateDepense, d.montant
-                             FROM Participants p, Depenses d, Beneficiaires b
-                             WHERE b.codePart = d.codePart
-                             AND d.codePart = p.codeParticipant
-                             AND d.codePart = (SELECT codeParticipant
-                                               FROM Participants
-                                               WHERE nomPart = '" + cbxParticipant.Text + "';";*/
-            string reqdgv2 = "Select * from Participants";
+
+
+            string reqdgv2 = @"SELECT p.nomPart, d.description, d.dateDepense, d.montant
+                             FROM Participants p, Depenses d
+                             WHERE p.codeParticipant = d.codePart
+                             AND d.codePart = (SELECT codePart 
+                                               FROM Beneficiaires b, Participants p
+                                               WHERE b.codePart = p.codeParticipant;
+                                               AND p.nomPart = '" + cbxParticipant.Text + "');" ;
+            MessageBox.Show(reqdgv2);
             remplirDataGridView(reqdgv2, dgvArembourser, ds3);
             co.Close();
         }

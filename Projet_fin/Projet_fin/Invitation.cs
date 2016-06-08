@@ -62,6 +62,7 @@ namespace Projet_fin
             cmd.CommandText = req;
             int codeCrée = int.Parse(cmd.ExecuteScalar().ToString());
 
+
             //On cherche tous les autres participants. 
             req = @"SELECT nomPart , prenomPart FROM  Participants 
                     WHERE  codeParticipant NOT IN 
@@ -112,7 +113,7 @@ namespace Projet_fin
                 {
                     //on recupére l'id du participant coché 
                     string nom = clbBeneficiaires.Items[i].ToString();
-                    //MessageBox.Show(nom);
+                  
                     string reqid = @"SELECT codeParticipant
                                      FROM Participants
                                      WHERE nomPart = '" + nom + "';";
@@ -127,11 +128,11 @@ namespace Projet_fin
 
                     //On lui donne un id fixe 
                     cmd.CommandText = "SELECT prenomPart FROM Participants WHERE nomPart = '" + nom + "';";
-                    //MessageBox.Show("SELECT prenomPart FROM Participants WHERE nomPart = '" + nom + "';");
+
                     string login = (cmd.ExecuteScalar().ToString()).Substring(0, 1);
                     cmd.CommandText = "SELECT nomPart FROM Participants WHERE  nomPart = '" + nom + "';";
                     login += cmd.ExecuteScalar().ToString();
-                    if(login.Length > 9)
+                    if(login.Length > 8)
                     {
                         login = login.Substring(0, 8);
                     }
@@ -141,7 +142,7 @@ namespace Projet_fin
                     string rqt = @"SELECT adresseMail 
                                     FROM Participants 
                                     WHERE nomPart = '" + nom + "';";
-                    MessageBox.Show(rqt);
+
                     cmd.CommandText = rqt;
                     string email = cmd.ExecuteScalar().ToString();
 
@@ -185,12 +186,12 @@ namespace Projet_fin
                     string req = @"INSERT INTO Invites (codeEvent, codePart, login,mdp) 
                                     VALUES (" + Evenum + "," + id + ",'" + login + "','" + pwd + "');";
 
-                    int n = 0;
+ 
                     //MessageBox.Show(req);
                     cmd.CommandText = req;
                     try
                     {
-                        n = cmd.ExecuteNonQuery();
+                       cmd.ExecuteNonQuery();
                     }
                      catch (Exception et)
                     {
@@ -198,7 +199,7 @@ namespace Projet_fin
                     }
 
 
-                    MessageBox.Show(n + "");
+
                 }
             }
             co.Close();

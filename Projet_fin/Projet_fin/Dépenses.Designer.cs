@@ -35,15 +35,17 @@
             this.chxAll = new System.Windows.Forms.CheckBox();
             this.cbxParticipant = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.gbxCouleur = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepense)).BeginInit();
+            this.gbxCouleur.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbxEvenement
             // 
             this.cbxEvenement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEvenement.FormattingEnabled = true;
-            this.cbxEvenement.Location = new System.Drawing.Point(120, 50);
+            this.cbxEvenement.Location = new System.Drawing.Point(190, 69);
             this.cbxEvenement.Name = "cbxEvenement";
             this.cbxEvenement.Size = new System.Drawing.Size(221, 24);
             this.cbxEvenement.TabIndex = 0;
@@ -53,7 +55,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 53);
+            this.label1.Location = new System.Drawing.Point(105, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 17);
             this.label1.TabIndex = 1;
@@ -62,17 +64,23 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.dgvDepense);
-            this.groupBox1.Location = new System.Drawing.Point(13, 201);
+            this.groupBox1.Location = new System.Drawing.Point(34, 182);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(722, 333);
+            this.groupBox1.Size = new System.Drawing.Size(708, 360);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
             // dgvDepense
             // 
+            this.dgvDepense.AllowUserToAddRows = false;
+            this.dgvDepense.AllowUserToDeleteRows = false;
+            this.dgvDepense.AllowUserToResizeColumns = false;
+            this.dgvDepense.AllowUserToResizeRows = false;
+            this.dgvDepense.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDepense.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDepense.Location = new System.Drawing.Point(7, 22);
+            this.dgvDepense.Location = new System.Drawing.Point(34, 21);
             this.dgvDepense.Name = "dgvDepense";
             this.dgvDepense.RowTemplate.Height = 24;
             this.dgvDepense.Size = new System.Drawing.Size(629, 305);
@@ -81,7 +89,7 @@
             // chxAll
             // 
             this.chxAll.AutoSize = true;
-            this.chxAll.Location = new System.Drawing.Point(38, 92);
+            this.chxAll.Location = new System.Drawing.Point(471, 72);
             this.chxAll.Name = "chxAll";
             this.chxAll.Size = new System.Drawing.Size(213, 21);
             this.chxAll.TabIndex = 8;
@@ -93,7 +101,7 @@
             // 
             this.cbxParticipant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxParticipant.FormattingEnabled = true;
-            this.cbxParticipant.Location = new System.Drawing.Point(428, 50);
+            this.cbxParticipant.Location = new System.Drawing.Point(190, 128);
             this.cbxParticipant.Name = "cbxParticipant";
             this.cbxParticipant.Size = new System.Drawing.Size(221, 24);
             this.cbxParticipant.TabIndex = 9;
@@ -102,30 +110,42 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(347, 53);
+            this.label2.Location = new System.Drawing.Point(105, 131);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 10;
             this.label2.Text = "Participant";
             // 
+            // gbxCouleur
+            // 
+            this.gbxCouleur.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.gbxCouleur.Controls.Add(this.label2);
+            this.gbxCouleur.Controls.Add(this.chxAll);
+            this.gbxCouleur.Controls.Add(this.cbxParticipant);
+            this.gbxCouleur.Controls.Add(this.cbxEvenement);
+            this.gbxCouleur.Controls.Add(this.label1);
+            this.gbxCouleur.Location = new System.Drawing.Point(-40, -34);
+            this.gbxCouleur.Name = "gbxCouleur";
+            this.gbxCouleur.Size = new System.Drawing.Size(868, 188);
+            this.gbxCouleur.TabIndex = 11;
+            this.gbxCouleur.TabStop = false;
+            // 
             // Dépenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 546);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbxParticipant);
-            this.Controls.Add(this.chxAll);
-            this.Controls.Add(this.cbxEvenement);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(788, 570);
+            this.Controls.Add(this.gbxCouleur);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label1);
             this.Name = "Dépenses";
             this.Text = "Dépenses";
             this.Load += new System.EventHandler(this.Dépenses_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepense)).EndInit();
+            this.gbxCouleur.ResumeLayout(false);
+            this.gbxCouleur.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -138,5 +158,6 @@
         private System.Windows.Forms.CheckBox chxAll;
         private System.Windows.Forms.ComboBox cbxParticipant;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox gbxCouleur;
     }
 }
