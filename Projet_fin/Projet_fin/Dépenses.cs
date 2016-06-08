@@ -97,7 +97,10 @@ namespace Projet_fin
         {
             if (chxAll.Checked)
             {
-                //string req = 
+                string req = @"SELECT p.nomPart, p.prenomPart, d.description , d.montant
+                            FROM Participants p, Depenses d
+                            WHERE p.codeParticipant = d.codePart";
+                
 
             }
             else
@@ -111,28 +114,22 @@ namespace Projet_fin
             co.Open();
             ds2.Clear();
 
-
+/*
             string req = @"SELECT codeEvent 
                             FROM Evenements
-                            WHERE titreEvent = '" + cbxEvenement.Text + "';";
-            OleDbCommand cmd = new OleDbCommand(req, co);
+                            WHERE titreEvent = '" + cbxEvenement.Text + "';";*/
+           
 
-            evtcourant = int.Parse(cmd.ExecuteScalar().ToString());
-            co.Close();
+//            evtcourant = int.Parse(cmd.ExecuteScalar().ToString());
+           
 
             string req1 = @"SELECT p.nomPart, p.prenomPart, d.description , d.montant
                             FROM Participants p, Depenses d
                             WHERE p.codeParticipant = d.codePart 
-                            AND codeEvent = " + evtcourant + ";";
-
-            string reqcbx = @"SELECT codeEvent 
-                            FROM Evenements
-                            WHERE titreEvent = '" + cbxEvenement.Text + "';";
-
-
-            MessageBox.Show(req1);
-
+                            AND codeEvent = " + cbxEvenement.SelectedValue + ";";
+            OleDbCommand cmd = new OleDbCommand(req1, co);
             remplirDataGridView(req1);
+            co.Close();
         }
     }
 }

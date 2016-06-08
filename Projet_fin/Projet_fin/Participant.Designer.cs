@@ -121,6 +121,7 @@
             this.btnAdd.Text = "Inviter";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Visible = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnInv
             // 

@@ -13,7 +13,7 @@ namespace Projet_fin
 {
     public partial class Invitation : Form
     {
-        String chco;
+        private String chco;
         private OleDbConnection co = new OleDbConnection();
 
 
@@ -21,6 +21,7 @@ namespace Projet_fin
         {
             InitializeComponent();
             this.chco = chco;
+            
         }
 
 
@@ -43,12 +44,48 @@ namespace Projet_fin
         }
 
         private void Invitation_Load(object sender, EventArgs e)
+        {   
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+            co.ConnectionString = chco;
+
+
+            RemplirCheckListBox();
+
+        }
+        private void RemplirCheckListBox()
         {
             co.Open();
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
-            string req = @"SELECT nomPart , prenomPart FROM  ";           
+
             cmd.CommandType = CommandType.Text;
+            //Num de l'événement 
+            string req = @"SELECT count(*)  FROM Evenements";
+            cmd.CommandText = req;
+            int evenum = int.Parse(cmd.ExecuteScalar().ToString());
+
+            //Num du créateur de l'évenement 
+            req = @"SELECT codeCreateur FROM Evenements 
+                           WHERE codeEvent = " + evenum + ";";
+            cmd.CommandText = req;
+            int codeCrée = int.Parse(cmd.ExecuteScalar().ToString());
+
+            //On cherche tous les autres participants. 
+            req = @"SELECT nomPart , prenomPart FROM  Participants 
+                            WHERE  codeParticipant != " + codeCrée + ";";
+
+            
+            cmd.CommandText = req;
+
+            OleDbDataReader dr = cmd.ExecuteReader();
+            
+            while (dr.Read())
+            {
+                clbBeneficiaires.Items.Add(dr.GetString(0));
+            }
+
+            co.Close();
         }
 
 

@@ -12,7 +12,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading;
-using System.ComponentModel;
+
 
 namespace Projet_fin
 {
@@ -22,7 +22,6 @@ namespace Projet_fin
         private String chco ;//= @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=./Resources/bdEvents.mdb";
         private OleDbConnection co = new OleDbConnection();
         private DataSet ds = new DataSet();
-        private int CodeEvent = 1;
         private bool load = false;
 
         public Participant(String chco)
@@ -87,7 +86,6 @@ namespace Projet_fin
             cbxAdd.Visible = true;
             btnAdd.Visible = true;
             lblAdd.Visible = true;
-
             refresh_add();
         }
 
@@ -120,10 +118,13 @@ namespace Projet_fin
             String evt = cbxEvent.Text;
             String nom = cbxAdd.Text;
             String pwd = getRandomPassword();
+            MessageBox.Show("wut");
             String req = @"INSERT INTO invite Depenses(codeEvent, codePart, login,mdp) VALUES ((SELECT codeEvent FROM Evenements WHERE titreEvent = '" + evt + "'),(SELECT codeParticipant FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ),(SELECT SUBSTR(prenomPart, 1, 1)+ nomPart FROM Participant WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ), '" + pwd + "'); ";
-            SendMail("Florian.Holtzinger@etu.unistra.fr", "test", "Coucou, tu veux voir ma bite ?");
-           
-        
+            SendMail("baptiste.gallone @etu.unistra.fr", "test", "Coucou, 42");
+            //baptiste.gallone@etu.unistra.fr
+            //Florian.Holtzinger@etu.unistra.fr
+
+
         }
 
 
@@ -147,6 +148,7 @@ namespace Projet_fin
 
         public static void SendMail(string adresses, string subject, string message)
         {
+            
             try
             {
                 MailMessage mail = new MailMessage();
@@ -165,13 +167,21 @@ namespace Projet_fin
                 {
                     Host = "mailserver.u-strasbg.fr",
                     Port = 587,
-                    EnableSsl = false,
+                    EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("baptiste.gallone@etu.unistra.fr", "gallone67#")
+                    Credentials = new NetworkCredential("bgallone", "gallone67#")
                 };
                 //envoi du mail
-                smtpServer.Send(mail);
+                try
+                {
+                    smtpServer.Send(mail);
+                    MessageBox.Show("email est envoyer");
+                }
+                catch (SmtpException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             catch (Exception e)
             {
@@ -179,6 +189,5 @@ namespace Projet_fin
             }
 
         }
-
     }
 }
