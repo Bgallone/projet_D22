@@ -116,15 +116,28 @@ namespace Projet_fin
         private void btnAdd_Click(object sender, EventArgs e)
         {
             String evt = cbxEvent.Text;
+            MessageBox.Show(evt);
             String nom = cbxAdd.Text;
             String pwd = getRandomPassword();
-            MessageBox.Show("wut");
-            String req = @"INSERT INTO invite Depenses(codeEvent, codePart, login,mdp) VALUES ((SELECT codeEvent FROM Evenements WHERE titreEvent = '" + evt + "'),(SELECT codeParticipant FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ),(SELECT SUBSTR(prenomPart, 1, 1)+ nomPart FROM Participant WHERE (prenomPart + ' ' + nomPart) = '" + nom + "' ), '" + pwd + "'); ";
-            SendMail("baptiste.gallone @etu.unistra.fr", "test", "Coucou, 42");
+            String rqt = @"SELECT adresseMail FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
+            OleDbCommand cmd = new OleDbCommand(rqt, co);
+            String email = cmd.ExecuteScalar() + "";
+            cmd.CommandText = "SELECT codeEvent FROM Evenements WHERE titreEvent = '" + evt + "';";
+            int code = int.Parse(cmd.ExecuteScalar() + "");
+            cmd.CommandText = "SELECT codeParticipant FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
+            int codep = int.Parse(cmd.ExecuteScalar() + "");
+            cmd.CommandText = "SELECT prenomPart FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
+            String login = (cmd.ExecuteScalar() + "").Substring(0,1);
+            cmd.CommandText = "SELECT nomPart FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
+            login += cmd.ExecuteScalar() + "";
+            String req = @"INSERT INTO Invites (codeEvent, codePart, login,mdp) VALUES ("+ code +","+ codep + ",'" + login + "','" + pwd + "');";
+            SendMail(email, " Tu es invité à l'événement : "+ evt , "Bonjour, \n\n Tu es invité a l'événement : "+ evt + " \n Ton mot de passe est :" +pwd+ "\n\n\n Mail automatique ne pas répondre svp");
             //baptiste.gallone@etu.unistra.fr
             //Florian.Holtzinger@etu.unistra.fr
-
-
+            MessageBox.Show(req);
+            cmd.CommandText = req;
+            int n = cmd.ExecuteNonQuery();
+            MessageBox.Show(n+ "");
         }
 
 
