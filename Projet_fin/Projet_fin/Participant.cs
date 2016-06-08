@@ -129,7 +129,7 @@ namespace Projet_fin
             cmd.CommandText = "SELECT prenomPart FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
             String login = (cmd.ExecuteScalar() + "").Substring(0,1);
             cmd.CommandText = "SELECT nomPart FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
-            login += cmd.ExecuteScalar() + "";
+            login += cmd.ExecuteScalar().ToString().Substring(0, 8);
             String req = @"INSERT INTO Invites (codeEvent, codePart, login,mdp) VALUES ("+ code +","+ codep + ",'" + login + "','" + pwd + "');";
             SendMail(email, " Tu es invité à l'événement : "+ evt , "Bonjour, \n\n Tu es invité a l'événement : "+ evt + " \n Ton mot de passe est :" +pwd+ "\n\n\n Mail automatique ne pas répondre svp");
             //baptiste.gallone@etu.unistra.fr
