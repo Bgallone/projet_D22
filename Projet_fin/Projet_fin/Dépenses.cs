@@ -32,7 +32,7 @@ namespace Projet_fin
 
         private void Dépenses_Load(object sender, EventArgs e)
         {
-
+          
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
             co.ConnectionString = chco;
@@ -99,6 +99,7 @@ namespace Projet_fin
 
         private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            ds2.Clear();
             co.Open();
             string req = @"SELECT codeEvent 
                             FROM Evenements
@@ -110,7 +111,7 @@ namespace Projet_fin
             string req1 = @"SELECT p.nomPart, p.prenomPart, d.description , d.montant
                             FROM Participants p, Depenses d
                             WHERE p.codeParticipant = d.codePart;";
-            //MessageBox.Show(req1);
+            
             remplirDataGridView(req1);
  
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,16 @@ namespace Projet_fin
 {
     public partial class Invitation : Form
     {
-        public Invitation()
+        String chco;
+        private OleDbConnection co = new OleDbConnection();
+
+
+        public Invitation(String chco)
         {
             InitializeComponent();
+            this.chco = chco;
         }
+
 
         private void toutcocher(object sender, EventArgs e)
         {
@@ -34,5 +41,16 @@ namespace Projet_fin
                 }
             }
         }
+
+        private void Invitation_Load(object sender, EventArgs e)
+        {
+            co.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+            string req = @"SELECT nomPart , prenomPart FROM  ";           
+            cmd.CommandType = CommandType.Text;
+        }
+
+
     }
 }
