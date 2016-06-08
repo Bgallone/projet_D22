@@ -112,7 +112,7 @@ namespace Projet_fin
                 {
                     //on recupére l'id du participant coché 
                     string nom = clbBeneficiaires.Items[i].ToString();
-                    MessageBox.Show(nom);
+                    //MessageBox.Show(nom);
                     string reqid = @"SELECT codeParticipant
                                      FROM Participants
                                      WHERE nomPart = '" + nom + "';";
@@ -127,7 +127,7 @@ namespace Projet_fin
 
                     //On lui donne un id fixe 
                     cmd.CommandText = "SELECT prenomPart FROM Participants WHERE nomPart = '" + nom + "';";
-                    MessageBox.Show("SELECT prenomPart FROM Participants WHERE nomPart = '" + nom + "';");
+                    //MessageBox.Show("SELECT prenomPart FROM Participants WHERE nomPart = '" + nom + "';");
                     string login = (cmd.ExecuteScalar().ToString()).Substring(0, 1);
                     cmd.CommandText = "SELECT nomPart FROM Participants WHERE  nomPart = '" + nom + "';";
                     login += cmd.ExecuteScalar().ToString();
@@ -186,7 +186,7 @@ namespace Projet_fin
                                     VALUES (" + Evenum + "," + id + ",'" + login + "','" + pwd + "');";
 
                     int n = 0;
-                    MessageBox.Show(req);
+                    //MessageBox.Show(req);
                     cmd.CommandText = req;
                     try
                     {
