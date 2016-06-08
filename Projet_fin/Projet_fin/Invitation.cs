@@ -47,7 +47,7 @@ namespace Projet_fin
             co.Open();
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
-            string req =@"SELECT nomPart , prenomPart FROM             
+            string req = @"SELECT nomPart , prenomPart FROM  ";           
             cmd.CommandType = CommandType.Text;
         }
 
