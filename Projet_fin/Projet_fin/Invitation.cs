@@ -8,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
+using System.Threading;
 
 namespace Projet_fin
 {
@@ -87,6 +91,50 @@ namespace Projet_fin
             }
 
             co.Close();
+        }
+        public static void SendMail(string adresses, string subject, string message)
+        {
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                //ajouter les destinataires
+                /*foreach (string adress in adresses)
+                {
+                    */
+                mail.To.Add(adresses);/*
+                }*/
+
+                mail.Subject = subject;
+                mail.Body = message;
+                //définir l'expéditeur
+                mail.From = new MailAddress("no-replay@boncompte.fr", "Invitation évènement");
+                //définir les paramètres smtp pour l'envoi
+                SmtpClient smtpServer = new SmtpClient
+                {
+                    Host = "mailserver.u-strasbg.fr",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential("bgallone", "gallone67#")
+                };
+                //envoi du mail
+                try
+                {
+                    smtpServer.Send(mail);
+                    MessageBox.Show("email est envoyer");
+                }
+                catch (SmtpException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
 
 
