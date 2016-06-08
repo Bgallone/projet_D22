@@ -130,7 +130,11 @@ namespace Projet_fin
                     MessageBox.Show("SELECT prenomPart FROM Participants WHERE nomPart = '" + nom + "';");
                     string login = (cmd.ExecuteScalar().ToString()).Substring(0, 1);
                     cmd.CommandText = "SELECT nomPart FROM Participants WHERE  nomPart = '" + nom + "';";
-                    login += cmd.ExecuteScalar().ToString().Substring(0, 8);
+                    login += cmd.ExecuteScalar().ToString();
+                    if(login.Length > 9)
+                    {
+                        login = login.Substring(0, 8);
+                    }
 
 
                     //on recupére son Email
