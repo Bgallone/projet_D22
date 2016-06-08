@@ -16,9 +16,9 @@ namespace Projet_fin
     public partial class FrmLancement : Form
     {
 
-        //private String chco = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\bgallone\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
-        //@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
-        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\bdEvents.mdb";
+       // private String chco = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\bgallone\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
+        private string chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
+        //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
         //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =.\Resources\bdEvents.mdb";
         private OleDbConnection co = new OleDbConnection();
         private DataSet ds = new DataSet();
@@ -197,17 +197,36 @@ namespace Projet_fin
 
             req = @"Select count(*) from Depenses;";
             cmd.CommandText = req;
-            int numDep = int.Parse(cmd.ExecuteScalar().ToString());
+            int numDep = int.Parse(cmd.ExecuteScalar().ToString()) + 1;
             
             req = @"INSERT INTO Depenses(numDepense,description,montant, dateDepense, codeEvent, commentaire,codePart) 
                             VALUES('" + numDep + "', '" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
                                       "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ codePart +"');";
 
             cmd.CommandText = req;
-            MessageBox.Show(req);
+            
             
             int n = cmd.ExecuteNonQuery();
-            MessageBox.Show(n.ToString());
+          
+
+            for(int i = 0; i < clbBeneficiaires.Items.Count;i++)
+            {
+                if (clbBeneficiaires.GetItemChecked(i))
+                {
+                    string nom = clbBeneficiaires.Items[i].ToString();
+                    string reqid = @"SELECT codeParticipant
+                                     FROM Participants
+                                     WHERE nomPart = '" + nom + "';";
+                    cmd.CommandText = reqid;
+                    int id = int.Parse(cmd.ExecuteScalar().ToString());
+
+                    string reqinsert = @"INSERT INTO Beneficiaires(numDepense, codePart)
+                                         VALUES(" + numDep + ", " + id + ");";
+                    cmd.CommandText = reqinsert;
+                    int j = cmd.ExecuteNonQuery();
+                 
+                }
+            }
 
             co.Close();
 
@@ -217,6 +236,12 @@ namespace Projet_fin
         private void btn_dep_Click(object sender, EventArgs e)
         {
             Form Form1 = new Dépenses(chco);
+            Form1.Show();
+        }
+
+        private void btn_bilan_Click(object sender, EventArgs e)
+        {
+            Form Form1 = new Bilan();
             Form1.Show();
         }
     }

@@ -106,6 +106,7 @@
             this.btn_bilan.Size = new System.Drawing.Size(75, 69);
             this.btn_bilan.TabIndex = 15;
             this.btn_bilan.UseVisualStyleBackColor = true;
+            this.btn_bilan.Click += new System.EventHandler(this.btn_bilan_Click);
             // 
             // label3
             // 
@@ -309,6 +310,7 @@
             // 
             // cbxPayePar
             // 
+            this.cbxPayePar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPayePar.FormattingEnabled = true;
             this.cbxPayePar.Location = new System.Drawing.Point(175, 358);
             this.cbxPayePar.Margin = new System.Windows.Forms.Padding(4);
@@ -319,6 +321,7 @@
             // cbxEvenement
             // 
             this.cbxEvenement.BackColor = System.Drawing.SystemColors.Window;
+            this.cbxEvenement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEvenement.FormattingEnabled = true;
             this.cbxEvenement.Location = new System.Drawing.Point(175, 48);
             this.cbxEvenement.Margin = new System.Windows.Forms.Padding(4);
@@ -331,7 +334,7 @@
             // chxToutCocher
             // 
             this.chxToutCocher.AutoSize = true;
-            this.chxToutCocher.Location = new System.Drawing.Point(131, 324);
+            this.chxToutCocher.Location = new System.Drawing.Point(175, 396);
             this.chxToutCocher.Name = "chxToutCocher";
             this.chxToutCocher.Size = new System.Drawing.Size(140, 21);
             this.chxToutCocher.TabIndex = 6;
