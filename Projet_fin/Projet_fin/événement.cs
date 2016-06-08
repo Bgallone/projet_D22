@@ -240,11 +240,15 @@ namespace Projet_fin
 
         private void rtbDescript_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == '\'')
+            {
+                e.Handled = true; 
+            }
             if (rtbDescript.Text.Length > 0)
             {
                 if (rtbDescript.Text.Substring(rtbDescript.Text.Length - 1) == " ")
                 {
-                    if (e.KeyChar == ' ' || e.KeyChar == '\'')
+                    if (e.KeyChar == ' ' )
                     {
                         e.Handled = true;
                     }
