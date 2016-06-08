@@ -16,17 +16,18 @@ namespace Projet_fin
 
     {
 
-        private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
-        // private String chco = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\bgallone\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
+        private String chco;
+      
         private OleDbConnection co = new OleDbConnection();
         private DataSet ds = new DataSet();
         private DataSet ds2 = new DataSet();
         private DataSet ds3 = new DataSet();
         int noevtcourant;
 
-        public Bilan()
+        public Bilan(string chco)
         {
             InitializeComponent();
+            this.chco = chco;
         }
 
         private void Bilan_Load(object sender, EventArgs e)

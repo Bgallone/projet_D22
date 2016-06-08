@@ -241,7 +241,7 @@ namespace Projet_fin
 
         private void btn_bilan_Click(object sender, EventArgs e)
         {
-            Form Form1 = new Bilan();
+            Form Form1 = new Bilan(chco);
             Form1.Show();
         }
     }
