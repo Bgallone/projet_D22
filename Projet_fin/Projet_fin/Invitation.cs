@@ -16,5 +16,23 @@ namespace Projet_fin
         {
             InitializeComponent();
         }
+
+        private void toutcocher(object sender, EventArgs e)
+        {
+            if (chxTtSelectionner.Checked)
+            {
+                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
+                {
+                    clbBeneficiaires.SetItemChecked(i, true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < clbBeneficiaires.Items.Count; i++)
+                {
+                    clbBeneficiaires.SetItemChecked(i, false);
+                }
+            }
+        }
     }
 }
