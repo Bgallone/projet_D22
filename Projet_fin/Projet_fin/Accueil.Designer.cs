@@ -83,7 +83,7 @@
             this.btn_part.Location = new System.Drawing.Point(31, 298);
             this.btn_part.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_part.Name = "btn_part";
-            this.btn_part.Size = new System.Drawing.Size(55, 55);
+            this.btn_part.Size = new System.Drawing.Size(72, 68);
             this.btn_part.TabIndex = 13;
             this.btn_part.UseVisualStyleBackColor = true;
             this.btn_part.Click += new System.EventHandler(this.btn_part_Click);
@@ -103,7 +103,7 @@
             this.btn_bilan.Location = new System.Drawing.Point(31, 514);
             this.btn_bilan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_bilan.Name = "btn_bilan";
-            this.btn_bilan.Size = new System.Drawing.Size(55, 55);
+            this.btn_bilan.Size = new System.Drawing.Size(75, 69);
             this.btn_bilan.TabIndex = 15;
             this.btn_bilan.UseVisualStyleBackColor = true;
             // 
