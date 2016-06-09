@@ -12,7 +12,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading;
-
+using SharpPDF;
 
 namespace Projet_fin
 {
