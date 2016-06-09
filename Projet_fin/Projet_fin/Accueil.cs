@@ -18,8 +18,8 @@ namespace Projet_fin
 
         //private String chco = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\bgallone\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
         //private string chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
-       private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
-        //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =.\Resources\bdEvents.mdb";
+       //private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
+        String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =.\Resources\bdEvents.mdb";
         private OleDbConnection co = new OleDbConnection();
         private DataSet ds = new DataSet();
         private int noevent;
@@ -69,6 +69,10 @@ namespace Projet_fin
             cbxPayePar.Enabled = false;
             clbBeneficiaires.Enabled = false;
             chxToutCocher.Enabled = false;
+            txtCommentaire.Clear();
+            txtDepense.Clear();
+            txtMontant.Clear();
+            clbBeneficiaires.Items.Clear();
         }
 
         private void Remplir(String requete, String nomTable)
@@ -129,10 +133,7 @@ namespace Projet_fin
 
         private void btn_RAZ_Click(object sender, EventArgs e)
         {
-            txtCommentaire.Clear();
-            txtDepense.Clear();
-            txtMontant.Clear();
-            clbBeneficiaires.Items.Clear();
+           
             Init();
 
             
@@ -283,7 +284,7 @@ namespace Projet_fin
 
         private void txtDepense_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtDepense.Text.Length == 0)
+            if (txtDepense.Text.Length != 0)
             {
                 txtMontant.Enabled = true;
             }
@@ -304,7 +305,7 @@ namespace Projet_fin
 
         private void txtMontant_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtMontant.Text.Length == 0)
+            if (txtMontant.Text.Length != 0)
             {
                 txtCommentaire.Enabled = true;
             }
@@ -313,7 +314,7 @@ namespace Projet_fin
                 txtCommentaire.Enabled = false;
             }
 
-            if (char.IsNumber(e.KeyChar) || e.KeyChar == (char) Keys.Back)
+            if (char.IsNumber(e.KeyChar) || e.KeyChar == (char) Keys.Back || e.KeyChar == ',')
             {
                 e.Handled = false;
             }
@@ -349,6 +350,7 @@ namespace Projet_fin
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             ds.Clear();
+            Init();
             this.refresh();
         }
     }
