@@ -105,6 +105,7 @@
             this.cbxParticipant.Name = "cbxParticipant";
             this.cbxParticipant.Size = new System.Drawing.Size(221, 24);
             this.cbxParticipant.TabIndex = 9;
+            this.cbxParticipant.SelectedIndexChanged += new System.EventHandler(this.cbxParticipant_SelectedIndexChanged);
             this.cbxParticipant.SelectionChangeCommitted += new System.EventHandler(this.cbxParticipant_SelectionChangeCommitted);
             // 
             // label2

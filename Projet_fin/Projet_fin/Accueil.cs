@@ -34,9 +34,14 @@ namespace Projet_fin
 
         }
 
-        private void FrmLancement_Load(object sender, EventArgs e)
+        public void FrmLancement_Load(object sender, EventArgs e)
         {
+            refresh();
+           
+        }
 
+        public void refresh()
+        {
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
             co.ConnectionString = chco;
@@ -84,6 +89,7 @@ namespace Projet_fin
             cmd.Connection = co;
 
             cmd.CommandType = CommandType.Text;
+            //Sélection des participants à l'événement sélectionné
             string req = @"Select p.nomPart
                            From Participants p, Invites i
                            Where p.codeParticipant = i.codePart    
@@ -153,6 +159,7 @@ namespace Projet_fin
             RemplirCheckListBox(noevent, clbBeneficiaires);
 
             co.Open();
+            //Sélection des participants ainsi que leur codePart pour l'événement sélectionné
             string req = @"Select p.nomPart, p.codeParticipant
                            From Participants p, Invites i
                            Where p.codeParticipant = i.codePart    
@@ -337,6 +344,12 @@ namespace Projet_fin
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            ds.Clear();
+            this.refresh();
         }
     }
 }

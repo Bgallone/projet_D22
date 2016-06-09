@@ -62,6 +62,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lvl_nomEvent = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.grbSection.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -202,6 +203,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.txtMontant);
             this.groupBox1.Controls.Add(this.btnRAZ);
             this.groupBox1.Controls.Add(this.btnQuit);
@@ -262,7 +264,7 @@
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(761, 396);
+            this.btnValider.Location = new System.Drawing.Point(761, 345);
             this.btnValider.Margin = new System.Windows.Forms.Padding(4);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(126, 43);
@@ -425,6 +427,17 @@
             this.lvl_nomEvent.TabIndex = 0;
             this.lvl_nomEvent.Text = "Evénement :";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(761, 396);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(126, 43);
+            this.btnRefresh.TabIndex = 17;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // FrmLancement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -481,6 +494,7 @@
         private System.Windows.Forms.RichTextBox txtCommentaire;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtMontant;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 

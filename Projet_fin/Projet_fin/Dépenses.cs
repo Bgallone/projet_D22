@@ -102,12 +102,22 @@ namespace Projet_fin
                             FROM Participants p, Depenses d
                             WHERE p.codeParticipant = d.codePart";
                 remplirDataGridView(req);
-                
-
+               
             }
             else
             {
-                remplirDataGridView(reqdgv);
+                try {
+                    string req = @"SELECT p.nomPart, p.prenomPart, d.description , d.montant
+                            FROM Participants p, Depenses d
+                            WHERE p.codeParticipant = d.codePart
+                            AND c.codeEvent = " + evtcourant + ";";
+                    remplirDataGridView(req);
+                }
+                catch(OleDbException x)
+                {
+               
+                }
+                
             }
         }
 
@@ -136,7 +146,15 @@ namespace Projet_fin
 
         private void cbxParticipant_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            
+            string req = @"SELECT p.nomPart, p.prenomPart, d.dateDepense, d.description , d.montant
+                            FROM Participants p, Depenses d
+                            WHERE p.codeParticipant = d.codePart 
+                            AND codeEvent = " + cbxEvenement.SelectedValue + " AND codePart = " + cbxParticipant.SelectedValue + ";";
+        }
+
+        private void cbxParticipant_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

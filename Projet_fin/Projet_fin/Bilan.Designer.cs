@@ -66,6 +66,7 @@
             // 
             // cbxEvenement
             // 
+            this.cbxEvenement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEvenement.FormattingEnabled = true;
             this.cbxEvenement.Location = new System.Drawing.Point(99, 13);
             this.cbxEvenement.Name = "cbxEvenement";
@@ -75,6 +76,7 @@
             // 
             // cbxParticipant
             // 
+            this.cbxParticipant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxParticipant.FormattingEnabled = true;
             this.cbxParticipant.Location = new System.Drawing.Point(99, 67);
             this.cbxParticipant.Name = "cbxParticipant";
@@ -102,6 +104,11 @@
             // 
             // dgvDépensé
             // 
+            this.dgvDépensé.AllowUserToAddRows = false;
+            this.dgvDépensé.AllowUserToDeleteRows = false;
+            this.dgvDépensé.AllowUserToResizeColumns = false;
+            this.dgvDépensé.AllowUserToResizeRows = false;
+            this.dgvDépensé.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDépensé.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDépensé.Location = new System.Drawing.Point(16, 148);
             this.dgvDépensé.Name = "dgvDépensé";
@@ -111,6 +118,7 @@
             // 
             // dgvArembourser
             // 
+            this.dgvArembourser.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvArembourser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArembourser.Location = new System.Drawing.Point(16, 422);
             this.dgvArembourser.Name = "dgvArembourser";

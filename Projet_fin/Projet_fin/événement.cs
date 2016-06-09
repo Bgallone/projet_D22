@@ -21,6 +21,7 @@ namespace Projet_fin
         OleDbConnection co = new OleDbConnection();
         DataTable Liaison;
         BindingSource BS = new BindingSource();
+
         public événement(String chco)
         {
             InitializeComponent();
@@ -308,7 +309,10 @@ namespace Projet_fin
 
         }
 
-
-
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            
+        }
     }
 }

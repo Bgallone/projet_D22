@@ -70,6 +70,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.btnQuitter = new System.Windows.Forms.Button();
             tbcEve = new System.Windows.Forms.TabControl();
             tbcEve.SuspendLayout();
             this.tab1a1.SuspendLayout();
@@ -337,6 +338,7 @@
             // tabCréeEve
             // 
             this.tabCréeEve.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabCréeEve.Controls.Add(this.btnQuitter);
             this.tabCréeEve.Controls.Add(this.btnInvitation);
             this.tabCréeEve.Controls.Add(this.pictureBox1);
             this.tabCréeEve.Controls.Add(this.btnEnregister);
@@ -361,7 +363,7 @@
             // btnInvitation
             // 
             this.btnInvitation.Enabled = false;
-            this.btnInvitation.Location = new System.Drawing.Point(897, 580);
+            this.btnInvitation.Location = new System.Drawing.Point(897, 468);
             this.btnInvitation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInvitation.Name = "btnInvitation";
             this.btnInvitation.Size = new System.Drawing.Size(165, 37);
@@ -374,7 +376,7 @@
             // 
             this.pictureBox1.ErrorImage = null;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(915, 478);
+            this.pictureBox1.Location = new System.Drawing.Point(921, 353);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(120, 111);
@@ -522,6 +524,18 @@
             this.tabPage2.Size = new System.Drawing.Size(200, 100);
             this.tabPage2.TabIndex = 0;
             // 
+            // btnQuitter
+            // 
+            this.btnQuitter.Enabled = false;
+            this.btnQuitter.Location = new System.Drawing.Point(941, 581);
+            this.btnQuitter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(121, 37);
+            this.btnQuitter.TabIndex = 14;
+            this.btnQuitter.Text = "Quitter";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
             // événement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -590,5 +604,6 @@
         private System.Windows.Forms.RichTextBox rtbEveDescri;
         private System.Windows.Forms.CheckBox cckRegle;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.Button btnQuitter;
     }
 }
