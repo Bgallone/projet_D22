@@ -215,7 +215,7 @@ namespace Projet_fin
                 double Plus =DepenseCredit(NumEve,NumPart) ;
                
                 double Moins=DepensesDebit(NumEve, NumPart);
-      
+                dtBilan.Rows.Add(NumPart, "", Plus, Moins, Plus-Moins);
             }
             co.Close();
 
@@ -295,11 +295,38 @@ namespace Projet_fin
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             da.Fill(dt);
 
-    
-            
+            double res = 0 ;
+            //nbpart
+            double nbPart;
+            object totalPart; string partTot;
 
-            
-            return -1;
+            //somme
+            double somme;
+            object somPart ; string partSom;
+
+            DataRow[] rows = dt.Select();
+            for (int i = 0; i < rows.Length; i++)
+            {
+                totalPart = rows[i]["SommeDenbParts"];
+                partTot = totalPart.ToString();
+                if (!double.TryParse(partTot, out nbPart))
+                {
+                    nbPart = 0;
+                }
+
+                somPart = rows[i]["montant"];
+                partSom = somPart.ToString();
+                if(!double.TryParse(partSom,out somme))
+                {
+                    somme = 0;
+                }
+
+                res += somme / nbPart;
+
+            }
+
+ 
+            return res;
 
         }
     }
