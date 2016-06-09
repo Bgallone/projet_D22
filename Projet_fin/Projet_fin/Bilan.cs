@@ -191,12 +191,13 @@ namespace Projet_fin
            //création table qui doit quoi a qui 
             DataTable dtBilanPart = ds.Tables.Add("dtBilanPart");
 
-            DataColumn pkdtBilanPart = dtBilan.Columns.Add("codeEvt", typeof(Int32));
-            dtBilan.Columns.Add("codeDonneur", typeof(Int32));
-            dtBilan.Columns.Add("codeReceveur", typeof(Int32));
-            dtBilan.Columns.Add("sommeAVerser", typeof(Double));
+            dtBilanPart.Columns.Add("codeEvt", typeof(Int32));
+            dtBilanPart.Columns.Add("codeDonneur", typeof(Int32));
+            dtBilanPart.Columns.Add("codeReceveur", typeof(Int32));
+            dtBilanPart.Columns.Add("sommeAVerser", typeof(Double));
+
             
-            dgvEss.DataSource = dtBilan;
+            dgvEss.DataSource = dtBilanPart;
      
             
             //on récup le n° de l'évé 
