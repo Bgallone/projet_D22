@@ -240,6 +240,7 @@ namespace Projet_fin
             dtBilan.PrimaryKey = new DataColumn[] {dcBilan  };
 
             dgvEss.DataSource = ds;
+
             while (dr.Read())
             {
                 int NumPart = dr.GetInt32(0);
