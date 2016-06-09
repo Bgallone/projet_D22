@@ -236,6 +236,7 @@
             this.txtMontant.Name = "txtMontant";
             this.txtMontant.Size = new System.Drawing.Size(95, 22);
             this.txtMontant.TabIndex = 3;
+            this.txtMontant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontant_KeyPress);
             // 
             // btnRAZ
             // 
@@ -288,6 +289,7 @@
             this.txtCommentaire.Size = new System.Drawing.Size(775, 117);
             this.txtCommentaire.TabIndex = 4;
             this.txtCommentaire.Text = "";
+            this.txtCommentaire.TextChanged += new System.EventHandler(this.txtCommentaire_TextChanged);
             // 
             // label12
             // 
@@ -307,6 +309,7 @@
             this.txtDepense.Name = "txtDepense";
             this.txtDepense.Size = new System.Drawing.Size(336, 22);
             this.txtDepense.TabIndex = 2;
+            this.txtDepense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDepense_KeyPress);
             // 
             // cbxPayePar
             // 
@@ -317,6 +320,7 @@
             this.cbxPayePar.Name = "cbxPayePar";
             this.cbxPayePar.Size = new System.Drawing.Size(336, 24);
             this.cbxPayePar.TabIndex = 5;
+            this.cbxPayePar.SelectedIndexChanged += new System.EventHandler(this.cbxPayePar_SelectedIndexChanged);
             // 
             // cbxEvenement
             // 
