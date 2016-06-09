@@ -364,7 +364,45 @@ namespace Projet_fin
                         }
                     }
             }
-            
+
+
+            co.Close();
+
+
+
+
+            // VALEUR PDF 
+            co.Open();
+            cmd.CommandText = @"SELECT titreEvent FROM Evenements 
+                                WHERE codeEvent=" + NumEve + ";";
+            string TitreEve = cmd.ExecuteScalar().ToString();
+
+
+            DataRow[] rows2 = dtBilanPart.Select();
+            for (int i = 0; i < rows2.Length; i++)
+            {
+                // Nom du donneur pas kebab
+                int codeDonne = (int)rows2[i]["codeDonneur"];
+                cmd.CommandText = @"SELECT (nomPart +' '+prenomPart) FROM Participants 
+                                WHERE codeParticipant=" + codeDonne+ ";";
+                string NomDonneur = cmd.ExecuteScalar().ToString();
+
+                //Somme du 
+                double SommeDu =(double)rows2[i]["sommeAVerser"];
+
+
+                //Nom du receveur pas bicraveur
+                int codeRecev = (int)rows2[i]["codeReceveur"];
+                cmd.CommandText = @"SELECT (nomPart +' '+prenomPart) FROM Participants 
+                                WHERE codeParticipant=" + codeRecev + ";";
+                string NomDuRecev = cmd.ExecuteScalar().ToString();
+
+                MessageBox.Show(NomDonneur+" doit "+SommeDu +"à "+ NomDuRecev);
+
+
+            }
+
+
             co.Close();
 
 

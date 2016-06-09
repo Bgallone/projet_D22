@@ -40,10 +40,8 @@
             this.btnBilan = new System.Windows.Forms.Button();
             this.lblDepensé = new System.Windows.Forms.Label();
             this.lblARembourser = new System.Windows.Forms.Label();
-            this.dgvEss = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDépensé)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArembourser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEss)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -162,21 +160,11 @@
             this.lblARembourser.Size = new System.Drawing.Size(0, 17);
             this.lblARembourser.TabIndex = 11;
             // 
-            // dgvEss
-            // 
-            this.dgvEss.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEss.Location = new System.Drawing.Point(578, 178);
-            this.dgvEss.Name = "dgvEss";
-            this.dgvEss.RowTemplate.Height = 24;
-            this.dgvEss.Size = new System.Drawing.Size(765, 401);
-            this.dgvEss.TabIndex = 12;
-            // 
             // Bilan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1420, 756);
-            this.Controls.Add(this.dgvEss);
+            this.ClientSize = new System.Drawing.Size(696, 673);
             this.Controls.Add(this.lblARembourser);
             this.Controls.Add(this.lblDepensé);
             this.Controls.Add(this.btnBilan);
@@ -194,7 +182,6 @@
             this.Load += new System.EventHandler(this.Bilan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDépensé)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArembourser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEss)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,6 +201,5 @@
         private System.Windows.Forms.Button btnBilan;
         private System.Windows.Forms.Label lblDepensé;
         private System.Windows.Forms.Label lblARembourser;
-        private System.Windows.Forms.DataGridView dgvEss;
     }
 }
