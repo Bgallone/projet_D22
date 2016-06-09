@@ -201,7 +201,7 @@ namespace Projet_fin
             cmd2.CommandText = "DepensesQuiMeConcernent";
             cmd2.Parameters.Add(paramevent);
             cmd2.Parameters.Add(parampart);
-            leDbDataReader dr2 = cmd2.ExecuteReader();
+            OleDbDataReader dr2 = cmd2.ExecuteReader();
 
             while (dr2.Read())
             {
@@ -243,16 +243,21 @@ namespace Projet_fin
             MessageBox.Show(rqtNumPart);
             cmd.CommandText = rqtNumPart;
             OleDbDataReader dr = cmd.ExecuteReader();
-            DataTable da = new DataTable();
+           
+            DataSet ds = new DataSet("bilan");
 
-            da.Columns.Add("CodeParticpant");
-            da.Columns.Add("Personne");
-            da.Columns.Add("Plus");
-            da.Columns.Add("Moins");
-            da.Columns.Add("Solde");
+            DataTable dtBilan = ds.Tables.Add("dtBilan");
 
+            DataColumn dcBilan = 
+                dtBilan.Columns.Add("CodePart", typeof(Int32));
+            dtBilan.Columns.Add("Personne", typeof(string));
+            dtBilan.Columns.Add("Plus", typeof(Int32));
+            dtBilan.Columns.Add("Moins", typeof(Int32));
+            dtBilan.Columns.Add("Solde", typeof(Int32));
 
+            dtBilan.PrimaryKey = new DataColumn[] {dcBilan  };
 
+            dgvEss.DataSource = ds;
             while (dr.Read())
             {
                 int NumPart = dr.GetInt32(0);
