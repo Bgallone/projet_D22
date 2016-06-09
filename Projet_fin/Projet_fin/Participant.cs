@@ -12,7 +12,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading;
-
+using sharpPDF;
 
 namespace Projet_fin
 {
@@ -87,6 +87,7 @@ namespace Projet_fin
             btnAdd.Visible = true;
             lblAdd.Visible = true;
             refresh_add();
+            CreatePDF();
         }
 
         private void refresh_add()
@@ -217,7 +218,13 @@ namespace Projet_fin
 
         public void CreatePDF()
         {
-
+            pdfDocument myDoc = new pdfDocument("TUTORIAL", "ME");
+            pdfPage myPage = myDoc.addPage();
+            myPage.addText("Hello World!", 200, 450, myDoc.getFontReference("Helvetica"), 20);
+            String path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            myDoc.createPDF(@""+ path +"/test.pdf");
+            myPage = null;
+            myDoc = null;
         }
     }
 }
