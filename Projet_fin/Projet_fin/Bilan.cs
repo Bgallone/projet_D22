@@ -197,7 +197,7 @@ namespace Projet_fin
             dtBilanPart.Columns.Add("sommeAVerser", typeof(Double));
 
             
-            dgvEss.DataSource = dtBilanPart;
+
      
             
             //on récup le n° de l'évé 
