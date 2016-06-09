@@ -203,7 +203,7 @@ namespace Projet_fin
             //on récup tout les num de part
             string rqtNumPart = @"SELECT codePart FROM Invites 
                                    WHERE codeEvent =" + NumEve +"";
-            MessageBox.Show(rqtNumPart);
+
             cmd.CommandText = rqtNumPart;
             OleDbDataReader dr = cmd.ExecuteReader();
 
@@ -212,8 +212,10 @@ namespace Projet_fin
             {
                 int NumPart = dr.GetInt32(0);
                 
-                int Plus =DepensesDebit(NumEve, NumPart);
-                int Moins=DepenseCredit(NumEve,NumPart) ;
+                double Plus =DepenseCredit(NumEve,NumPart) ;
+                MessageBox.Show(Plus+"");
+                double Moins=DepensesDebit(NumEve, NumPart);
+      
             }
             co.Close();
 
@@ -224,11 +226,12 @@ namespace Projet_fin
             OleDbCommand cmd = new OleDbCommand(req, co);
             MessageBox.Show(cmd.ExecuteNonQuery().ToString());*/
         }
-        private int DepenseCredit(int codeEvt,int numeroParticipant)
+        private double DepenseCredit(int codeEvt,int numeroParticipant)
         {
-            //plus
+            //parametre
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
+            DataTable dt = new DataTable();
 
             // on lui passe un participant
             OleDbParameter part = new OleDbParameter();
@@ -247,18 +250,57 @@ namespace Projet_fin
             cmd.CommandText = "MesDepenses";
             cmd.Parameters.Add(evt);
             cmd.Parameters.Add(part);
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            da.Fill(dt);
+
+            object sumObject = dt.Compute("Sum(montant)", "");
+            
+            string total =sumObject.ToString();
+
+            double res;
+
+            if(!double.TryParse(total,out res))
+            {
+                res = 0;
+            }
+            
+            return res;
+        }
+        private double DepensesDebit(int codeEvt, int numeroParticipant)
+        {
+            /*//moins
+            //parametre
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+            DataTable dt = new DataTable();
 
 
+            // on lui passe un participant
+            OleDbParameter part = new OleDbParameter();
+            part.OleDbType = OleDbType.Integer;
+            part.ParameterName = "@pPart";
+            part.Value = numeroParticipant;
+            part.Direction = ParameterDirection.Input;
+
+            // on lui passe un éve
+            OleDbParameter evt = new OleDbParameter();
+            evt.OleDbType = OleDbType.Integer;
+            evt.ParameterName = "@pEvent";
+            evt.Value = codeEvt;
+            evt.Direction = ParameterDirection.Input;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "DepensesQuiMeConcernent";
+            cmd.Parameters.Add(evt);
+            cmd.Parameters.Add(part);
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            da.Fill(dt);*/
+
+    
+            
 
             
-            cmd.CommandText = "";
             return -1;
-        }
-        private int DepensesDebit(int codeEvt, int numeroParticipant)
-        {
-            //moins
 
-            return -1;
         }
     }
 }
