@@ -142,26 +142,26 @@ namespace Projet_fin
 
             DataTable dt2 = new DataTable();
           
-            OleDbParameter parampart = new OleDbParameter();
-            parampart.ParameterName = "@pPart";
-            parampart.OleDbType = OleDbType.Integer;
-            parampart.Direction = ParameterDirection.Input;
-            parampart.Value = nopart;
+            OleDbParameter ppart = new OleDbParameter();
+            ppart.ParameterName = "@pPart";
+            ppart.OleDbType = OleDbType.Integer;
+            ppart.Direction = ParameterDirection.Input;
+            ppart.Value = nopart;
         
 
-            OleDbParameter paramevent = new OleDbParameter();
-            paramevent.ParameterName = "@pEvent";
-            paramevent.OleDbType = OleDbType.Integer;
-            paramevent.Direction = ParameterDirection.Input;
-            paramevent.Value = noevt;
+            OleDbParameter pevent = new OleDbParameter();
+            pevent.ParameterName = "@pEvent";
+            pevent.OleDbType = OleDbType.Integer;
+            pevent.Direction = ParameterDirection.Input;
+            pevent.Value = noevt;
            
              
             OleDbCommand cmd2 = new OleDbCommand();
             cmd2.Connection = co;
             cmd2.CommandType = CommandType.StoredProcedure;
             cmd2.CommandText = "DepensesQuiMeConcernent";
-            cmd2.Parameters.Add(paramevent);
-            cmd2.Parameters.Add(parampart);
+            cmd2.Parameters.Add(pevent);
+            cmd2.Parameters.Add(ppart);
             OleDbDataAdapter da2 = new OleDbDataAdapter(cmd2);
             da2.Fill(dt2);
             dgvArembourser.DataSource = dt2;
