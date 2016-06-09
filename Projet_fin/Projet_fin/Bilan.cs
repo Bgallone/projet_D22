@@ -152,18 +152,10 @@ namespace Projet_fin
             cmd.CommandText = "MesDepenses";
             cmd.Parameters.Add(evt);
             cmd.Parameters.Add(part);
-            OleDbDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                DataRow d = dt.NewRow();
-                d[0] = dr.GetInt32(0);
-                d[1] = dr.GetDateTime(1).ToString("dd/mm/yyyy");
-                d[2] = dr.GetString(2);
-                d[3] = dr.GetDecimal(3);
-                dt.Rows.Add(d);
-            }
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            da.Fill(dt);
             dgvDépensé.DataSource = dt;
+
 
 
             DataTable dt2 = new DataTable();
@@ -201,18 +193,8 @@ namespace Projet_fin
             cmd2.CommandText = "DepensesQuiMeConcernent";
             cmd2.Parameters.Add(paramevent);
             cmd2.Parameters.Add(parampart);
-            OleDbDataReader dr2 = cmd2.ExecuteReader();
-
-            while (dr2.Read())
-            {
-                DataRow d = dt2.NewRow();
-                d[1] = dr2.GetInt32(0);
-                d[2] = dr2.GetDecimal(1);
-                d[3] = dr2.GetInt32(2);
-                dt2.Rows.Add(d);
-
-               
-            }
+            OleDbDataAdapter da2 = new OleDbDataAdapter(cmd2);
+            da.Fill(dt2);
             dgvArembourser.DataSource = dt2;
 
             co.Close();
@@ -243,7 +225,7 @@ namespace Projet_fin
             MessageBox.Show(rqtNumPart);
             cmd.CommandText = rqtNumPart;
             OleDbDataReader dr = cmd.ExecuteReader();
-           
+
             DataSet ds = new DataSet("bilan");
 
             DataTable dtBilan = ds.Tables.Add("dtBilan");
