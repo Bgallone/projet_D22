@@ -179,6 +179,20 @@ namespace Projet_fin
             co.ConnectionString = chco;
             co.Open();
 
+            //création de la table 
+            DataSet ds = new DataSet("bilan");
+
+            DataTable dtBilan = ds.Tables.Add("dtBilan");
+
+            DataColumn pkdtBilan = dtBilan.Columns.Add("CodePart", typeof(Int32));
+            dtBilan.Columns.Add("Personne", typeof(string));
+            dtBilan.Columns.Add("Plus",typeof(Double));
+            dtBilan.Columns.Add("Moins",typeof(Double));
+            dtBilan.Columns.Add("Solde",typeof(Double));
+
+            dgvEss.DataSource = dtBilan;
+     
+            
             //on récup le n° de l'évé 
             string rqtCodePart=@"SELECT codeEvent FROM Evenements
                                                      WHERE titreEvent = '"+cbxEvenement.Text+"' ";
@@ -195,22 +209,17 @@ namespace Projet_fin
             cmd.CommandText = rqtNumPart;
             OleDbDataReader dr = cmd.ExecuteReader();
 
-            DataSet ds = new DataSet("bilan");
-
-            DataTable dtBilan = ds.Tables.Add("dtBilan");
-
-
-
-            dgvEss.DataSource = ds;
-
+           
             while (dr.Read())
             {
                 int NumPart = dr.GetInt32(0);
-                DepenseCredit(NumEve,NumPart) ;
+                
+                int Plus =DepensesDebit(NumEve, NumPart);
+                int Moins=DepenseCredit(NumEve,NumPart) ;
             }
-
-
             co.Close();
+
+           
             /*string req = @"UPDATE Evenements
                            SET soldeON = True
                            WHERE titreEvent = '" + cbxEvenement.Text + "';";
@@ -219,11 +228,37 @@ namespace Projet_fin
         }
         private int DepenseCredit(int codeEvt,int numeroParticipant)
         {
-            
+            //plus
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+
+            // on lui passe un participant
+            OleDbParameter part = new OleDbParameter();
+            part.OleDbType = OleDbType.Integer;
+            part.ParameterName = "@pPart";
+            part.Value = numeroParticipant;
+            part.Direction = ParameterDirection.Input;
+
+            // on lui passe un éve
+            OleDbParameter evt = new OleDbParameter();
+            evt.OleDbType = OleDbType.Integer;
+            evt.ParameterName = "@pEvent";
+            evt.Value = codeEvt;
+            evt.Direction = ParameterDirection.Input;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "MesDepenses";
+            cmd.Parameters.Add(evt);
+            cmd.Parameters.Add(part);
+
+
+
+
+            cmd.CommandText = "";
             return -1;
         }
         private int DepensesDebit(int codeEvt, int numeroParticipant)
         {
+            //moins
 
             return -1;
         }
