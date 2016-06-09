@@ -152,33 +152,40 @@ namespace Projet_fin
             cmd.CommandText = "MesDepenses";
             cmd.Parameters.Add(evt);
             cmd.Parameters.Add(part);
-            OleDbDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
-            {
-                DataRow d = dt.NewRow();
-                d[0] = dr.GetInt32(0);
-                d[1] = dr.GetDateTime(1).ToString("dd/mm/yyyy");
-                d[2] = dr.GetString(2);
-                d[3] = dr.GetDecimal(3);
-                dt.Rows.Add(d);
-            }
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            da.Fill(dt);
             dgvDépensé.DataSource = dt;
 
-           
+
+
             DataTable dt2 = new DataTable();
+            DataColumn c1 = new DataColumn();
+            c1.DataType = System.Type.GetType("System.Int32");
+            c1.ColumnName = "Numéro Depense";
+            dt2.Columns.Add(c1);
+            DataColumn c2 = new DataColumn();
+            c2.DataType = Type.GetType("System.Decimal");
+            c2.ColumnName = "montant";
+            dt2.Columns.Add(c2);
+            DataColumn c3 = new DataColumn();
+            c3.DataType = Type.GetType("System.Int32");
+            c3.ColumnName = "SommeDenbPart";
+            dt2.Columns.Add(c3);
+            
 
             OleDbParameter parampart = new OleDbParameter();
             parampart.ParameterName = "@pPart";
             parampart.OleDbType = OleDbType.Integer;
             parampart.Direction = ParameterDirection.Input;
-            parampart.Value = part;
+            parampart.Value = nopart;
+        
 
             OleDbParameter paramevent = new OleDbParameter();
             paramevent.ParameterName = "@pEvent";
             paramevent.OleDbType = OleDbType.Integer;
             paramevent.Direction = ParameterDirection.Input;
-            paramevent.Value = evt;
+            paramevent.Value = noevt;
+           
              
             OleDbCommand cmd2 = new OleDbCommand();
             cmd2.Connection = co;
@@ -186,18 +193,8 @@ namespace Projet_fin
             cmd2.CommandText = "DepensesQuiMeConcernent";
             cmd2.Parameters.Add(paramevent);
             cmd2.Parameters.Add(parampart);
-            OleDbDataReader dr2 = cmd2.ExecuteReader();
-
-            while (dr2.Read())
-            {
-                DataRow d = dt2.NewRow();
-                d[0] = dr2.GetInt32(0);
-                d[1] = dr2.GetDecimal(1);
-                d[2] = dr2.GetInt32(3);
-                dt2.Rows.Add(d);
-
-               
-            }
+            OleDbDataAdapter da2 = new OleDbDataAdapter(cmd2);
+            da.Fill(dt2);
             dgvArembourser.DataSource = dt2;
 
             co.Close();
@@ -229,6 +226,20 @@ namespace Projet_fin
             cmd.CommandText = rqtNumPart;
             OleDbDataReader dr = cmd.ExecuteReader();
 
+            DataSet ds = new DataSet("bilan");
+
+            DataTable dtBilan = ds.Tables.Add("dtBilan");
+
+            DataColumn dcBilan = 
+                dtBilan.Columns.Add("CodePart", typeof(Int32));
+            dtBilan.Columns.Add("Personne", typeof(string));
+            dtBilan.Columns.Add("Plus", typeof(Int32));
+            dtBilan.Columns.Add("Moins", typeof(Int32));
+            dtBilan.Columns.Add("Solde", typeof(Int32));
+
+            dtBilan.PrimaryKey = new DataColumn[] {dcBilan  };
+
+            dgvEss.DataSource = ds;
             while (dr.Read())
             {
                 int NumPart = dr.GetInt32(0);
@@ -245,7 +256,12 @@ namespace Projet_fin
         }
         private int DepenseCredit(int codeEvt,int numeroParticipant)
         {
-            MessageBox.Show("Coucou"+codeEvt);
+            
+            return -1;
+        }
+        private int DepensesDebit(int codeEvt, int numeroParticipant)
+        {
+
             return -1;
         }
     }
