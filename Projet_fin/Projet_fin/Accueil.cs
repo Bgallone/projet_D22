@@ -17,8 +17,8 @@ namespace Projet_fin
     {
 
         //private String chco = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\bgallone\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
-        //private string chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
-       private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
+        private string chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
+       //private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gladmir\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
         //String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source =.\Resources\bdEvents.mdb";
         private OleDbConnection co = new OleDbConnection();
         private DataSet ds = new DataSet();
@@ -63,6 +63,7 @@ namespace Projet_fin
             txtCommentaire.Enabled = false;
             cbxPayePar.Enabled = false;
             clbBeneficiaires.Enabled = false;
+            chxToutCocher.Enabled = false;
         }
 
         private void Remplir(String requete, String nomTable)
@@ -102,7 +103,7 @@ namespace Projet_fin
         private void btn_part_Click(object sender, EventArgs e)
         {
             Form Form1 = new Participant(chco);
-            Form1.Show();
+            Form1.ShowDialog();
         }
 
 
@@ -113,7 +114,7 @@ namespace Projet_fin
         private void btn_event_Click(object sender, EventArgs e)
         {
             Form Form1 = new événement(chco);
-            Form1.Show();
+            Form1.ShowDialog();
         }
 
 
@@ -209,7 +210,7 @@ namespace Projet_fin
             }
             co.Open();
             string req = @"SELECT codeParticipant FROM Participants WHERE nomPart = '" + cbxPayePar.Text + "';";
-            MessageBox.Show(req);
+            
             
             OleDbCommand cmd = new OleDbCommand(req, co);
             
@@ -227,6 +228,14 @@ namespace Projet_fin
             
             
             int n = cmd.ExecuteNonQuery();
+            if(n == 1)
+            {
+                MessageBox.Show("La dépense a bien été ajoutée");
+            }
+            else
+            {
+                MessageBox.Show("Erreur lors de l'ajout de la dépense");
+            }
           
 
             for(int i = 0; i < clbBeneficiaires.Items.Count;i++)
@@ -256,20 +265,27 @@ namespace Projet_fin
         private void btn_dep_Click(object sender, EventArgs e)
         {
             Form Form1 = new Dépenses(chco);
-            Form1.Show();
+            Form1.ShowDialog();
         }
 
         private void btn_bilan_Click(object sender, EventArgs e)
         {
             Form Form1 = new Bilan(chco);
-            Form1.Show();
+            Form1.ShowDialog();
         }
 
         private void txtDepense_KeyPress(object sender, KeyPressEventArgs e)
         {
-            txtMontant.Enabled = true;
+            if (txtDepense.Text.Length == 0)
+            {
+                txtMontant.Enabled = true;
+            }
+            else
+            {
+                txtMontant.Enabled = false;
+            }
 
-            if (char.IsLetter(e.KeyChar))
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char) Keys.Space || e.KeyChar == (char) Keys.Back)
             {
                 e.Handled = false;
             }
@@ -281,9 +297,16 @@ namespace Projet_fin
 
         private void txtMontant_KeyPress(object sender, KeyPressEventArgs e)
         {
-            txtCommentaire.Enabled = true;
+            if (txtMontant.Text.Length == 0)
+            {
+                txtCommentaire.Enabled = true;
+            }
+            else
+            {
+                txtCommentaire.Enabled = false;
+            }
 
-            if (char.IsNumber(e.KeyChar))
+            if (char.IsNumber(e.KeyChar) || e.KeyChar == (char) Keys.Back)
             {
                 e.Handled = false;
             }
@@ -301,6 +324,19 @@ namespace Projet_fin
         private void cbxPayePar_SelectedIndexChanged(object sender, EventArgs e)
         {
             clbBeneficiaires.Enabled = true;
+            chxToutCocher.Enabled = true;
+        }
+
+        private void txtCommentaire_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char) Keys.Back || e.KeyChar == (char) Keys.Space || char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }
