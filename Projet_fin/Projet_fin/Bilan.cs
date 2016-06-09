@@ -106,33 +106,105 @@ namespace Projet_fin
         {
             ds2.Clear();
             co.Open();
+            
+            DataTable dt = new DataTable();
+            DataColumn dc1 = new DataColumn();
+            dc1.DataType = System.Type.GetType("System.Int32");
+            dc1.ColumnName = "Numéro Depense";
+            dt.Columns.Add(dc1);
+            DataColumn dc2 = new DataColumn();
+            dc2.DataType = Type.GetType("System.String");
+            dc2.ColumnName = "date";
+            dt.Columns.Add(dc2);
+            DataColumn dc3 = new DataColumn();
+            dc3.DataType = Type.GetType("System.String");
+            dc3.ColumnName = "description";
+            dt.Columns.Add(dc3);
+            DataColumn dc4 = new DataColumn();
+            dc4.DataType = Type.GetType("System.Decimal");
+            dc4.ColumnName = "montant";
+            dt.Columns.Add(dc4);
+
+            string reqpart = @"SELECT codeParticipant
+                              FROM Participants
+                              WHERE nomPart = '" + cbxParticipant.Text + "';";
+            OleDbCommand cmd = new OleDbCommand(reqpart, co);
+            int nopart = int.Parse(cmd.ExecuteScalar().ToString());
+
+            string reqevt = @"SELECT codeEvent 
+                              FROM Evenements
+                              WHERE titreEvent = '" + cbxEvenement.Text + "';";
+            cmd.CommandText = reqevt;
+            int noevt = int.Parse(cmd.ExecuteScalar().ToString());
+     
+            OleDbParameter part = new OleDbParameter();
+            part.OleDbType = OleDbType.Integer;
+            part.ParameterName = "@pPart";
+            part.Value = nopart;
+            part.Direction = ParameterDirection.Input;
          
-            string reqdgv1 = @"SELECT p.nomPart, d.description, d.dateDepense, d.montant
-                              FROM Participants p, Depenses d
-                              WHERE d.codePart = p.codeParticipant AND 
-                              d.codeEvent = " + cbxEvenement.SelectedValue + @" 
-                              AND d.codePart = (SELECT codeParticipant
-                                                FROM Participants
-                                                WHERE nomPart = '" + cbxParticipant.Text + "'); ";;
-            remplirDataGridView(reqdgv1, dgvDépensé, ds2);
-/*
-            string get = @"SELECT codePart 
-                           FROM Beneficiaires b, Participants p
-                           WHERE b.codePart = p.codeParticipant;";
+            OleDbParameter evt = new OleDbParameter();
+            evt.OleDbType = OleDbType.Integer;
+            evt.ParameterName = "@pEvent";
+            evt.Value = noevt;
+            evt.Direction = ParameterDirection.Input;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "MesDepenses";
+            cmd.Parameters.Add(evt);
+            cmd.Parameters.Add(part);
+            OleDbDataReader dr = cmd.ExecuteReader();
 
+            while (dr.Read())
+            {
+                DataRow d = dt.NewRow();
+                d[0] = dr.GetInt32(0);
+                d[1] = dr.GetDateTime(1).ToString("dd/mm/yyyy");
+                d[2] = dr.GetString(2);
+                d[3] = dr.GetDecimal(3);
+                dt.Rows.Add(d);
+            }
+            dgvDépensé.DataSource = dt;
 
+           
+            DataTable dt2 = new DataTable();
 
-            string reqdgv2 = @"SELECT p.nomPart, d.description, d.dateDepense, d.montant
-                             FROM Participants p, Depenses d
-                             WHERE p.codeParticipant = d.codePart
-                             AND d.codePart = (SELECT codePart 
-                                               FROM Beneficiaires b, Participants p
-                                               WHERE b.codePart = p.codeParticipant;
-                                               AND p.nomPart = '" + cbxParticipant.Text + "');" ;
-            MessageBox.Show(reqdgv2);
-            remplirDataGridView(reqdgv2, dgvArembourser, ds3);*/
+            OleDbParameter parampart = new OleDbParameter();
+            parampart.ParameterName = "@pPart";
+            parampart.OleDbType = OleDbType.Integer;
+            parampart.Direction = ParameterDirection.Input;
+            parampart.Value = part;
+
+            OleDbParameter paramevent = new OleDbParameter();
+            paramevent.ParameterName = "@pEvent";
+            paramevent.OleDbType = OleDbType.Integer;
+            paramevent.Direction = ParameterDirection.Input;
+            paramevent.Value = evt;
+             
+            OleDbCommand cmd2 = new OleDbCommand();
+            cmd2.Connection = co;
+            cmd2.CommandType = CommandType.StoredProcedure;
+            cmd2.CommandText = "DepensesQuiMeConcernent";
+            cmd2.Parameters.Add(paramevent);
+            cmd2.Parameters.Add(parampart);
+            OleDbDataReader dr2 = cmd2.ExecuteReader();
+
+            while (dr2.Read())
+            {
+                DataRow d = dt2.NewRow();
+                d[0] = dr2.GetInt32(0);
+                d[1] = dr2.GetDecimal(1);
+                d[2] = dr2.GetInt32(3);
+                dt2.Rows.Add(d);
+
+               
+            }
+            dgvArembourser.DataSource = dt2;
+
             co.Close();
         }
+
+
+
 
         private void btnCloture_Click(object sender, EventArgs e)
         {
