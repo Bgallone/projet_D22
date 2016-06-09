@@ -204,7 +204,7 @@ namespace Projet_fin
             string rqtCodePart=@"SELECT codeEvent FROM Evenements
                                                      WHERE titreEvent = '"+cbxEvenement.Text+"' ";
 
-            MessageBox.Show(rqtCodePart);
+
             cmd.CommandText = rqtCodePart;
 
             int NumEve = int.Parse(cmd.ExecuteScalar().ToString());
