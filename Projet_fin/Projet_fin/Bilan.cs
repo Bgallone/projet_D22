@@ -8,6 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using sharpPDF;
+using sharpPDF.Enumerators;
+using sharpPDF.Fonts;
+using sharpPDF.Elements;
+using sharpPDF.Bookmarks;
+using sharpPDF.Collections;
+using sharpPDF.PDFControls;
+using sharpPDF.Tables;
+using sharpPDF.Exceptions;
 
 namespace Projet_fin
 {
@@ -467,6 +476,37 @@ namespace Projet_fin
  
             return res;
 
+        }
+
+        public void CreatePDF()
+        {
+            String nomEvent ="";
+            String login = "";
+            String prenom = "";
+            String datedeb = "";
+            String datefin = "";
+            int part = 0;
+
+
+            pdfDocument myDoc = new pdfDocument("BonCompte", "BonCompte");
+            pdfPage myPage = myDoc.addPage(2339, 1654);
+            myPage.addText("Récapitulatif de l'événement : " + nomEvent, 80, 2250, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("Récapitulatif de l'événement : " + nomEvent, 80, 2250, myDoc.getFontReference("Helvetica"), 40);
+
+
+
+            for (int i = 0; i < 10; i++)
+            {
+                myPage.drawLine(100, 2000 - 50 * i, 1550, 2000 - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+            }
+            for (int y = 0; y < 6; y++)
+            {
+                myPage.drawLine(100 + y * (1450 / 5), 2000, 100 + y * (1450 / 5), 2000 - 50 * 9, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+            }
+            String path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            myDoc.createPDF(@"" + path + "/test.pdf");
+            myPage = null;
+            myDoc = null;
         }
     }
 }
