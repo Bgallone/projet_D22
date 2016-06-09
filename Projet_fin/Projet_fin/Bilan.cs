@@ -40,7 +40,8 @@ namespace Projet_fin
 
             cmd.CommandType = CommandType.Text;
             string req = @"SELECT [titreEvent], [codeEvent]
-                            FROM Evenements;";
+                            FROM Evenements
+                            WHERE soldeON = false;";
 
             cmd.CommandText = req;
             co.Close();
@@ -114,7 +115,7 @@ namespace Projet_fin
                                                 FROM Participants
                                                 WHERE nomPart = '" + cbxParticipant.Text + "'); ";;
             remplirDataGridView(reqdgv1, dgvDépensé, ds2);
-
+/*
             string get = @"SELECT codePart 
                            FROM Beneficiaires b, Participants p
                            WHERE b.codePart = p.codeParticipant;";
@@ -129,7 +130,7 @@ namespace Projet_fin
                                                WHERE b.codePart = p.codeParticipant;
                                                AND p.nomPart = '" + cbxParticipant.Text + "');" ;
             MessageBox.Show(reqdgv2);
-            remplirDataGridView(reqdgv2, dgvArembourser, ds3);
+            remplirDataGridView(reqdgv2, dgvArembourser, ds3);*/
             co.Close();
         }
 

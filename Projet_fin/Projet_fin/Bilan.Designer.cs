@@ -102,7 +102,7 @@
             this.dgvDépensé.Location = new System.Drawing.Point(16, 148);
             this.dgvDépensé.Name = "dgvDépensé";
             this.dgvDépensé.RowTemplate.Height = 24;
-            this.dgvDépensé.Size = new System.Drawing.Size(530, 241);
+            this.dgvDépensé.Size = new System.Drawing.Size(526, 241);
             this.dgvDépensé.TabIndex = 6;
             // 
             // dgvArembourser
@@ -116,7 +116,7 @@
             // 
             // btnCloture
             // 
-            this.btnCloture.Location = new System.Drawing.Point(420, 70);
+            this.btnCloture.Location = new System.Drawing.Point(556, 67);
             this.btnCloture.Name = "btnCloture";
             this.btnCloture.Size = new System.Drawing.Size(126, 52);
             this.btnCloture.TabIndex = 8;
@@ -126,7 +126,7 @@
             // 
             // btnBilan
             // 
-            this.btnBilan.Location = new System.Drawing.Point(420, 25);
+            this.btnBilan.Location = new System.Drawing.Point(556, 13);
             this.btnBilan.Name = "btnBilan";
             this.btnBilan.Size = new System.Drawing.Size(126, 33);
             this.btnBilan.TabIndex = 9;
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 655);
+            this.ClientSize = new System.Drawing.Size(694, 655);
             this.Controls.Add(this.btnBilan);
             this.Controls.Add(this.btnCloture);
             this.Controls.Add(this.dgvArembourser);
