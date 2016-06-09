@@ -155,14 +155,12 @@ namespace Projet_fin
             pevent.Direction = ParameterDirection.Input;
             pevent.Value = noevt;
            
-             
-            OleDbCommand cmd2 = new OleDbCommand();
-            cmd2.Connection = co;
-            cmd2.CommandType = CommandType.StoredProcedure;
-            cmd2.CommandText = "DepensesQuiMeConcernent";
-            cmd2.Parameters.Add(pevent);
-            cmd2.Parameters.Add(ppart);
-            OleDbDataAdapter da2 = new OleDbDataAdapter(cmd2);
+            cmd.Connection = co;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "DepensesQuiMeConcernent";
+            cmd.Parameters.Add(pevent);
+            cmd.Parameters.Add(ppart);
+            OleDbDataAdapter da2 = new OleDbDataAdapter(cmd);
             da2.Fill(dt2);
             dgvArembourser.DataSource = dt2;
 
