@@ -410,7 +410,7 @@ namespace Projet_fin
 
             co.Close();
 
-            CreatePDF();
+            CreatePDF(nomEvent, login, prenom, datedeb, datefin, description, participant);
         }
         private double DepenseCredit(int codeEvt,int numeroParticipant)
         {
@@ -516,16 +516,8 @@ namespace Projet_fin
 
         }
 
-        public void CreatePDF()
+        public void CreatePDF(String nomEvent, String login, String prenom, String datedeb, String datefin, String description, int participant)
         {
-            String nomEvent ="";
-            String login = "";
-            String prenom = "";
-            String datedeb = "";
-            String datefin = "";
-            String description = "";
-            int part = 0;
-
 
             pdfDocument myDoc = new pdfDocument("BonCompte", "BonCompte");
             pdfPage myPage = myDoc.addPage(2339, 1654);
