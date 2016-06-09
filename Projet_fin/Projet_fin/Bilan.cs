@@ -410,7 +410,7 @@ namespace Projet_fin
 
             co.Close();
 
-
+            CreatePDF();
         }
         private double DepenseCredit(int codeEvt,int numeroParticipant)
         {
@@ -523,6 +523,7 @@ namespace Projet_fin
             String prenom = "";
             String datedeb = "";
             String datefin = "";
+            String description = "";
             int part = 0;
 
 
@@ -530,8 +531,10 @@ namespace Projet_fin
             pdfPage myPage = myDoc.addPage(2339, 1654);
             myPage.addText("Récapitulatif de l'événement : " + nomEvent, 80, 2250, myDoc.getFontReference("Helvetica"), 40);
             myPage.addText("- Date de début : " + datedeb, 100, 2200, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("- Date de FIN : " + datefin, 100, 2150, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("- Description : " + description, 100, 2100, myDoc.getFontReference("Helvetica"), 40);
 
-
+            myPage.drawLine(100, 2000 - 50 * i, 1550, 2000 - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 255), 3);
 
             for (int i = 0; i < 10; i++)
             {
