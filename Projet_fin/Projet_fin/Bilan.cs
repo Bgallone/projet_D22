@@ -355,15 +355,15 @@ namespace Projet_fin
                         }
                     }
             }
-            
 
 
+            co.Close();
 
 
 
 
             // VALEUR PDF 
-
+            co.Open();
             cmd.CommandText = @"SELECT titreEvent FROM Evenements 
                                 WHERE codeEvent=" + NumEve + ";";
             string TitreEve = cmd.ExecuteScalar().ToString();
@@ -388,7 +388,7 @@ namespace Projet_fin
                                 WHERE codeParticipant=" + codeRecev + ";";
                 string NomDuRecev = cmd.ExecuteScalar().ToString();
 
-
+                MessageBox.Show(NomDonneur+" doit "+SommeDu +"à "+ NomDuRecev);
 
 
             }
