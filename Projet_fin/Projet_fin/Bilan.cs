@@ -201,7 +201,7 @@ namespace Projet_fin
             cmd2.CommandText = "DepensesQuiMeConcernent";
             cmd2.Parameters.Add(paramevent);
             cmd2.Parameters.Add(parampart);
-            OleDbDataReader dr2 = cmd2.ExecuteReader();
+            leDbDataReader dr2 = cmd2.ExecuteReader();
 
             while (dr2.Read())
             {
@@ -243,6 +243,15 @@ namespace Projet_fin
             MessageBox.Show(rqtNumPart);
             cmd.CommandText = rqtNumPart;
             OleDbDataReader dr = cmd.ExecuteReader();
+            DataTable da = new DataTable();
+
+            da.Columns.Add("CodeParticpant");
+            da.Columns.Add("Personne");
+            da.Columns.Add("Plus");
+            da.Columns.Add("Moins");
+            da.Columns.Add("Solde");
+
+
 
             while (dr.Read())
             {
@@ -260,7 +269,12 @@ namespace Projet_fin
         }
         private int DepenseCredit(int codeEvt,int numeroParticipant)
         {
-            MessageBox.Show("Coucou"+codeEvt);
+            
+            return -1;
+        }
+        private int DepensesDebit(int codeEvt, int numeroParticipant)
+        {
+
             return -1;
         }
     }
