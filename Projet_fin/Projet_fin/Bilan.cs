@@ -188,6 +188,14 @@ namespace Projet_fin
             dtBilan.Columns.Add("Moins",typeof(Double));
             dtBilan.Columns.Add("Solde",typeof(Double));
 
+           //création table qui doit quoi a qui 
+            DataTable dtBilanPart = ds.Tables.Add("dtBilanPart");
+
+            DataColumn pkdtBilanPart = dtBilan.Columns.Add("codeEvt", typeof(Int32));
+            dtBilan.Columns.Add("codeDonneur", typeof(Int32));
+            dtBilan.Columns.Add("codeReceveur", typeof(Int32));
+            dtBilan.Columns.Add("sommeAVerser", typeof(Double));
+            
             dgvEss.DataSource = dtBilan;
      
             
@@ -226,6 +234,107 @@ namespace Projet_fin
                
                 dtBilan.Rows.Add(NumPart,NomPre, Plus, Moins, Plus-Moins);
             }
+
+            // Algorithme
+            while((double)dtBilan.Compute("Max(Solde)", "") !=0){
+
+
+
+                   DataRow[] rows = dtBilan.Select();
+                double donneur = Math.Round((double)dtBilan.Compute("Min(Solde)", ""),2);
+                double receveur = Math.Round((double)dtBilan.Compute("Max(Solde)", ""),2);
+
+
+
+                MessageBox.Show(donneur + "");
+                MessageBox.Show(receveur + "");
+
+
+                if (Math.Abs(donneur) < Math.Abs(receveur))
+                {
+
+                    for (int i = 0; i < rows.Length; i++)
+                    {
+                        int codedonneur = 0; int codereceveur = 0;
+                        if (Math.Round((double)rows[i]["Solde"],2) == donneur)
+                        {
+                            codedonneur = (int)rows[i]["CodePart"];
+                            rows[i]["Solde"] = 0;
+                            
+                            
+                        }
+                        else if (Math.Round((double)rows[i]["Solde"],2) == receveur)
+                        {
+                            codereceveur = (int)rows[i]["CodePart"];
+
+                            rows[i]["Solde"] = receveur+donneur;
+
+                        }
+                        if (codedonneur != 0 && codereceveur != 0)
+                        {
+                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, donneur);
+                        }
+                    }
+                }
+
+
+                else if(Math.Abs(donneur) >Math.Abs(receveur) )
+                {
+
+
+                    for (int i = 0; i < rows.Length; i++)
+                    {
+                        int codedonneur = 0; int codereceveur = 0;
+                        if (Math.Round((double)rows[i]["Solde"],2) == donneur)
+                        {
+                            codedonneur = (int)rows[i]["CodePart"];
+                            rows[i]["Solde"] = donneur + receveur;
+
+
+                        }
+                        else if (Math.Round((double)rows[i]["Solde"],2) == receveur)
+                        {
+                            codereceveur = (int)rows[i]["CodePart"];
+                            rows[i]["Solde"] = 0;
+
+                        }
+                        if (codedonneur != 0 && codereceveur != 0)
+                        {
+                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, donneur);
+                        }
+                    }
+
+
+                }
+
+
+                else
+                {
+                    for (int i = 0; i < rows.Length; i++)
+                    {
+                        int codedonneur = 0; int codereceveur = 0;
+                        if (Math.Round((double)rows[i]["Solde"],2) == donneur)
+                        {
+                             codedonneur = (int)rows[i]["CodePart"];
+                            rows[i]["Solde"] = 0;
+
+
+                        }
+                        else if (Math.Round((double)rows[i]["Solde"],2) == receveur)
+                        {
+                             codereceveur = (int)rows[i]["CodePart"];
+                            rows[i]["Solde"] = 0;
+
+                        }
+
+                        if (codedonneur != 0 && codereceveur != 0)
+                        {
+                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, donneur);
+                        }
+                    }
+                }
+            }
+            
             co.Close();
 
 

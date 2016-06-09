@@ -165,17 +165,17 @@
             // dgvEss
             // 
             this.dgvEss.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEss.Location = new System.Drawing.Point(640, 234);
+            this.dgvEss.Location = new System.Drawing.Point(578, 178);
             this.dgvEss.Name = "dgvEss";
             this.dgvEss.RowTemplate.Height = 24;
-            this.dgvEss.Size = new System.Drawing.Size(507, 241);
+            this.dgvEss.Size = new System.Drawing.Size(765, 401);
             this.dgvEss.TabIndex = 12;
             // 
             // Bilan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1203, 687);
+            this.ClientSize = new System.Drawing.Size(1420, 756);
             this.Controls.Add(this.dgvEss);
             this.Controls.Add(this.lblARembourser);
             this.Controls.Add(this.lblDepensé);
