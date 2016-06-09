@@ -38,6 +38,8 @@
             this.dgvArembourser = new System.Windows.Forms.DataGridView();
             this.btnCloture = new System.Windows.Forms.Button();
             this.btnBilan = new System.Windows.Forms.Button();
+            this.lblDepensé = new System.Windows.Forms.Label();
+            this.lblARembourser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDépensé)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArembourser)).BeginInit();
             this.SuspendLayout();
@@ -134,11 +136,29 @@
             this.btnBilan.UseVisualStyleBackColor = true;
             this.btnBilan.Click += new System.EventHandler(this.btnBilan_Click);
             // 
+            // lblDepensé
+            // 
+            this.lblDepensé.AutoSize = true;
+            this.lblDepensé.Location = new System.Drawing.Point(556, 209);
+            this.lblDepensé.Name = "lblDepensé";
+            this.lblDepensé.Size = new System.Drawing.Size(0, 17);
+            this.lblDepensé.TabIndex = 10;
+            // 
+            // lblARembourser
+            // 
+            this.lblARembourser.AutoSize = true;
+            this.lblARembourser.Location = new System.Drawing.Point(553, 458);
+            this.lblARembourser.Name = "lblARembourser";
+            this.lblARembourser.Size = new System.Drawing.Size(0, 17);
+            this.lblARembourser.TabIndex = 11;
+            // 
             // Bilan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 655);
+            this.Controls.Add(this.lblARembourser);
+            this.Controls.Add(this.lblDepensé);
             this.Controls.Add(this.btnBilan);
             this.Controls.Add(this.btnCloture);
             this.Controls.Add(this.dgvArembourser);
@@ -171,5 +191,7 @@
         private System.Windows.Forms.DataGridView dgvArembourser;
         private System.Windows.Forms.Button btnCloture;
         private System.Windows.Forms.Button btnBilan;
+        private System.Windows.Forms.Label lblDepensé;
+        private System.Windows.Forms.Label lblARembourser;
     }
 }
