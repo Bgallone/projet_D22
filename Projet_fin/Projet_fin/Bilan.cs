@@ -534,7 +534,7 @@ namespace Projet_fin
             myPage.addText("- Date de FIN : " + datefin, 100, 2150, myDoc.getFontReference("Helvetica"), 40);
             myPage.addText("- Description : " + description, 100, 2100, myDoc.getFontReference("Helvetica"), 40);
 
-            myPage.drawLine(100, 2000 - 50 * i, 1550, 2000 - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 255), 3);
+            myPage.drawLine(100, 2000, 1550, 2000, predefinedLineStyle.csNormal, new pdfColor(0, 0, 255), 3);
 
             for (int i = 0; i < 10; i++)
             {
