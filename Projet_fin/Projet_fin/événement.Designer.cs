@@ -43,17 +43,11 @@
             this.lblDescri = new System.Windows.Forms.Label();
             this.lblInti = new System.Windows.Forms.Label();
             this.lblCrée = new System.Windows.Forms.Label();
-            this.btnFin = new System.Windows.Forms.Button();
-            this.btnSuiv = new System.Windows.Forms.Button();
-            this.btnPre = new System.Windows.Forms.Button();
-            this.BtnDebut = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblNumChange = new System.Windows.Forms.Label();
             this.lblNévé = new System.Windows.Forms.Label();
-            this.ptb_événement = new System.Windows.Forms.PictureBox();
             this.tabCréeEve = new System.Windows.Forms.TabPage();
             this.btnInvitation = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEnregister = new System.Windows.Forms.Button();
             this.cboCreateur = new System.Windows.Forms.ComboBox();
             this.lblCreateur = new System.Windows.Forms.Label();
@@ -70,15 +64,20 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.btnQuitter = new System.Windows.Forms.Button();
+            this.btnFin = new System.Windows.Forms.Button();
+            this.btnSuiv = new System.Windows.Forms.Button();
+            this.btnPre = new System.Windows.Forms.Button();
+            this.BtnDebut = new System.Windows.Forms.Button();
+            this.ptb_événement = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             tbcEve = new System.Windows.Forms.TabControl();
             tbcEve.SuspendLayout();
             this.tab1a1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).BeginInit();
             this.tabCréeEve.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grb2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcEve
@@ -245,51 +244,6 @@
             this.lblCrée.TabIndex = 6;
             this.lblCrée.Text = "Créé par :";
             // 
-            // btnFin
-            // 
-            this.btnFin.Image = ((System.Drawing.Image)(resources.GetObject("btnFin.Image")));
-            this.btnFin.Location = new System.Drawing.Point(979, 551);
-            this.btnFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFin.Name = "btnFin";
-            this.btnFin.Size = new System.Drawing.Size(80, 62);
-            this.btnFin.TabIndex = 5;
-            this.btnFin.UseVisualStyleBackColor = true;
-            this.btnFin.Click += new System.EventHandler(this.btnFin_Click);
-            // 
-            // btnSuiv
-            // 
-            this.btnSuiv.Image = ((System.Drawing.Image)(resources.GetObject("btnSuiv.Image")));
-            this.btnSuiv.Location = new System.Drawing.Point(979, 470);
-            this.btnSuiv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSuiv.Name = "btnSuiv";
-            this.btnSuiv.Size = new System.Drawing.Size(80, 62);
-            this.btnSuiv.TabIndex = 4;
-            this.btnSuiv.UseVisualStyleBackColor = true;
-            this.btnSuiv.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // btnPre
-            // 
-            this.btnPre.Image = ((System.Drawing.Image)(resources.GetObject("btnPre.Image")));
-            this.btnPre.Location = new System.Drawing.Point(39, 470);
-            this.btnPre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(80, 62);
-            this.btnPre.TabIndex = 3;
-            this.btnPre.Text = "<";
-            this.btnPre.UseVisualStyleBackColor = true;
-            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
-            // 
-            // BtnDebut
-            // 
-            this.BtnDebut.Image = ((System.Drawing.Image)(resources.GetObject("BtnDebut.Image")));
-            this.BtnDebut.Location = new System.Drawing.Point(39, 551);
-            this.BtnDebut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnDebut.Name = "BtnDebut";
-            this.BtnDebut.Size = new System.Drawing.Size(80, 62);
-            this.BtnDebut.TabIndex = 2;
-            this.BtnDebut.UseVisualStyleBackColor = true;
-            this.BtnDebut.Click += new System.EventHandler(this.BtnDebut_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -324,21 +278,9 @@
             this.lblNévé.TabIndex = 1;
             this.lblNévé.Text = "Evénement n° :";
             // 
-            // ptb_événement
-            // 
-            this.ptb_événement.ErrorImage = null;
-            this.ptb_événement.Image = ((System.Drawing.Image)(resources.GetObject("ptb_événement.Image")));
-            this.ptb_événement.Location = new System.Drawing.Point(165, 69);
-            this.ptb_événement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ptb_événement.Name = "ptb_événement";
-            this.ptb_événement.Size = new System.Drawing.Size(93, 86);
-            this.ptb_événement.TabIndex = 0;
-            this.ptb_événement.TabStop = false;
-            // 
             // tabCréeEve
             // 
             this.tabCréeEve.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabCréeEve.Controls.Add(this.btnQuitter);
             this.tabCréeEve.Controls.Add(this.btnInvitation);
             this.tabCréeEve.Controls.Add(this.pictureBox1);
             this.tabCréeEve.Controls.Add(this.btnEnregister);
@@ -371,17 +313,6 @@
             this.btnInvitation.Text = "Lancer les invitations";
             this.btnInvitation.UseVisualStyleBackColor = true;
             this.btnInvitation.Click += new System.EventHandler(this.btnInvitation_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(921, 353);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 111);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
             // 
             // btnEnregister
             // 
@@ -524,17 +455,72 @@
             this.tabPage2.Size = new System.Drawing.Size(200, 100);
             this.tabPage2.TabIndex = 0;
             // 
-            // btnQuitter
+            // btnFin
             // 
-            this.btnQuitter.Enabled = false;
-            this.btnQuitter.Location = new System.Drawing.Point(941, 581);
-            this.btnQuitter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(121, 37);
-            this.btnQuitter.TabIndex = 14;
-            this.btnQuitter.Text = "Quitter";
-            this.btnQuitter.UseVisualStyleBackColor = true;
-            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            this.btnFin.Image = ((System.Drawing.Image)(resources.GetObject("btnFin.Image")));
+            this.btnFin.Location = new System.Drawing.Point(979, 551);
+            this.btnFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFin.Name = "btnFin";
+            this.btnFin.Size = new System.Drawing.Size(80, 62);
+            this.btnFin.TabIndex = 5;
+            this.btnFin.UseVisualStyleBackColor = true;
+            this.btnFin.Click += new System.EventHandler(this.btnFin_Click);
+            // 
+            // btnSuiv
+            // 
+            this.btnSuiv.Image = ((System.Drawing.Image)(resources.GetObject("btnSuiv.Image")));
+            this.btnSuiv.Location = new System.Drawing.Point(979, 470);
+            this.btnSuiv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSuiv.Name = "btnSuiv";
+            this.btnSuiv.Size = new System.Drawing.Size(80, 62);
+            this.btnSuiv.TabIndex = 4;
+            this.btnSuiv.UseVisualStyleBackColor = true;
+            this.btnSuiv.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btnPre
+            // 
+            this.btnPre.Image = ((System.Drawing.Image)(resources.GetObject("btnPre.Image")));
+            this.btnPre.Location = new System.Drawing.Point(39, 470);
+            this.btnPre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPre.Name = "btnPre";
+            this.btnPre.Size = new System.Drawing.Size(80, 62);
+            this.btnPre.TabIndex = 3;
+            this.btnPre.Text = "<";
+            this.btnPre.UseVisualStyleBackColor = true;
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
+            // 
+            // BtnDebut
+            // 
+            this.BtnDebut.Image = ((System.Drawing.Image)(resources.GetObject("BtnDebut.Image")));
+            this.BtnDebut.Location = new System.Drawing.Point(39, 551);
+            this.BtnDebut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnDebut.Name = "BtnDebut";
+            this.BtnDebut.Size = new System.Drawing.Size(80, 62);
+            this.BtnDebut.TabIndex = 2;
+            this.BtnDebut.UseVisualStyleBackColor = true;
+            this.BtnDebut.Click += new System.EventHandler(this.BtnDebut_Click);
+            // 
+            // ptb_événement
+            // 
+            this.ptb_événement.ErrorImage = null;
+            this.ptb_événement.Image = ((System.Drawing.Image)(resources.GetObject("ptb_événement.Image")));
+            this.ptb_événement.Location = new System.Drawing.Point(165, 69);
+            this.ptb_événement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ptb_événement.Name = "ptb_événement";
+            this.ptb_événement.Size = new System.Drawing.Size(93, 86);
+            this.ptb_événement.TabIndex = 0;
+            this.ptb_événement.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(921, 353);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 111);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // événement
             // 
@@ -552,12 +538,12 @@
             this.tab1a1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).EndInit();
             this.tabCréeEve.ResumeLayout(false);
             this.tabCréeEve.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grb2.ResumeLayout(false);
             this.grb2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_événement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -604,6 +590,5 @@
         private System.Windows.Forms.RichTextBox rtbEveDescri;
         private System.Windows.Forms.CheckBox cckRegle;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
-        private System.Windows.Forms.Button btnQuitter;
     }
 }

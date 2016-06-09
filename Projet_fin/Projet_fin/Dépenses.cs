@@ -144,17 +144,28 @@ namespace Projet_fin
 
         }
 
-        private void cbxParticipant_SelectionChangeCommitted(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            string req = @"SELECT p.nomPart, p.prenomPart, d.dateDepense, d.description , d.montant
-                            FROM Participants p, Depenses d
-                            WHERE p.codeParticipant = d.codePart 
-                            AND codeEvent = " + cbxEvenement.SelectedValue + " AND codePart = " + cbxParticipant.SelectedValue + ";";
-        }
+            comboBox1.Items.Clear(); //on vide la cbo
+            comboBox1.Text = "";
 
-        private void cbxParticipant_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            if (comboBox1.SelectedIndex != -1)
+            {
+                String eventSelec = comboBox1.SelectedValue.ToString();
+                foreach (DataRow dr in ds.Tables["TabInvites"].Rows)
+                {
+                    if (dr["codeEvent"].ToString() == eventSelec)
+                    {
+                        foreach (DataRow d in ds.Tables["TabParticipants"].Rows)
+                        {
+                            if (d["codeParticipant"].ToString() == dr["codePart"].ToString())
+                            {
+                                comboBox1.Items.Add(d["identite"]);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
