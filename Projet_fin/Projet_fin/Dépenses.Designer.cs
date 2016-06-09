@@ -33,8 +33,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDepense = new System.Windows.Forms.DataGridView();
             this.chxAll = new System.Windows.Forms.CheckBox();
-            this.cbxParticipant = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.gbxCouleur = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepense)).BeginInit();
@@ -97,32 +95,10 @@
             this.chxAll.UseVisualStyleBackColor = true;
             this.chxAll.CheckedChanged += new System.EventHandler(this.chxAll_CheckedChanged);
             // 
-            // cbxParticipant
-            // 
-            this.cbxParticipant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxParticipant.FormattingEnabled = true;
-            this.cbxParticipant.Location = new System.Drawing.Point(190, 128);
-            this.cbxParticipant.Name = "cbxParticipant";
-            this.cbxParticipant.Size = new System.Drawing.Size(221, 24);
-            this.cbxParticipant.TabIndex = 9;
-            this.cbxParticipant.SelectedIndexChanged += new System.EventHandler(this.cbxParticipant_SelectedIndexChanged);
-            this.cbxParticipant.SelectionChangeCommitted += new System.EventHandler(this.cbxParticipant_SelectionChangeCommitted);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(105, 131);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Participant";
-            // 
             // gbxCouleur
             // 
             this.gbxCouleur.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.gbxCouleur.Controls.Add(this.label2);
             this.gbxCouleur.Controls.Add(this.chxAll);
-            this.gbxCouleur.Controls.Add(this.cbxParticipant);
             this.gbxCouleur.Controls.Add(this.cbxEvenement);
             this.gbxCouleur.Controls.Add(this.label1);
             this.gbxCouleur.Location = new System.Drawing.Point(-40, -34);
@@ -157,8 +133,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvDepense;
         private System.Windows.Forms.CheckBox chxAll;
-        private System.Windows.Forms.ComboBox cbxParticipant;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gbxCouleur;
     }
 }

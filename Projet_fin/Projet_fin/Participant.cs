@@ -125,7 +125,7 @@ namespace Projet_fin
         private void btnAdd_Click(object sender, EventArgs e)
         {
             String evt = cbxEvent.Text;
-            MessageBox.Show(evt);
+          
             String nom = cbxAdd.Text;
             String pwd = getRandomPassword();
             String rqt = @"SELECT adresseMail FROM Participants WHERE (prenomPart + ' ' + nomPart) = '" + nom + "';";
@@ -147,18 +147,18 @@ namespace Projet_fin
             SendMail(email, " Tu es invité à l'événement : "+ evt , "Bonjour, \n\n Tu es invité a l'événement : "+ evt + " \n Ton mot de passe est :" +pwd+ "\n\n\n Mail automatique ne pas répondre svp");
             //baptiste.gallone@etu.unistra.fr
             //Florian.Holtzinger@etu.unistra.fr
-            MessageBox.Show(req);
+            
             cmd.CommandText = req;
             int n = 0;
             try
             {
-                n = cmd.ExecuteNonQuery();
+               cmd.ExecuteNonQuery();
             }
             catch (Exception et)
             {
                 Console.WriteLine(et.Message);
             }
-            MessageBox.Show(n+ "");
+            
         }
 
 
@@ -210,7 +210,7 @@ namespace Projet_fin
                 try
                 {
                     smtpServer.Send(mail);
-                    MessageBox.Show("email est envoyer");
+                    MessageBox.Show("L'email a bien été envoyé");
                 }
                 catch (SmtpException ex)
                 {

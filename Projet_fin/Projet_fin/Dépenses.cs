@@ -15,7 +15,7 @@ namespace Projet_fin
     {
 
         private String chco = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Arthur\Desktop\Cours\S2\D21\bdEvents.mdb";
-       // private String chco = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\bgallone\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
+        // private String chco = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\Users\bgallone\Source\Repos\projet_D22\Projet_fin\Projet_fin\Resources\bdEvents.mdb;Persist Security Info=True";
         private OleDbConnection co = new OleDbConnection();
         private DataSet ds = new DataSet();
         private DataSet ds2 = new DataSet();
@@ -26,18 +26,18 @@ namespace Projet_fin
                             AND d.codeEvent = " + evtcourant + ";";
 
 
-       
+
 
         public Dépenses(String chco)
         {
             InitializeComponent();
             this.chco = chco;
-            
+
         }
 
         private void Dépenses_Load(object sender, EventArgs e)
         {
-          
+
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
             co.ConnectionString = chco;
@@ -46,11 +46,11 @@ namespace Projet_fin
             cmd.CommandType = CommandType.Text;
             string req = @"SELECT [titreEvent], [codeEvent]
                             FROM Evenements;";
-           
+
             cmd.CommandText = req;
             co.Close();
             Remplir(req, "events");
-            
+
             co.Open();
             cbxEvenement.DataSource = ds.Tables["events"];
             cbxEvenement.DisplayMember = "titreEvent";
@@ -74,13 +74,13 @@ namespace Projet_fin
 
         private void remplirDataGridView(string reqdgv)
         {
-            
+
             OleDbDataAdapter da = new OleDbDataAdapter(reqdgv, co);
             da.Fill(ds2);
             dgvDepense.DataSource = ds2.Tables[0];
         }
 
-      
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -90,7 +90,7 @@ namespace Projet_fin
         private void cbxEvenement_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-          
+
         }
 
         private void chxAll_CheckedChanged(object sender, EventArgs e)
@@ -102,22 +102,23 @@ namespace Projet_fin
                             FROM Participants p, Depenses d
                             WHERE p.codeParticipant = d.codePart";
                 remplirDataGridView(req);
-               
+
             }
             else
             {
-                try {
+                try
+                {
                     string req = @"SELECT p.nomPart, p.prenomPart, d.description , d.montant
                             FROM Participants p, Depenses d
                             WHERE p.codeParticipant = d.codePart
                             AND c.codeEvent = " + evtcourant + ";";
                     remplirDataGridView(req);
                 }
-                catch(OleDbException x)
+                catch (OleDbException x)
                 {
-               
+
                 }
-                
+
             }
         }
 
@@ -138,23 +139,7 @@ namespace Projet_fin
             remplirDataGridView(req1);
             co.Close();
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbxParticipant_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            string req = @"SELECT p.nomPart, p.prenomPart, d.dateDepense, d.description , d.montant
-                            FROM Participants p, Depenses d
-                            WHERE p.codeParticipant = d.codePart 
-                            AND codeEvent = " + cbxEvenement.SelectedValue + " AND codePart = " + cbxParticipant.SelectedValue + ";";
-        }
-
-        private void cbxParticipant_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
+
+
 }
