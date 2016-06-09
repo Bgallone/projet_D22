@@ -38,8 +38,10 @@
             this.dgvArembourser = new System.Windows.Forms.DataGridView();
             this.btnCloture = new System.Windows.Forms.Button();
             this.btnBilan = new System.Windows.Forms.Button();
+            this.dgvTestCloture = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDépensé)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArembourser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestCloture)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -134,11 +136,21 @@
             this.btnBilan.UseVisualStyleBackColor = true;
             this.btnBilan.Click += new System.EventHandler(this.btnBilan_Click);
             // 
+            // dgvTestCloture
+            // 
+            this.dgvTestCloture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTestCloture.Location = new System.Drawing.Point(691, 161);
+            this.dgvTestCloture.Name = "dgvTestCloture";
+            this.dgvTestCloture.RowTemplate.Height = 24;
+            this.dgvTestCloture.Size = new System.Drawing.Size(526, 241);
+            this.dgvTestCloture.TabIndex = 10;
+            // 
             // Bilan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 655);
+            this.ClientSize = new System.Drawing.Size(1397, 695);
+            this.Controls.Add(this.dgvTestCloture);
             this.Controls.Add(this.btnBilan);
             this.Controls.Add(this.btnCloture);
             this.Controls.Add(this.dgvArembourser);
@@ -154,6 +166,7 @@
             this.Load += new System.EventHandler(this.Bilan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDépensé)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArembourser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTestCloture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +184,6 @@
         private System.Windows.Forms.DataGridView dgvArembourser;
         private System.Windows.Forms.Button btnCloture;
         private System.Windows.Forms.Button btnBilan;
+        private System.Windows.Forms.DataGridView dgvTestCloture;
     }
 }

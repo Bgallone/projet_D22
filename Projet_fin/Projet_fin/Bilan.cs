@@ -136,12 +136,45 @@ namespace Projet_fin
 
         private void btnCloture_Click(object sender, EventArgs e)
         {
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+            co.ConnectionString = chco;
             co.Open();
-            string req = @"UPDATE Evenements
+
+            //on récup le n° de l'évé 
+            string rqtCodePart=@"SELECT codeEvent FROM Evenements
+                                                     WHERE titreEvent = '"+cbxEvenement.Text+"' ";
+
+            MessageBox.Show(rqtCodePart);
+            cmd.CommandText = rqtCodePart;
+
+            int NumEve = int.Parse(cmd.ExecuteScalar().ToString());
+
+            //on récup tout les num de part
+            string rqtNumPart = @"SELECT codePart FROM Invites 
+                                   WHERE codeEvent =" + NumEve +"";
+            MessageBox.Show(rqtNumPart);
+            cmd.CommandText = rqtNumPart;
+            OleDbDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                int NumPart = dr.GetInt32(0);
+                DepenseCredit(NumEve,NumPart) ;
+            }
+
+
+            co.Close();
+            /*string req = @"UPDATE Evenements
                            SET soldeON = True
                            WHERE titreEvent = '" + cbxEvenement.Text + "';";
             OleDbCommand cmd = new OleDbCommand(req, co);
-            MessageBox.Show(cmd.ExecuteNonQuery().ToString());
+            MessageBox.Show(cmd.ExecuteNonQuery().ToString());*/
+        }
+        private int DepenseCredit(int codeEvt,int numeroParticipant)
+        {
+            MessageBox.Show("Coucou"+codeEvt);
+            return -1;
         }
     }
 }
