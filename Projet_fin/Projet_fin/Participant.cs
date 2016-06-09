@@ -242,5 +242,17 @@ namespace Projet_fin
             myPage = null;
             myDoc = null;
         }
+
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            Form Form1 = new AjouterParticipant(chco);
+            Form1.ShowDialog();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            refresh_add();
+            this.Refresh();
+        }
     }
 }
