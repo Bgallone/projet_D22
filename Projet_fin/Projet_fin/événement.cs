@@ -236,6 +236,7 @@ namespace Projet_fin
 
 
             btnInvitation.Enabled = true;
+            
             co.Close();
             }
         }

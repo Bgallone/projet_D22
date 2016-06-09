@@ -108,22 +108,6 @@ namespace Projet_fin
             co.Open();
             
             DataTable dt = new DataTable();
-            DataColumn dc1 = new DataColumn();
-            dc1.DataType = System.Type.GetType("System.Int32");
-            dc1.ColumnName = "Numéro Depense";
-            dt.Columns.Add(dc1);
-            DataColumn dc2 = new DataColumn();
-            dc2.DataType = Type.GetType("System.String");
-            dc2.ColumnName = "date";
-            dt.Columns.Add(dc2);
-            DataColumn dc3 = new DataColumn();
-            dc3.DataType = Type.GetType("System.String");
-            dc3.ColumnName = "description";
-            dt.Columns.Add(dc3);
-            DataColumn dc4 = new DataColumn();
-            dc4.DataType = Type.GetType("System.Decimal");
-            dc4.ColumnName = "montant";
-            dt.Columns.Add(dc4);
 
             string reqpart = @"SELECT codeParticipant
                               FROM Participants
@@ -156,45 +140,28 @@ namespace Projet_fin
             da.Fill(dt);
             dgvDépensé.DataSource = dt;
 
-
-
             DataTable dt2 = new DataTable();
-            DataColumn c1 = new DataColumn();
-            c1.DataType = System.Type.GetType("System.Int32");
-            c1.ColumnName = "Numéro Depense";
-            dt2.Columns.Add(c1);
-            DataColumn c2 = new DataColumn();
-            c2.DataType = Type.GetType("System.Decimal");
-            c2.ColumnName = "montant";
-            dt2.Columns.Add(c2);
-            DataColumn c3 = new DataColumn();
-            c3.DataType = Type.GetType("System.Int32");
-            c3.ColumnName = "SommeDenbPart";
-            dt2.Columns.Add(c3);
-            
 
-            OleDbParameter parampart = new OleDbParameter();
-            parampart.ParameterName = "@pPart";
-            parampart.OleDbType = OleDbType.Integer;
-            parampart.Direction = ParameterDirection.Input;
-            parampart.Value = nopart;
+            OleDbParameter ppart = new OleDbParameter();
+            ppart.ParameterName = "@pPart";
+            ppart.OleDbType = OleDbType.Integer;
+            ppart.Direction = ParameterDirection.Input;
+            ppart.Value = nopart;
         
 
-            OleDbParameter paramevent = new OleDbParameter();
-            paramevent.ParameterName = "@pEvent";
-            paramevent.OleDbType = OleDbType.Integer;
-            paramevent.Direction = ParameterDirection.Input;
-            paramevent.Value = noevt;
+            OleDbParameter pevent = new OleDbParameter();
+            pevent.ParameterName = "@pEvent";
+            pevent.OleDbType = OleDbType.Integer;
+            pevent.Direction = ParameterDirection.Input;
+            pevent.Value = noevt;
            
-             
-            OleDbCommand cmd2 = new OleDbCommand();
-            cmd2.Connection = co;
-            cmd2.CommandType = CommandType.StoredProcedure;
-            cmd2.CommandText = "DepensesQuiMeConcernent";
-            cmd2.Parameters.Add(paramevent);
-            cmd2.Parameters.Add(parampart);
-            OleDbDataAdapter da2 = new OleDbDataAdapter(cmd2);
-            da.Fill(dt2);
+            cmd.Connection = co;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "DepensesQuiMeConcernent";
+            cmd.Parameters.Add(pevent);
+            cmd.Parameters.Add(ppart);
+            OleDbDataAdapter da2 = new OleDbDataAdapter(cmd);
+            da2.Fill(dt2);
             dgvArembourser.DataSource = dt2;
 
             co.Close();
@@ -210,6 +177,20 @@ namespace Projet_fin
             co.ConnectionString = chco;
             co.Open();
 
+            //création de la table 
+            DataSet ds = new DataSet("bilan");
+
+            DataTable dtBilan = ds.Tables.Add("dtBilan");
+
+            DataColumn pkdtBilan = dtBilan.Columns.Add("CodePart", typeof(Int32));
+            dtBilan.Columns.Add("Personne", typeof(string));
+            dtBilan.Columns.Add("Plus",typeof(Double));
+            dtBilan.Columns.Add("Moins",typeof(Double));
+            dtBilan.Columns.Add("Solde",typeof(Double));
+
+            dgvEss.DataSource = dtBilan;
+     
+            
             //on récup le n° de l'évé 
             string rqtCodePart=@"SELECT codeEvent FROM Evenements
                                                      WHERE titreEvent = '"+cbxEvenement.Text+"' ";
@@ -226,28 +207,17 @@ namespace Projet_fin
             cmd.CommandText = rqtNumPart;
             OleDbDataReader dr = cmd.ExecuteReader();
 
-            DataSet ds = new DataSet("bilan");
-
-            DataTable dtBilan = ds.Tables.Add("dtBilan");
-
-            DataColumn dcBilan = 
-                dtBilan.Columns.Add("CodePart", typeof(Int32));
-            dtBilan.Columns.Add("Personne", typeof(string));
-            dtBilan.Columns.Add("Plus", typeof(Int32));
-            dtBilan.Columns.Add("Moins", typeof(Int32));
-            dtBilan.Columns.Add("Solde", typeof(Int32));
-
-            dtBilan.PrimaryKey = new DataColumn[] {dcBilan  };
-
-            dgvEss.DataSource = ds;
+           
             while (dr.Read())
             {
                 int NumPart = dr.GetInt32(0);
-                DepenseCredit(NumEve,NumPart) ;
+                
+                int Plus =DepensesDebit(NumEve, NumPart);
+                int Moins=DepenseCredit(NumEve,NumPart) ;
             }
-
-
             co.Close();
+
+
             /*string req = @"UPDATE Evenements
                            SET soldeON = True
                            WHERE titreEvent = '" + cbxEvenement.Text + "';";
@@ -256,11 +226,37 @@ namespace Projet_fin
         }
         private int DepenseCredit(int codeEvt,int numeroParticipant)
         {
+            //plus
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+
+            // on lui passe un participant
+            OleDbParameter part = new OleDbParameter();
+            part.OleDbType = OleDbType.Integer;
+            part.ParameterName = "@pPart";
+            part.Value = numeroParticipant;
+            part.Direction = ParameterDirection.Input;
+
+            // on lui passe un éve
+            OleDbParameter evt = new OleDbParameter();
+            evt.OleDbType = OleDbType.Integer;
+            evt.ParameterName = "@pEvent";
+            evt.Value = codeEvt;
+            evt.Direction = ParameterDirection.Input;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "MesDepenses";
+            cmd.Parameters.Add(evt);
+            cmd.Parameters.Add(part);
+
+
+
             
+            cmd.CommandText = "";
             return -1;
         }
         private int DepensesDebit(int codeEvt, int numeroParticipant)
         {
+            //moins
 
             return -1;
         }

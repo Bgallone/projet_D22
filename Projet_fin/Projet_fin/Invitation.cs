@@ -203,8 +203,8 @@ namespace Projet_fin
                 }
             }
             co.Close();
-            
 
+            this.Close();
         }
 
         //Création du mdp 
@@ -260,7 +260,7 @@ namespace Projet_fin
                 try
                 {
                     smtpServer.Send(mail);
-                    MessageBox.Show("email est envoyer");
+                    MessageBox.Show("L'email a bien été envoyé");
                 }
                 catch (SmtpException ex)
                 {

@@ -236,13 +236,14 @@
             this.txtMontant.Name = "txtMontant";
             this.txtMontant.Size = new System.Drawing.Size(95, 22);
             this.txtMontant.TabIndex = 3;
+            this.txtMontant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontant_KeyPress);
             // 
             // btnRAZ
             // 
-            this.btnRAZ.Location = new System.Drawing.Point(704, 462);
+            this.btnRAZ.Location = new System.Drawing.Point(761, 447);
             this.btnRAZ.Margin = new System.Windows.Forms.Padding(4);
             this.btnRAZ.Name = "btnRAZ";
-            this.btnRAZ.Size = new System.Drawing.Size(75, 23);
+            this.btnRAZ.Size = new System.Drawing.Size(126, 43);
             this.btnRAZ.TabIndex = 9;
             this.btnRAZ.Text = "R-A-Z";
             this.btnRAZ.UseVisualStyleBackColor = true;
@@ -250,10 +251,10 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(704, 498);
+            this.btnQuit.Location = new System.Drawing.Point(761, 498);
             this.btnQuit.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(75, 23);
+            this.btnQuit.Size = new System.Drawing.Size(126, 43);
             this.btnQuit.TabIndex = 10;
             this.btnQuit.Text = "Quitter";
             this.btnQuit.UseVisualStyleBackColor = true;
@@ -261,10 +262,10 @@
             // 
             // btnValider
             // 
-            this.btnValider.Location = new System.Drawing.Point(704, 426);
+            this.btnValider.Location = new System.Drawing.Point(761, 396);
             this.btnValider.Margin = new System.Windows.Forms.Padding(4);
             this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(75, 23);
+            this.btnValider.Size = new System.Drawing.Size(126, 43);
             this.btnValider.TabIndex = 8;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
@@ -288,6 +289,8 @@
             this.txtCommentaire.Size = new System.Drawing.Size(775, 117);
             this.txtCommentaire.TabIndex = 4;
             this.txtCommentaire.Text = "";
+            this.txtCommentaire.TextChanged += new System.EventHandler(this.txtCommentaire_TextChanged);
+            this.txtCommentaire.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommentaire_KeyPress);
             // 
             // label12
             // 
@@ -307,6 +310,7 @@
             this.txtDepense.Name = "txtDepense";
             this.txtDepense.Size = new System.Drawing.Size(336, 22);
             this.txtDepense.TabIndex = 2;
+            this.txtDepense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDepense_KeyPress);
             // 
             // cbxPayePar
             // 
@@ -317,6 +321,7 @@
             this.cbxPayePar.Name = "cbxPayePar";
             this.cbxPayePar.Size = new System.Drawing.Size(336, 24);
             this.cbxPayePar.TabIndex = 5;
+            this.cbxPayePar.SelectedIndexChanged += new System.EventHandler(this.cbxPayePar_SelectedIndexChanged);
             // 
             // cbxEvenement
             // 
