@@ -201,12 +201,16 @@ namespace Projet_fin
             int NumEve = int.Parse(cmd.ExecuteScalar().ToString());
 
             //on récup tout les num de part
-            string rqtNumPart = @"SELECT codePart FROM Invites 
-                                   WHERE codeEvent =" + NumEve +"";
+            string rqtNumPart = @"SELECT i.codePart , (p.nomPart + p.prenomPart), p.nbParts 
+                                   FROM Invites i , Participants p 
+                                   WHERE codeEvent =" + NumEve +" AND i.codePart = p.codeParticipant";
 
             cmd.CommandText = rqtNumPart;
             OleDbDataReader dr = cmd.ExecuteReader();
 
+
+            
+            
            
             while (dr.Read())
             {
@@ -215,7 +219,12 @@ namespace Projet_fin
                 double Plus =DepenseCredit(NumEve,NumPart) ;
                
                 double Moins=DepensesDebit(NumEve, NumPart);
-                dtBilan.Rows.Add(NumPart, "", Plus, Moins, Plus-Moins);
+
+                string NomPre = dr.GetString(1);
+                int nbPart = dr.GetInt32(2);
+                Moins = Moins * nbPart;
+               
+                dtBilan.Rows.Add(NumPart,NomPre, Plus, Moins, Plus-Moins);
             }
             co.Close();
 
