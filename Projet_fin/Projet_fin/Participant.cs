@@ -13,6 +13,14 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading;
 using sharpPDF;
+using sharpPDF.Enumerators;
+using sharpPDF.Fonts;
+using sharpPDF.Elements;
+using sharpPDF.Bookmarks;
+using sharpPDF.Collections;
+using sharpPDF.PDFControls;
+using sharpPDF.Tables;
+using sharpPDF.Exceptions;
 
 namespace Projet_fin
 {
@@ -28,6 +36,7 @@ namespace Projet_fin
         {
             InitializeComponent();
             this.chco = chco;
+            CreatePDF();
         }
 
         private void Participant_Load(object sender, EventArgs e)
@@ -87,7 +96,6 @@ namespace Projet_fin
             btnAdd.Visible = true;
             lblAdd.Visible = true;
             refresh_add();
-            CreatePDF();
         }
 
         private void refresh_add()
@@ -218,9 +226,17 @@ namespace Projet_fin
 
         public void CreatePDF()
         {
-            pdfDocument myDoc = new pdfDocument("TUTORIAL", "ME");
-            pdfPage myPage = myDoc.addPage();
-            myPage.addText("Hello World!", 200, 450, myDoc.getFontReference("Helvetica"), 20);
+            pdfDocument myDoc = new pdfDocument("BonCompte", "BonCompte");
+            pdfPage myPage = myDoc.addPage(2339, 1654);
+            myPage.addText("Coucou tu veux voir mon ...... tableau !", 80,  2050, myDoc.getFontReference("Helvetica"), 40);
+            for (int i = 0; i < 10; i++)
+            {
+                myPage.drawLine( 100, 2000 - 50 * i, 1550, 2000 - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+            }
+            for (int y = 0; y < 6; y++)
+            {
+                myPage.drawLine(100 + y*(1450/5), 2000, 100 + y * (1450 / 5), 2000 - 50 * 9, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+            }
             String path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             myDoc.createPDF(@""+ path +"/test.pdf");
             myPage = null;
