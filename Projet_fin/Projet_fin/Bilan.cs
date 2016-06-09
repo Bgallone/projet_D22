@@ -529,7 +529,7 @@ namespace Projet_fin
             pdfDocument myDoc = new pdfDocument("BonCompte", "BonCompte");
             pdfPage myPage = myDoc.addPage(2339, 1654);
             myPage.addText("Récapitulatif de l'événement : " + nomEvent, 80, 2250, myDoc.getFontReference("Helvetica"), 40);
-            myPage.addText("Récapitulatif de l'événement : " + nomEvent, 80, 2250, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("- Date de début : " + datedeb, 100, 2200, myDoc.getFontReference("Helvetica"), 40);
 
 
 
