@@ -213,7 +213,7 @@ namespace Projet_fin
                 int NumPart = dr.GetInt32(0);
                 
                 double Plus =DepenseCredit(NumEve,NumPart) ;
-                MessageBox.Show(Plus+"");
+               
                 double Moins=DepensesDebit(NumEve, NumPart);
       
             }
@@ -268,7 +268,7 @@ namespace Projet_fin
         }
         private double DepensesDebit(int codeEvt, int numeroParticipant)
         {
-            /*//moins
+            //moins
             //parametre
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
@@ -293,7 +293,7 @@ namespace Projet_fin
             cmd.Parameters.Add(evt);
             cmd.Parameters.Add(part);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-            da.Fill(dt);*/
+            da.Fill(dt);
 
     
             
