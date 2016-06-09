@@ -402,15 +402,15 @@ namespace Projet_fin
 
             }
 
+            string req = @"UPDATE Evenements
+                           SET soldeON = True
+                           WHERE titreEvent = '" + cbxEvenement.Text + "';";
+             cmd.CommandText =req;
+            MessageBox.Show(cmd.ExecuteNonQuery().ToString());
 
             co.Close();
 
 
-            /*string req = @"UPDATE Evenements
-                           SET soldeON = True
-                           WHERE titreEvent = '" + cbxEvenement.Text + "';";
-            OleDbCommand cmd = new OleDbCommand(req, co);
-            MessageBox.Show(cmd.ExecuteNonQuery().ToString());*/
         }
         private double DepenseCredit(int codeEvt,int numeroParticipant)
         {
