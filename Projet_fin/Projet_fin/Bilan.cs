@@ -245,64 +245,77 @@ namespace Projet_fin
                 double receveur = Math.Round((double)dtBilan.Compute("Max(Solde)", ""),2);
 
 
-
-                MessageBox.Show(donneur + "");
-                MessageBox.Show(receveur + "");
-
-
                 if (Math.Abs(donneur) < Math.Abs(receveur))
                 {
 
-                    for (int i = 0; i < rows.Length; i++)
+                    bool rep = false ;int codedonneur = 0; int codereceveur = 0;int i=0;
+                    while(rep != true)
                     {
-                        int codedonneur = 0; int codereceveur = 0;
+                        
                         if (Math.Round((double)rows[i]["Solde"],2) == donneur)
                         {
                             codedonneur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = 0;
-                            
-                            
+                            rep=true; 
                         }
-                        else if (Math.Round((double)rows[i]["Solde"],2) == receveur)
+                        i++;
+                    }
+                    rep= false;
+                    i=0;
+                    while(rep != true)
+                    { 
+                          
+                        if(Math.Round((double)rows[i]["Solde"],2) == receveur)
                         {
                             codereceveur = (int)rows[i]["CodePart"];
 
                             rows[i]["Solde"] = receveur+donneur;
-
+                            rep = true;
                         }
-                        if (codedonneur != 0 && codereceveur != 0)
-                        {
-                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, donneur);
-                        }
+                        i++;
                     }
+
+                   if (codedonneur != 0 && codereceveur != 0)
+                   {
+                       
+                        dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, Math.Abs(donneur));
+                    }
+                    
                 }
 
 
                 else if(Math.Abs(donneur) >Math.Abs(receveur) )
                 {
 
-
-                    for (int i = 0; i < rows.Length; i++)
+                    bool rep = false ;int codedonneur = 0; int codereceveur = 0;int i=0;
+                    while(rep != true)
                     {
-                        int codedonneur = 0; int codereceveur = 0;
+         
                         if (Math.Round((double)rows[i]["Solde"],2) == donneur)
                         {
                             codedonneur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = donneur + receveur;
-
-
+                               rep=true; 
                         }
-                        else if (Math.Round((double)rows[i]["Solde"],2) == receveur)
+                        i++;
+                    }
+                    rep= false;
+                    i=0;
+                    while(rep != true)
+                    { 
+                          if (Math.Round((double)rows[i]["Solde"],2) == receveur)
                         {
                             codereceveur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = 0;
-
+                            rep = true;
                         }
+                        i++;
+                    }
+
                         if (codedonneur != 0 && codereceveur != 0)
                         {
-                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, donneur);
+                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, Math.Abs(donneur));
                         }
-                    }
 
 
                 }
@@ -310,29 +323,36 @@ namespace Projet_fin
 
                 else
                 {
-                    for (int i = 0; i < rows.Length; i++)
+                    bool rep = false; int codedonneur = 0; int codereceveur = 0; int i = 0;
+                    while (rep != true)
                     {
-                        int codedonneur = 0; int codereceveur = 0;
                         if (Math.Round((double)rows[i]["Solde"],2) == donneur)
                         {
                              codedonneur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = 0;
-
+                            rep = true;
 
                         }
-                        else if (Math.Round((double)rows[i]["Solde"],2) == receveur)
+                            i++;
+                    } 
+                    rep = false;
+                    i = 0;
+                    while (rep != true)
+                    {
+                        if (Math.Round((double)rows[i]["Solde"], 2) == receveur)
                         {
                              codereceveur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = 0;
+                            rep = true;
 
                         }
-
-                        if (codedonneur != 0 && codereceveur != 0)
+                        i++;
+                    }
+                    if (codedonneur != 0 && codereceveur != 0)
                         {
-                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, donneur);
+                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, Math.Abs(donneur));
                         }
                     }
-                }
             }
             
             co.Close();
