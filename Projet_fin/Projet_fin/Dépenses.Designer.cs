@@ -34,7 +34,6 @@
             this.dgvDepense = new System.Windows.Forms.DataGridView();
             this.chxAll = new System.Windows.Forms.CheckBox();
             this.gbxCouleur = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepense)).BeginInit();
             this.gbxCouleur.SuspendLayout();
@@ -99,7 +98,6 @@
             // gbxCouleur
             // 
             this.gbxCouleur.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.gbxCouleur.Controls.Add(this.comboBox1);
             this.gbxCouleur.Controls.Add(this.chxAll);
             this.gbxCouleur.Controls.Add(this.cbxEvenement);
             this.gbxCouleur.Controls.Add(this.label1);
@@ -108,16 +106,6 @@
             this.gbxCouleur.Size = new System.Drawing.Size(868, 188);
             this.gbxCouleur.TabIndex = 11;
             this.gbxCouleur.TabStop = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(190, 122);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(221, 24);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // Dépenses
             // 
@@ -146,6 +134,5 @@
         private System.Windows.Forms.DataGridView dgvDepense;
         private System.Windows.Forms.CheckBox chxAll;
         private System.Windows.Forms.GroupBox gbxCouleur;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
