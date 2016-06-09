@@ -36,7 +36,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dgvDépensé = new System.Windows.Forms.DataGridView();
             this.dgvArembourser = new System.Windows.Forms.DataGridView();
-            this.btnBilanGlobal = new System.Windows.Forms.Button();
+            this.btnCloture = new System.Windows.Forms.Button();
             this.btnBilan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDépensé)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArembourser)).BeginInit();
@@ -114,18 +114,19 @@
             this.dgvArembourser.Size = new System.Drawing.Size(530, 221);
             this.dgvArembourser.TabIndex = 7;
             // 
-            // btnBilanGlobal
+            // btnCloture
             // 
-            this.btnBilanGlobal.Location = new System.Drawing.Point(420, 12);
-            this.btnBilanGlobal.Name = "btnBilanGlobal";
-            this.btnBilanGlobal.Size = new System.Drawing.Size(126, 33);
-            this.btnBilanGlobal.TabIndex = 8;
-            this.btnBilanGlobal.Text = "Bilan global\r\n";
-            this.btnBilanGlobal.UseVisualStyleBackColor = true;
+            this.btnCloture.Location = new System.Drawing.Point(420, 70);
+            this.btnCloture.Name = "btnCloture";
+            this.btnCloture.Size = new System.Drawing.Size(126, 52);
+            this.btnCloture.TabIndex = 8;
+            this.btnCloture.Text = "Cloturer l\'evenement";
+            this.btnCloture.UseVisualStyleBackColor = true;
+            this.btnCloture.Click += new System.EventHandler(this.btnCloture_Click);
             // 
             // btnBilan
             // 
-            this.btnBilan.Location = new System.Drawing.Point(420, 70);
+            this.btnBilan.Location = new System.Drawing.Point(420, 25);
             this.btnBilan.Name = "btnBilan";
             this.btnBilan.Size = new System.Drawing.Size(126, 33);
             this.btnBilan.TabIndex = 9;
@@ -139,7 +140,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 655);
             this.Controls.Add(this.btnBilan);
-            this.Controls.Add(this.btnBilanGlobal);
+            this.Controls.Add(this.btnCloture);
             this.Controls.Add(this.dgvArembourser);
             this.Controls.Add(this.dgvDépensé);
             this.Controls.Add(this.label4);
@@ -168,7 +169,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvDépensé;
         private System.Windows.Forms.DataGridView dgvArembourser;
-        private System.Windows.Forms.Button btnBilanGlobal;
+        private System.Windows.Forms.Button btnCloture;
         private System.Windows.Forms.Button btnBilan;
     }
 }

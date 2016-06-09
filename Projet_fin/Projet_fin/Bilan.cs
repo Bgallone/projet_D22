@@ -132,5 +132,15 @@ namespace Projet_fin
             remplirDataGridView(reqdgv2, dgvArembourser, ds3);
             co.Close();
         }
+
+        private void btnCloture_Click(object sender, EventArgs e)
+        {
+            co.Open();
+            string req = @"UPDATE Evenements
+                           SET soldeON = True
+                           WHERE titreEvent = '" + cbxEvenement.Text + "';";
+            OleDbCommand cmd = new OleDbCommand(req, co);
+            MessageBox.Show(cmd.ExecuteNonQuery().ToString());
+        }
     }
 }
