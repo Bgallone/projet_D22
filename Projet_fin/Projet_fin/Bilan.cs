@@ -165,20 +165,35 @@ namespace Projet_fin
             }
             dgvDépensé.DataSource = dt;
 
-           
+
             DataTable dt2 = new DataTable();
+            DataColumn c1 = new DataColumn();
+            c1.DataType = System.Type.GetType("System.Int32");
+            c1.ColumnName = "Numéro Depense";
+            dt2.Columns.Add(c1);
+            DataColumn c2 = new DataColumn();
+            c2.DataType = Type.GetType("System.Decimal");
+            c2.ColumnName = "montant";
+            dt2.Columns.Add(c2);
+            DataColumn c3 = new DataColumn();
+            c3.DataType = Type.GetType("System.Int32");
+            c3.ColumnName = "SommeDenbPart";
+            dt2.Columns.Add(c3);
+            
 
             OleDbParameter parampart = new OleDbParameter();
             parampart.ParameterName = "@pPart";
             parampart.OleDbType = OleDbType.Integer;
             parampart.Direction = ParameterDirection.Input;
-            parampart.Value = part;
+            parampart.Value = nopart;
+        
 
             OleDbParameter paramevent = new OleDbParameter();
             paramevent.ParameterName = "@pEvent";
             paramevent.OleDbType = OleDbType.Integer;
             paramevent.Direction = ParameterDirection.Input;
-            paramevent.Value = evt;
+            paramevent.Value = noevt;
+           
              
             OleDbCommand cmd2 = new OleDbCommand();
             cmd2.Connection = co;
@@ -191,9 +206,9 @@ namespace Projet_fin
             while (dr2.Read())
             {
                 DataRow d = dt2.NewRow();
-                d[0] = dr2.GetInt32(0);
-                d[1] = dr2.GetDecimal(1);
-                d[2] = dr2.GetInt32(3);
+                d[1] = dr2.GetInt32(0);
+                d[2] = dr2.GetDecimal(1);
+                d[3] = dr2.GetInt32(2);
                 dt2.Rows.Add(d);
 
                
