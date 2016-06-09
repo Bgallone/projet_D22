@@ -215,7 +215,7 @@ namespace Projet_fin
             string req = @"UPDATE Evenements
                            SET soldeON = True
                            WHERE titreEvent = '" + cbxEvenement.Text + "';";
-            OleDbCommand cmd = new OleDbCommand(req, co);
+            OleDbCommand cmd2 = new OleDbCommand(req, co);
             MessageBox.Show(cmd.ExecuteNonQuery().ToString());
         }
         private int DepenseCredit(int codeEvt,int numeroParticipant)

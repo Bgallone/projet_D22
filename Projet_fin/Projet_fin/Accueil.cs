@@ -52,12 +52,17 @@ namespace Projet_fin
             cbxEvenement.DataSource = ds.Tables["events"];
             cbxEvenement.DisplayMember = "titreEvent";
             cbxEvenement.ValueMember = "codeEvent";
+            Init();
             co.Close();
+        }
 
-            
-           
-           
-
+        private void Init()
+        {
+            txtDepense.Enabled = false;
+            txtMontant.Enabled = false;
+            txtCommentaire.Enabled = false;
+            cbxPayePar.Enabled = false;
+            clbBeneficiaires.Enabled = false;
         }
 
         private void Remplir(String requete, String nomTable)
@@ -121,6 +126,7 @@ namespace Projet_fin
             txtDepense.Clear();
             txtMontant.Clear();
             clbBeneficiaires.Items.Clear();
+            Init();
 
             
         }
@@ -159,6 +165,7 @@ namespace Projet_fin
             }
 
             co.Close();
+            txtDepense.Enabled = true;
 
 
         }
@@ -189,11 +196,24 @@ namespace Projet_fin
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            if(txtDepense.Text == "")
+            {
+                MessageBox.Show("Veuillez saisir un nom pour la dépense");
+            }
+            if(txtMontant.Text == ""){
+                MessageBox.Show("Veuillez saisir un montant pour la dépense");
+            }
+            if(txtCommentaire.Text == "")
+            {
+                MessageBox.Show("Veuillez saisir un commentaire pour l'événement");
+            }
             co.Open();
             string req = @"SELECT codeParticipant FROM Participants WHERE nomPart = '" + cbxPayePar.Text + "';";
             MessageBox.Show(req);
+            
             OleDbCommand cmd = new OleDbCommand(req, co);
-            int codePart = int.Parse(cmd.ExecuteScalar().ToString());
+            
+           int codePart = int.Parse(cmd.ExecuteScalar().ToString());
 
             req = @"Select count(*) from Depenses;";
             cmd.CommandText = req;
@@ -243,6 +263,44 @@ namespace Projet_fin
         {
             Form Form1 = new Bilan(chco);
             Form1.Show();
+        }
+
+        private void txtDepense_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtMontant.Enabled = true;
+
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMontant_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtCommentaire.Enabled = true;
+
+            if (char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCommentaire_TextChanged(object sender, EventArgs e)
+        {
+            cbxPayePar.Enabled = true;
+        }
+
+        private void cbxPayePar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clbBeneficiaires.Enabled = true;
         }
     }
 }
