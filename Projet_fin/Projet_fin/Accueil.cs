@@ -221,29 +221,39 @@ namespace Projet_fin
             
             
             OleDbCommand cmd = new OleDbCommand(req, co);
+
             
            int codePart = int.Parse(cmd.ExecuteScalar().ToString());
 
             req = @"Select count(*) from Depenses;";
             cmd.CommandText = req;
             int numDep = int.Parse(cmd.ExecuteScalar().ToString()) + 1;
-            
-            req = @"INSERT INTO Depenses(numDepense,description,montant, dateDepense, codeEvent, commentaire,codePart) 
-                            VALUES('" + numDep + "', '" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) +"', '" + dateTimePicker1.Value.Date +
-                                      "','" + noevent + "', '" + txtCommentaire.Text + "', '"+ codePart +"');";
 
-            cmd.CommandText = req;
-            
-            
-            int n = cmd.ExecuteNonQuery();
-            if(n == 1)
-            {
-                MessageBox.Show("La dépense a bien été ajoutée");
+            try {
+                req = @"INSERT INTO Depenses(numDepense,description,montant, dateDepense, codeEvent, commentaire,codePart) 
+                            VALUES('" + numDep + "', '" + txtDepense.Text + "', '" + double.Parse(txtMontant.Text) + "', '" + dateTimePicker1.Value.Date +
+                                          "','" + noevent + "', '" + txtCommentaire.Text + "', '" + codePart + "');";
+                cmd.CommandText = req;
+                int n = cmd.ExecuteNonQuery();
+                if (n == 1)
+                {
+                    MessageBox.Show("La dépense a bien été ajoutée");
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de l'ajout de la dépense");
+                }
+
             }
-            else
+            catch (FormatException x)
             {
-                MessageBox.Show("Erreur lors de l'ajout de la dépense");
+                MessageBox.Show("L'un des champs n'est pas renseigné, veuillez réessayer et remplir tous les champs");
             }
+            catch(OleDbException x2)
+            {
+                MessageBox.Show("L'un des champs n'est pas renseigné, veuillez réessayer et remplir tous les champs");
+            }
+           
           
 
             for(int i = 0; i < clbBeneficiaires.Items.Count;i++)
@@ -260,8 +270,9 @@ namespace Projet_fin
                     string reqinsert = @"INSERT INTO Beneficiaires(numDepense, codePart)
                                          VALUES(" + numDep + ", " + id + ");";
                     cmd.CommandText = reqinsert;
-                    int j = cmd.ExecuteNonQuery();
-                 
+                    
+                        cmd.ExecuteNonQuery();
+                   
                 }
             }
 
@@ -284,14 +295,10 @@ namespace Projet_fin
 
         private void txtDepense_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtDepense.Text.Length != 0)
-            {
+           
                 txtMontant.Enabled = true;
-            }
-            else
-            {
-                txtMontant.Enabled = false;
-            }
+           
+         
 
             if (char.IsLetter(e.KeyChar) || e.KeyChar == (char) Keys.Space || e.KeyChar == (char) Keys.Back)
             {
@@ -305,14 +312,9 @@ namespace Projet_fin
 
         private void txtMontant_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtMontant.Text.Length != 0)
-            {
+       
                 txtCommentaire.Enabled = true;
-            }
-            else
-            {
-                txtCommentaire.Enabled = false;
-            }
+           
 
             if (char.IsNumber(e.KeyChar) || e.KeyChar == (char) Keys.Back || e.KeyChar == ',')
             {
@@ -352,6 +354,11 @@ namespace Projet_fin
             ds.Clear();
             Init();
             this.refresh();
+        }
+
+        private void txtDepense_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

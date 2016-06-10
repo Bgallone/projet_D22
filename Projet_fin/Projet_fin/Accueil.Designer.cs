@@ -43,6 +43,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lbl_nvldepense = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.txtMontant = new System.Windows.Forms.TextBox();
             this.btnRAZ = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lvl_nomEvent = new System.Windows.Forms.Label();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.grbSection.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -231,6 +231,17 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(761, 396);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(126, 43);
+            this.btnRefresh.TabIndex = 17;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // txtMontant
             // 
             this.txtMontant.Location = new System.Drawing.Point(175, 128);
@@ -312,6 +323,7 @@
             this.txtDepense.Name = "txtDepense";
             this.txtDepense.Size = new System.Drawing.Size(336, 22);
             this.txtDepense.TabIndex = 2;
+            this.txtDepense.TextChanged += new System.EventHandler(this.txtDepense_TextChanged);
             this.txtDepense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDepense_KeyPress);
             // 
             // cbxPayePar
@@ -426,17 +438,6 @@
             this.lvl_nomEvent.Size = new System.Drawing.Size(87, 17);
             this.lvl_nomEvent.TabIndex = 0;
             this.lvl_nomEvent.Text = "Evénement :";
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(761, 396);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(126, 43);
-            this.btnRefresh.TabIndex = 17;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // FrmLancement
             // 
