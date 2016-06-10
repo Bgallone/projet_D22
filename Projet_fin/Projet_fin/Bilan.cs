@@ -120,24 +120,16 @@ namespace Projet_fin
             DataTable dt = new DataTable();
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = co;
-            int nopart = 0;
-            try {
+            
+            
                 
                 string reqpart = @"SELECT codeParticipant
                               FROM Participants
                               WHERE nomPart = '" + cbxParticipant.Text + "';";
-                OleDbCommand cd = new OleDbCommand(reqpart, co);
+            cmd.CommandText = reqpart;
 
-                nopart = int.Parse(cmd.ExecuteScalar().ToString());
-            }
-            catch(NullReferenceException x)
-            {
-                MessageBox.Show("Vous n'avez pas sélectionné d'événement ou de participant, veuillez réessayer");
-            }
-            catch(OleDbException x2)
-            {
-                MessageBox.Show("Vous n'avez pas sélectionné d'événement ou de participant, veuillez réessayer");
-            }
+                int nopart = int.Parse(cmd.ExecuteScalar().ToString());
+            
             string reqevt = @"SELECT codeEvent 
                               FROM Evenements
                               WHERE titreEvent = '" + cbxEvenement.Text + "';";
