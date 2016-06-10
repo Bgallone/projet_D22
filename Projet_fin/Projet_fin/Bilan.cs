@@ -373,10 +373,22 @@ namespace Projet_fin
 
             // VALEUR PDF 
             co.Open();
+
+            String nom = cbxParticipant.Text;
+            MessageBox.Show(nom);
+
             cmd.CommandText = @"SELECT titreEvent FROM Evenements 
                                 WHERE codeEvent=" + NumEve + ";";
             string TitreEve = cmd.ExecuteScalar().ToString();
 
+            cmd.CommandText = @"SELECT count(*) FROM Depenses 
+                                WHERE codeEvent=" + NumEve + " and codePart = (SELECT codePart FROM Participants WHERE nomPart = '" + nom + "')";
+            int nddepeff = int.Parse(cmd.ExecuteScalar().ToString());
+
+            cmd.CommandText = @"SELECT description, montant FROM Depenses 
+                                WHERE codeEvent=" + NumEve + " and codePart = (SELECT codePart FROM Participants WHERE nomPart = '" + nom + "')";
+
+            String[,] tabdépenseeff = new String[nddepeff,2];
 
             DataRow[] rows2 = dtBilanPart.Select();
             for (int i = 0; i < rows2.Length; i++)
@@ -398,8 +410,6 @@ namespace Projet_fin
                 string NomDuRecev = cmd.ExecuteScalar().ToString();
 
                 MessageBox.Show(NomDonneur+" doit "+SommeDu +"à "+ NomDuRecev);
-
-
             }
 
             string req = @"UPDATE Evenements
@@ -408,9 +418,32 @@ namespace Projet_fin
              cmd.CommandText =req;
             MessageBox.Show(cmd.ExecuteNonQuery().ToString());
 
+            cmd.CommandText = @"SELECT dateDebut FROM Evenements 
+                      WHERE codeEvent = " + NumEve + ";";
+            string datedeb = cmd.ExecuteScalar().ToString();
+
+            cmd.CommandText = @"SELECT dateFin FROM Evenements 
+                      WHERE codeEvent = " + NumEve + ";";
+            string datefin = cmd.ExecuteScalar().ToString();
+
+            
+
+            cmd.CommandText = @"SELECT prenomPart FROM Participants 
+                      WHERE nomPart = '" + nom + "';";
+            string prenom = cmd.ExecuteScalar().ToString();
+
+            cmd.CommandText = @"SELECT description FROM Evenements 
+                      WHERE codeEvent = " + NumEve + ";";
+            string description = cmd.ExecuteScalar().ToString();
+
+            cmd.CommandText = @"SELECT count(*) FROM Invites
+                      WHERE codeEvent = " + NumEve + ";";
+            int participant = int.Parse(cmd.ExecuteScalar().ToString());
+
             co.Close();
 
-            CreatePDF(nomEvent, login, prenom, datedeb, datefin, description, participant);
+
+            CreatePDF(TitreEve, nom, prenom, datedeb, datefin, description, participant, tabdépenseeff);
         }
         private double DepenseCredit(int codeEvt,int numeroParticipant)
         {
@@ -516,9 +549,9 @@ namespace Projet_fin
 
         }
 
-        public void CreatePDF(String nomEvent, String login, String prenom, String datedeb, String datefin, String description, int participant)
+        public void CreatePDF(String nomEvent, String nom, String prenom, String datedeb, String datefin, String description, int participant, String[,]tab1)
         {
-
+            int taille;
             pdfDocument myDoc = new pdfDocument("BonCompte", "BonCompte");
             pdfPage myPage = myDoc.addPage(2339, 1654);
             myPage.addText("Récapitulatif de l'événement : " + nomEvent, 80, 2250, myDoc.getFontReference("Helvetica"), 40);
@@ -527,15 +560,75 @@ namespace Projet_fin
             myPage.addText("- Description : " + description, 100, 2100, myDoc.getFontReference("Helvetica"), 40);
 
             myPage.drawLine(100, 2000, 1550, 2000, predefinedLineStyle.csNormal, new pdfColor(0, 0, 255), 3);
+            myPage.addText("Récapitulatif des participants : " + nom, 80, 1950, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("- Prénom : " + prenom, 100, 1900, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("- Nombre de particiants : " + participant, 100, 1850, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("Les dépenses effectées par : " + nom, 100, 1750, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("Description ", 250, 1655, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("Montant ", 850, 1655, myDoc.getFontReference("Helvetica"), 40);
+            taille = 1700;
+            for (int i = 0; i < tab1.Length +1; i++)
+            {
+                myPage.drawLine(200, 1700 - 50 * i, 1450, 1700 - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+                taille -= 50;
+            }
+            for (int y = 0; y < 3; y++)
+            {
+                myPage.drawLine(200 + y * (1250 / 2), 1700, 200 + y * (1250 / 2), 1700 - 50 * tab1.Length, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+            }
+            taille -= 50;
+            myPage.drawLine(100, taille, 1550, taille, predefinedLineStyle.csNormal, new pdfColor(0, 0, 255), 3);
+            myPage.addText("Les dépense dont a bénéficiées " + nom , 80, taille -50, myDoc.getFontReference("Helvetica"), 40);
+            taille -= 100;
+            myPage.addText("Description ", 250, taille -45, myDoc.getFontReference("Helvetica"), 40);
+            myPage.addText("Montant ", 850, taille -45, myDoc.getFontReference("Helvetica"), 40);
+            for (int i = 0; i < tab1.Length +1; i++)
+            {
+                myPage.drawLine(200, taille - 50 * i, 1450, taille - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+                
+            }
+            for (int y = 0; y < 3; y++)
+            {
+                myPage.drawLine(200 + y * (1250 / 2), taille, 200 + y * (1250 / 2), taille - 50 * tab1.Length, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+            }
+            taille -= 50 * tab1.Length + 1;
 
-            for (int i = 0; i < 10; i++)
+            myPage.drawLine(100, taille-50, 1550, taille-50, predefinedLineStyle.csNormal, new pdfColor(0, 0, 255), 3);
+
+            pdfPage myPage2 = myDoc.addPage(2339, 1654);
+            taille = 2200;
+            myPage2.addText(nom + " doit payer à :", 80, taille - 50, myDoc.getFontReference("Helvetica"), 40);
+            taille -= 100;
+            myPage2.addText("Nom ", 250, taille - 45, myDoc.getFontReference("Helvetica"), 40);
+            myPage2.addText("Montant ", 850, taille - 45, myDoc.getFontReference("Helvetica"), 40);
+            for (int i = 0; i < tab1.Length +1; i++)
             {
-                myPage.drawLine(100, 2000 - 50 * i, 1550, 2000 - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+                myPage2.drawLine(200, taille - 50 * i, 1450, taille - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+
             }
-            for (int y = 0; y < 6; y++)
+            for (int y = 0; y < 3; y++)
             {
-                myPage.drawLine(100 + y * (1450 / 5), 2000, 100 + y * (1450 / 5), 2000 - 50 * 9, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+                myPage2.drawLine(200 + y * (1250 / 2), taille, 200 + y * (1250 / 2), taille - 50 * tab1.Length , predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
             }
+            taille -= 50 * tab1.Length;
+            myPage2.drawLine(100, taille - 50, 1550, taille - 50, predefinedLineStyle.csNormal, new pdfColor(0, 0, 255), 3);
+            taille -= 100; 
+            myPage2.addText(nom + " doit recevoir de :", 80, taille - 50, myDoc.getFontReference("Helvetica"), 40);
+            taille -= 100;
+            myPage2.addText("Nom ", 250, taille - 45, myDoc.getFontReference("Helvetica"), 40);
+            myPage2.addText("Montant ", 850, taille - 45, myDoc.getFontReference("Helvetica"), 40);
+            for (int i = 0; i < tab1.Length + 1; i++)
+            {
+                myPage2.drawLine(200, taille - 50 * i, 1450, taille - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+
+            }
+            for (int y = 0; y < 3; y++)
+            {
+                myPage2.drawLine(200 + y * (1250 / 2), taille, 200 + y * (1250 / 2), taille - 50 * tab1.Length, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
+            }
+            taille -= 50 * tab1.Length;
+            myPage2.drawLine(100, taille - 50, 1550, taille - 50, predefinedLineStyle.csNormal, new pdfColor(0, 0, 255), 3);
+
             String path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             myDoc.createPDF(@"" + path + "/test.pdf");
             myPage = null;
