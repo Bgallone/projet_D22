@@ -30,15 +30,20 @@ namespace Projet_fin
             string req = @"SELECT count(*) 
                            FROM Participants;";
             OleDbCommand cmd = new OleDbCommand(req, co);
-            int nbpart = int.Parse(cmd.ExecuteScalar().ToString()) + 1;
+            try {
+                int nbpart = int.Parse(cmd.ExecuteScalar().ToString()) + 1;
 
-            req = @"INSERT INTO Participants(codeParticipant, nomPart, prenomPart, mobile, nbParts, adresseMail)
+                req = @"INSERT INTO Participants(codeParticipant, nomPart, prenomPart, mobile, nbParts, adresseMail)
                           VALUES(" + nbpart + ",'" + txtNom.Text + "', '" + txtPrénom.Text + "','" + txtTelephone.Text + "'," + int.Parse(txtNbParts.Text) + ",'" + txtEmail.Text + "');";
-            MessageBox.Show(req);
-            cmd.CommandText = req;
-            if(cmd.ExecuteNonQuery() == 1)
+
+                cmd.CommandText = req;
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Le participant a bien été ajouté, vous pouvez désormais l'inviter");
+                }
+            }catch(FormatException x)
             {
-                MessageBox.Show("Le participant a bien été ajouté, vous pouvez désormais l'inviter");
+                MessageBox.Show("Un ou plusieurs champs n'ont pas été renseignés, veuillez réessayer en renseignant tous les champs");
             }
 
             co.Close();
