@@ -379,7 +379,7 @@ namespace Projet_fin
             cmd.CommandText = @"SELECT codeParticipant FROM Participants
                                 WHERE nomPart ='" + nom + "'";
           
-            int NumPart = int.Parse(cmd.ExecuteScalar().ToString());
+            int NumPart1 = int.Parse(cmd.ExecuteScalar().ToString());
 
             cmd.CommandText = @"SELECT titreEvent FROM Evenements 
                                 WHERE codeEvent=" + NumEve + ";";
@@ -394,7 +394,7 @@ namespace Projet_fin
 
             String[,] tabdépenseeff = new String[nddepeff,2];
             String[,] tabreceveur = new String[nddepeff, 2];
-            int i =0;
+            int d =0;
             DataRow[] rows2 = dtBilanPart.Select();
             for (int i = 0; i < rows2.Length; i++)
             {
@@ -416,11 +416,11 @@ namespace Projet_fin
 
                 MessageBox.Show(NomDonneur+" doit "+SommeDu +"à "+ NomDuRecev);
 
-                if(codeRecev == NumPart)
+                if(codeRecev == NumPart1)
                 {
-                    tabreceveur[i, 0] = NomDonneur;
-                    tabreceveur[i, 1] = SommeDu.ToString();
-                    i++;
+                    tabreceveur[d, 0] = NomDonneur;
+                    tabreceveur[d, 1] = SommeDu.ToString();
+                    d++;
                 }
             }
             
@@ -462,10 +462,10 @@ namespace Projet_fin
 
 
 
-            
 
-                
-           CreatePDF(TitreEve, nom, prenom, datedeb, datefin, description, participant, tabdépenseeff);
+
+
+            CreatePDF(TitreEve, nom, prenom, datedeb, datefin, description, participant, tabdépenseeff, tabreceveur);
 
 
            
@@ -574,7 +574,7 @@ namespace Projet_fin
 
         }
 
-        public void CreatePDF(String nomEvent, String nom, String prenom, String datedeb, String datefin, String description, int participant, String[,]tab1)
+        public void CreatePDF(String nomEvent, String nom, String prenom, String datedeb, String datefin, String description, int participant, String[,] tab1, String[,] tab2)
         {
             int taille;
             pdfDocument myDoc = new pdfDocument("BonCompte", "BonCompte");
@@ -626,16 +626,20 @@ namespace Projet_fin
             taille -= 100;
             myPage2.addText("Nom ", 250, taille - 45, myDoc.getFontReference("Helvetica"), 40);
             myPage2.addText("Montant ", 850, taille - 45, myDoc.getFontReference("Helvetica"), 40);
-            for (int i = 0; i < tab1.Length +1; i++)
+            for (int i = 0; i < tab2.Length +1; i++)
             {
                 myPage2.drawLine(200, taille - 50 * i, 1450, taille - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
-
+                if (i < tab2.Length)
+                {
+                    myPage2.addText(tab2[i,0], 250, taille - (45 + i*50), myDoc.getFontReference("Helvetica"), 40);
+                    myPage2.addText(tab2[i, 1], 850, taille - (45 + i * 50), myDoc.getFontReference("Helvetica"), 40);
+                }
             }
             for (int y = 0; y < 3; y++)
             {
                 myPage2.drawLine(200 + y * (1250 / 2), taille, 200 + y * (1250 / 2), taille - 50 * tab1.Length , predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
             }
-            taille -= 50 * tab1.Length;
+            taille -= 50 * tab2.Length;
             myPage2.drawLine(100, taille - 50, 1550, taille - 50, predefinedLineStyle.csNormal, new pdfColor(0, 0, 255), 3);
             taille -= 100; 
             myPage2.addText(nom + " doit recevoir de :", 80, taille - 50, myDoc.getFontReference("Helvetica"), 40);
