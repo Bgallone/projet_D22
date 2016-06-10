@@ -87,7 +87,8 @@ namespace Projet_fin
 
         private void cbxParticipant_SelectionChangeCommitted(object sender, EventArgs e)
         {
-           
+            btnBilan.Enabled = true;
+            btnCloture.Enabled = true;
         }
 
         private void cbxEvenement_SelectionChangeCommitted(object sender, EventArgs e)
@@ -446,7 +447,10 @@ namespace Projet_fin
                            SET soldeON = True
                            WHERE titreEvent = '" + cbxEvenement.Text + "';";
              cmd.CommandText =req;
-            MessageBox.Show(cmd.ExecuteNonQuery().ToString());
+             if (cmd.ExecuteNonQuery() == 1)
+             {
+                 MessageBox.Show("Un pdf récapitulatif a été créé dans vos documents");
+             }
 
             cmd.CommandText = @"SELECT dateDebut FROM Evenements 
                       WHERE codeEvent = " + NumEve + ";";
@@ -648,8 +652,8 @@ namespace Projet_fin
                 myPage2.drawLine(200, taille - 50 * i, 1450, taille - 50 * i, predefinedLineStyle.csNormal, new pdfColor(0, 0, 0), 3);
                 if (i < tab2.Length)
                 {
-                    myPage2.addText(tab2[i,0], 250, taille - (45 + i*50), myDoc.getFontReference("Helvetica"), 40);
-                    myPage2.addText(tab2[i, 1], 850, taille - (45 + i * 50), myDoc.getFontReference("Helvetica"), 40);
+                    //myPage2.addText(tab2[i,0], 250, taille - (45 + i*50), myDoc.getFontReference("Helvetica"), 40);
+                    //myPage2.addText(tab2[i, 1], 850, taille - (45 + i * 50), myDoc.getFontReference("Helvetica"), 40);
                 }
             }
             for (int y = 0; y < 3; y++)
