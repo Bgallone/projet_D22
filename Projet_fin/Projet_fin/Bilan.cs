@@ -117,13 +117,26 @@ namespace Projet_fin
             co.Open();
             
             DataTable dt = new DataTable();
-
-            string reqpart = @"SELECT codeParticipant
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = co;
+            int nopart = 0;
+            try {
+                
+                string reqpart = @"SELECT codeParticipant
                               FROM Participants
                               WHERE nomPart = '" + cbxParticipant.Text + "';";
-            OleDbCommand cmd = new OleDbCommand(reqpart, co);
-            int nopart = int.Parse(cmd.ExecuteScalar().ToString());
+                OleDbCommand cd = new OleDbCommand(reqpart, co);
 
+                nopart = int.Parse(cmd.ExecuteScalar().ToString());
+            }
+            catch(NullReferenceException x)
+            {
+                MessageBox.Show("Vous n'avez pas sélectionné d'événement ou de participant, veuillez réessayer");
+            }
+            catch(OleDbException x2)
+            {
+                MessageBox.Show("Vous n'avez pas sélectionné d'événement ou de participant, veuillez réessayer");
+            }
             string reqevt = @"SELECT codeEvent 
                               FROM Evenements
                               WHERE titreEvent = '" + cbxEvenement.Text + "';";
@@ -193,11 +206,11 @@ namespace Projet_fin
 
             DataColumn pkdtBilan = dtBilan.Columns.Add("CodePart", typeof(Int32));
             dtBilan.Columns.Add("Personne", typeof(string));
-            dtBilan.Columns.Add("Plus",typeof(Double));
-            dtBilan.Columns.Add("Moins",typeof(Double));
-            dtBilan.Columns.Add("Solde",typeof(Double));
+            dtBilan.Columns.Add("Plus", typeof(Double));
+            dtBilan.Columns.Add("Moins", typeof(Double));
+            dtBilan.Columns.Add("Solde", typeof(Double));
 
-           //création table qui doit quoi a qui 
+            //création table qui doit quoi a qui 
             DataTable dtBilanPart = ds.Tables.Add("dtBilanPart");
 
             dtBilanPart.Columns.Add("codeEvt", typeof(Int32));
@@ -205,13 +218,13 @@ namespace Projet_fin
             dtBilanPart.Columns.Add("codeReceveur", typeof(Int32));
             dtBilanPart.Columns.Add("sommeAVerser", typeof(Double));
 
-            
 
-     
-            
+
+
+
             //on récup le n° de l'évé 
-            string rqtCodePart=@"SELECT codeEvent FROM Evenements
-                                                     WHERE titreEvent = '"+cbxEvenement.Text+"' ";
+            string rqtCodePart = @"SELECT codeEvent FROM Evenements
+                                                     WHERE titreEvent = '" + cbxEvenement.Text + "' ";
 
 
             cmd.CommandText = rqtCodePart;
@@ -221,99 +234,99 @@ namespace Projet_fin
             //on récup tout les num de part
             string rqtNumPart = @"SELECT i.codePart , (p.nomPart + p.prenomPart), p.nbParts 
                                    FROM Invites i , Participants p 
-                                   WHERE codeEvent =" + NumEve +" AND i.codePart = p.codeParticipant";
+                                   WHERE codeEvent =" + NumEve + " AND i.codePart = p.codeParticipant";
 
             cmd.CommandText = rqtNumPart;
             OleDbDataReader dr = cmd.ExecuteReader();
 
 
-            
-            
-           
+
+
+
             while (dr.Read())
             {
                 int NumPart = dr.GetInt32(0);
-                
-                double Plus =DepenseCredit(NumEve,NumPart) ;
-               
-                double Moins=DepensesDebit(NumEve, NumPart);
+
+                double Plus = DepenseCredit(NumEve, NumPart);
+
+                double Moins = DepensesDebit(NumEve, NumPart);
 
                 string NomPre = dr.GetString(1);
                 int nbPart = dr.GetInt32(2);
                 Moins = Moins * nbPart;
-               
-                dtBilan.Rows.Add(NumPart,NomPre, Plus, Moins, Plus-Moins);
+
+                dtBilan.Rows.Add(NumPart, NomPre, Plus, Moins, Plus - Moins);
             }
 
             // Algorithme
-            while((double)dtBilan.Compute("Max(Solde)", "") !=0){
+            while ((double)dtBilan.Compute("Max(Solde)", "") != 0) {
 
 
 
-                   DataRow[] rows = dtBilan.Select();
-                double donneur = Math.Round((double)dtBilan.Compute("Min(Solde)", ""),2);
-                double receveur = Math.Round((double)dtBilan.Compute("Max(Solde)", ""),2);
+                DataRow[] rows = dtBilan.Select();
+                double donneur = Math.Round((double)dtBilan.Compute("Min(Solde)", ""), 2);
+                double receveur = Math.Round((double)dtBilan.Compute("Max(Solde)", ""), 2);
 
 
                 if (Math.Abs(donneur) < Math.Abs(receveur))
                 {
 
-                    bool rep = false ;int codedonneur = 0; int codereceveur = 0;int i=0;
-                    while(rep != true)
+                    bool rep = false; int codedonneur = 0; int codereceveur = 0; int i = 0;
+                    while (rep != true)
                     {
-                        
-                        if (Math.Round((double)rows[i]["Solde"],2) == donneur)
+
+                        if (Math.Round((double)rows[i]["Solde"], 2) == donneur)
                         {
                             codedonneur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = 0;
-                            rep=true; 
+                            rep = true;
                         }
                         i++;
                     }
-                    rep= false;
-                    i=0;
-                    while(rep != true)
-                    { 
-                          
-                        if(Math.Round((double)rows[i]["Solde"],2) == receveur)
+                    rep = false;
+                    i = 0;
+                    while (rep != true)
+                    {
+
+                        if (Math.Round((double)rows[i]["Solde"], 2) == receveur)
                         {
                             codereceveur = (int)rows[i]["CodePart"];
 
-                            rows[i]["Solde"] = receveur+donneur;
+                            rows[i]["Solde"] = receveur + donneur;
                             rep = true;
                         }
                         i++;
                     }
 
-                   if (codedonneur != 0 && codereceveur != 0)
-                   {
-                       
+                    if (codedonneur != 0 && codereceveur != 0)
+                    {
+
                         dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, Math.Abs(donneur));
                     }
-                    
+
                 }
 
 
-                else if(Math.Abs(donneur) >Math.Abs(receveur) )
+                else if (Math.Abs(donneur) > Math.Abs(receveur))
                 {
 
-                    bool rep = false ;int codedonneur = 0; int codereceveur = 0;int i=0;
-                    while(rep != true)
+                    bool rep = false; int codedonneur = 0; int codereceveur = 0; int i = 0;
+                    while (rep != true)
                     {
-         
-                        if (Math.Round((double)rows[i]["Solde"],2) == donneur)
+
+                        if (Math.Round((double)rows[i]["Solde"], 2) == donneur)
                         {
                             codedonneur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = donneur + receveur;
-                               rep=true; 
+                            rep = true;
                         }
                         i++;
                     }
-                    rep= false;
-                    i=0;
-                    while(rep != true)
-                    { 
-                          if (Math.Round((double)rows[i]["Solde"],2) == receveur)
+                    rep = false;
+                    i = 0;
+                    while (rep != true)
+                    {
+                        if (Math.Round((double)rows[i]["Solde"], 2) == receveur)
                         {
                             codereceveur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = 0;
@@ -322,10 +335,10 @@ namespace Projet_fin
                         i++;
                     }
 
-                        if (codedonneur != 0 && codereceveur != 0)
-                        {
-                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, Math.Abs(donneur));
-                        }
+                    if (codedonneur != 0 && codereceveur != 0)
+                    {
+                        dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, Math.Abs(donneur));
+                    }
 
 
                 }
@@ -336,22 +349,22 @@ namespace Projet_fin
                     bool rep = false; int codedonneur = 0; int codereceveur = 0; int i = 0;
                     while (rep != true)
                     {
-                        if (Math.Round((double)rows[i]["Solde"],2) == donneur)
+                        if (Math.Round((double)rows[i]["Solde"], 2) == donneur)
                         {
-                             codedonneur = (int)rows[i]["CodePart"];
+                            codedonneur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = 0;
                             rep = true;
 
                         }
-                            i++;
-                    } 
+                        i++;
+                    }
                     rep = false;
                     i = 0;
                     while (rep != true)
                     {
                         if (Math.Round((double)rows[i]["Solde"], 2) == receveur)
                         {
-                             codereceveur = (int)rows[i]["CodePart"];
+                            codereceveur = (int)rows[i]["CodePart"];
                             rows[i]["Solde"] = 0;
                             rep = true;
 
@@ -359,10 +372,10 @@ namespace Projet_fin
                         i++;
                     }
                     if (codedonneur != 0 && codereceveur != 0)
-                        {
-                            dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, Math.Abs(donneur));
-                        }
+                    {
+                        dtBilanPart.Rows.Add(NumEve, codedonneur, codereceveur, Math.Abs(donneur));
                     }
+                }
             }
 
 
@@ -378,8 +391,12 @@ namespace Projet_fin
 
             cmd.CommandText = @"SELECT codeParticipant FROM Participants
                                 WHERE nomPart ='" + nom + "'";
-          
+            
+             
             int NumPart1 = int.Parse(cmd.ExecuteScalar().ToString());
+           
+         
+            
 
             cmd.CommandText = @"SELECT titreEvent FROM Evenements 
                                 WHERE codeEvent=" + NumEve + ";";
