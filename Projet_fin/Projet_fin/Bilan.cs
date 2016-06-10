@@ -430,7 +430,10 @@ namespace Projet_fin
                            SET soldeON = True
                            WHERE titreEvent = '" + cbxEvenement.Text + "';";
              cmd.CommandText =req;
-            MessageBox.Show(cmd.ExecuteNonQuery().ToString());
+             if (cmd.ExecuteNonQuery() == 1)
+             {
+                 MessageBox.Show("Un pdf récapitulatif a été créé dans vos documents");
+             }
 
             cmd.CommandText = @"SELECT dateDebut FROM Evenements 
                       WHERE codeEvent = " + NumEve + ";";
