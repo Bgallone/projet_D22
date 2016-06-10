@@ -375,7 +375,11 @@ namespace Projet_fin
             co.Open();
 
             String nom = cbxParticipant.Text;
-            MessageBox.Show(nom);
+
+            cmd.CommandText = @"SELECT codeParticipant FROM Participants
+                                WHERE nomPart ='" + nom + "'";
+          
+            int NumPart = int.Parse(cmd.ExecuteScalar().ToString());
 
             cmd.CommandText = @"SELECT titreEvent FROM Evenements 
                                 WHERE codeEvent=" + NumEve + ";";
@@ -389,7 +393,8 @@ namespace Projet_fin
                                 WHERE codeEvent=" + NumEve + " and codePart = (SELECT codePart FROM Participants WHERE nomPart = '" + nom + "')";
 
             String[,] tabdépenseeff = new String[nddepeff,2];
-
+            String[,] tabreceveur = new String[nddepeff, 2];
+            int i =0;
             DataRow[] rows2 = dtBilanPart.Select();
             for (int i = 0; i < rows2.Length; i++)
             {
@@ -410,7 +415,15 @@ namespace Projet_fin
                 string NomDuRecev = cmd.ExecuteScalar().ToString();
 
                 MessageBox.Show(NomDonneur+" doit "+SommeDu +"à "+ NomDuRecev);
+
+                if(codeRecev == NumPart)
+                {
+                    tabreceveur[i, 0] = NomDonneur;
+                    tabreceveur[i, 1] = SommeDu.ToString();
+                    i++;
+                }
             }
+            
 
             string req = @"UPDATE Evenements
                            SET soldeON = True
@@ -442,8 +455,20 @@ namespace Projet_fin
 
             co.Close();
 
+            string rqtnumero = @"SELECT codePart FROM Invites
+                                   WHERE codeEvent =" + NumEve +";";
 
-            CreatePDF(TitreEve, nom, prenom, datedeb, datefin, description, participant, tabdépenseeff);
+            cmd.CommandText = rqtnumero;
+
+
+
+            
+
+                
+           CreatePDF(TitreEve, nom, prenom, datedeb, datefin, description, participant, tabdépenseeff);
+
+
+           
         }
         private double DepenseCredit(int codeEvt,int numeroParticipant)
         {
